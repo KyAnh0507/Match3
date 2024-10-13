@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7327025572346286725}
+  - component: {fileID: 4200317584786449188}
   m_Layer: 0
   m_Name: Screw
   m_TagString: Untagged
@@ -116,3 +117,24 @@ Transform:
   - {fileID: 1032578425561830392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4200317584786449188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7884352792737767050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74794613d93adf04faf759a4a25eb54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolType: 0
+  screw: {fileID: 0}
+  anchorX: 0
+  anchorY: 0
+  rb: {fileID: 0}
+  imageScrewPins: {fileID: 0}
+  imageScrew: {fileID: 0}
+  positionButton: {x: 0, y: 0, z: 0}
+  hasScrew: 0
