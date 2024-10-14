@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class Screw : GameUnit
     public Transform imageScrew;
     public Vector3 positionButton;
     public bool canPlay = true;
-
+    public Collider2D collider2D;
     public SpriteRenderer spriteScrew;
     public SpriteRenderer spriteScrewPins;
     public void OnInit(int layer)
@@ -20,7 +21,34 @@ public class Screw : GameUnit
     
     public void Move(Vector3 pos)
     {
-        Debug.Log("move" + pos);
+        canPlay = false;
+        PullUp(pos);
+
+    }
+
+    public void Move1(Vector3 pos)
+    {
+        TF.DOMove(pos, 0.5f);
+    }
+    public void PullUp(Vector3 pos)
+    {
+        imageScrew.DOLocalMove(positionButton + new Vector3(0, 0.3f, 0), 0.3f);
+        imageScrewPins.DOLocalMove(new Vector3(0, 0.2f, 0), 0.3f).OnComplete(() =>
+        {
+            TF.DOMove(pos, 0.12f).OnComplete(() =>
+            {
+                PullDown();
+            });
+        });
+    }
+
+    public void PullDown()
+    {
+        DOVirtual.DelayedCall(0.08f, () =>
+        {
+            imageScrew.DOLocalMove(positionButton, 0.3f);
+            imageScrewPins.DOLocalMove(new Vector3(0, 0.13f, 0), 0.3f);
+        });
     }
 
     public void Match3()

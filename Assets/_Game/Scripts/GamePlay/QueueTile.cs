@@ -53,8 +53,33 @@ public class QueueTile : MonoBehaviour
                 {
                     if (i + 1 < numberScrew && tile_screws[i + 1].screw.screwType == screw.screwType)
                     {
-                        screw.Move(tile_screws[i + 1].tile.TF.position);
+                        for (int j = numberScrew; j > i + 2; j--)
+                        {
+                            tile_screws[j].screw = tile_screws[j - 1].screw;
+                            tile_screws[j].screw.Move1(tile_screws[j].tile.TF.position);
+                        }
+                        numberScrew++;
+                        tile_screws[i + 2].screw = screw;
+                        screw.Move(tile_screws[i + 2].tile.TF.position);
                         DOVirtual.DelayedCall(0.8f, Match3);
+                        return;
+                    }
+                    else if (i+1 == numberScrew)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        for (int j = numberScrew; j > i + 1; j--)
+                        {
+                            tile_screws[j].screw = tile_screws[j- 1].screw;
+                            tile_screws[j].screw.Move1(tile_screws[j].tile.TF.position);
+
+                        }
+                        numberScrew++;
+                        screw.Move(tile_screws[i + 1].tile.TF.position);
+                        tile_screws[i + 1].screw = screw;
+                        return;
                     }
                 }
             }
@@ -78,14 +103,20 @@ public class QueueTile : MonoBehaviour
                 tile_screws[i].screw = null;
                 tile_screws[i+1].screw = null;
                 tile_screws[i+2].screw = null;
+
                 if (i + 3 == numberScrew) return;
-                for (int j = 0; j < numberScrew - i - 3; j++)
+                for (int j = i; j < numberScrew; j++)
                 {
-                    if (tile_screws[i].screw == null)
+                    Debug.Log("hit");
+                    if (j < numberScrew - 3)
                     {
-                        tile_screws[i].screw = tile_screws[j + 3 + i].screw;
-                        tile_screws[j + 3 + i].screw = null;
-                    }            
+                        tile_screws[j].screw = tile_screws[j + 3].screw;
+                        tile_screws[j].screw.Move1(tile_screws[j].tile.TF.position);
+                    }
+                    else if (j >= numberScrew - 3)
+                    {
+                        tile_screws[j + i].screw = null;
+                    }
                 }
                 numberScrew -= 3;
                 break;

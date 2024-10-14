@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 3858863670968032731}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: 0}
-  m_LocalScale: {x: 0.036, y: 0.064, z: 1}
+  m_LocalPosition: {x: 0, y: 0.13, z: 0}
+  m_LocalScale: {x: 0.032, y: 0.056, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7327025572346286725}
@@ -111,7 +111,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 1}
+  m_LocalScale: {x: 0.064, y: 0.064, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7327025572346286725}
@@ -222,6 +222,7 @@ MonoBehaviour:
   imageScrew: {fileID: 1032578425561830392}
   positionButton: {x: 0, y: 0, z: 0}
   canPlay: 1
+  collider2D: {fileID: 2416087531282083556}
   spriteScrew: {fileID: 6923797060448083513}
   spriteScrewPins: {fileID: 5176001197827962947}
 --- !u!58 &2416087531282083556

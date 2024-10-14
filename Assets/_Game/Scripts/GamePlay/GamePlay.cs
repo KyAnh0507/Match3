@@ -26,7 +26,6 @@ public class GamePlay : Singleton<GamePlay>
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D[] scols = Physics2D.OverlapPointAll(mousePosition, screwLayerMask);
-            Debug.Log(scols.Length);
 
             if (scols.Length > 0)
             {
@@ -67,6 +66,8 @@ public class GamePlay : Singleton<GamePlay>
     public void SelevtedScrew(Screw screw)
     {
         screw.canPlay = false;
+        screw.collider2D.isTrigger= true;
+        LevelManager.Ins.currentLevel.IronRemoveScrew(screw);
         LevelManager.Ins.currentLevel.queueTile.AddScrew(screw);
     }
 }

@@ -116,7 +116,17 @@ public class Level : MonoBehaviour
         }
     }*/
 
-    // 
+    public void IronRemoveScrew(Screw screw)
+    {
+        for (int i = 0; i < irons.Count; i++)
+        {
+            Screw_Hole sh = irons[i].GetScrew_Hole(screw);
+            if (sh != null)
+            {
+                sh.hasScrew = false;
+            }
+        }
+    }
 
     public bool CheckDefeatCondition()
     {

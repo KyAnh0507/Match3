@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Iron : MonoBehaviour
@@ -74,6 +75,18 @@ public class Iron : MonoBehaviour
         {
             allRends[i].material = newMaterial;
         }
+    }
+
+    public Screw_Hole GetScrew_Hole(Screw screw)
+    {
+        for (int i = 0; i < screws_holes.Count; i++)
+        {
+            if (screws_holes[i].screw == screw)
+            {
+                return screws_holes[i];
+            }
+        }
+        return null;
     }
 }
 
