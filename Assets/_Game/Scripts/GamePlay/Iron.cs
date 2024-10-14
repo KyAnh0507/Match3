@@ -6,7 +6,8 @@ public class Iron : MonoBehaviour
 {
     public List<SpriteRenderer> allRends = new List<SpriteRenderer>();
 
-    public List<Screw> screws;
+    public List<Screw_Hole> screws_holes;
+    public List<Hole1Iron> hole1Irons;
     public HingeJoint2D hinge;
     public Rigidbody2D rb;
 
@@ -25,16 +26,15 @@ public class Iron : MonoBehaviour
         if (HoleHasScrew() == 1)
         {
             int a = FindHoleHasScrew();
-            hinge.connectedBody = screws[a].rb;
-            hinge.anchor = new Vector3(screws[a].anchorX, screws[a].anchorY, 0);
+            hinge.connectedBody = screws_holes[a].hole1Iron.rb;
+            hinge.anchor = new Vector3(screws_holes[a].anchorX, screws_holes[a].anchorY, 0);
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
         if (HoleHasScrew() == 0)
         {
             if (hinge != null)
             {
-                // Xóa component HingeJoint khỏi đối tượng
-                Destroy(hinge);
+                hinge.enabled = false;
             }
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
@@ -46,9 +46,9 @@ public class Iron : MonoBehaviour
     public int HoleHasScrew()
     {
         int d = 0;
-        for (int i = screws.Count - 1; i >= 0; i--)
+        for (int i = screws_holes.Count - 1; i >= 0; i--)
         {
-            if (screws[i].hasScrew)
+            if (screws_holes[i].hasScrew)
             {
                 d++;
             }
@@ -58,25 +58,14 @@ public class Iron : MonoBehaviour
 
     public int FindHoleHasScrew()
     {
-        for (int i = screws.Count - 1; i >= 0; i--)
+        for (int i = screws_holes.Count - 1; i >= 0; i--)
         {
-            if (screws[i].hasScrew)
+            if (screws_holes[i].hasScrew)
             {
                 return i;
             }
         }
         return -1;
-    }
-    public Screw GetScrew_Hole(Screw screw)
-    {
-        for (int i = 0; i < screws.Count; i++)
-        {
-            if (screws[i] == screw)
-            {
-                return screws[i];
-            }
-        }
-        return null;
     }
 
     public void UpdateSkin(Material newMaterial)
@@ -85,5 +74,29 @@ public class Iron : MonoBehaviour
         {
             allRends[i].material = newMaterial;
         }
+    }
+}
+
+[System.Serializable]
+public class Screw_Hole
+{
+    public Screw screw;
+    public Hole1Iron hole1Iron;
+    public float anchorX;
+    public float anchorY;
+    public bool hasScrew;
+
+    public Screw_Hole()
+    {
+
+    }
+
+    public Screw_Hole(Screw screw, Hole1Iron hole1Iron, bool hasScrew = true)
+    {
+        this.screw = screw;
+        this.hole1Iron = hole1Iron;
+        this.anchorX = hole1Iron.tf.localPosition.x;
+        this.anchorY = hole1Iron.tf.localPosition.y;
+        this.hasScrew = hasScrew;
     }
 }

@@ -2,12 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoleInIron : MonoBehaviour
+public class Hole1Iron : MonoBehaviour
 {
     public Transform trans;
     public SpriteRenderer spriteRenderer;
+    public Rigidbody2D rb;
+    public int screwType;
+    public bool hasScrew = true;
+    public Transform tf;
+    public Screw screw;
 
-    
+    public void OnInit(Level level)
+    {
+        //Debug.Log("hit");
+
+        if (hasScrew)
+        {
+            screw = SimplePool.Spawn<Screw>(PoolType.Screw, transform.position, Quaternion.identity);
+            screw.ChangeScrewType(screwType);
+            level.screws.Add(screw);
+        }
+    }
     public void SetParent(Transform parent)
     {
         trans.SetParent(parent);
