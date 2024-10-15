@@ -88,6 +88,10 @@ public class QueueTile : MonoBehaviour
             screw.Move(tile_screws[numberScrew].tile.TF.position);
             numberScrew++;
         }
+        if (numberScrew == numberTile)
+        {
+            LevelManager.Ins.Defeat();
+        }
         
     }
 

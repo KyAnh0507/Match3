@@ -23,6 +23,7 @@ public class Level : MonoBehaviour
     {
         for (int i = 0; i < hole2Irons.Count; i++)
         {
+            int maxLayer = 1;
             hole2Irons[i].OnInit(this);
 
             Collider2D[] icols = Physics2D.OverlapPointAll(hole2Irons[i].transform.position, GamePlay.Ins.ironLayerMask);
@@ -34,6 +35,10 @@ public class Level : MonoBehaviour
                     Iron iron = Cache.GetIron(icols[j]);
                     if (iron != null)
                     {
+                        if (iron.layer > maxLayer)
+                        {
+                            maxLayer = iron.layer;
+                        }
                         Hole1Iron h = Instantiate(hole1Iron, hole2Irons[i].transform.position, Quaternion.identity);
                         h.SetParent(iron.transform);
                         h.SetOrderInLayer(4 + iron.layer * 2);
@@ -43,12 +48,14 @@ public class Level : MonoBehaviour
                     }
                 }
             }
+            hole2Irons[i].layer = maxLayer;
         }
 
         for (int j = 0; j < irons.Count; j++)
         {
             for (int i = 0; i < irons[j].hole1Irons.Count; i++)
             {
+                irons[j].hole1Irons[i].layer = irons[j].layer;
                 irons[j].hole1Irons[i].OnInit(this);
 
                 Screw_Hole screw_Hole = new Screw_Hole(irons[j].hole1Irons[i].screw, irons[j].hole1Irons[i]);

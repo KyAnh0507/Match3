@@ -17,6 +17,7 @@ public class Screw : GameUnit
     public void OnInit(int layer)
     {
         this.layer = layer;
+        ChangeLayer(layer);
     }
     
     public void Move(Vector3 pos)
@@ -33,6 +34,7 @@ public class Screw : GameUnit
     public void PullUp(Vector3 pos)
     {
         imageScrew.DOLocalMove(positionButton + new Vector3(0, 0.3f, 0), 0.3f);
+        ChangeSortingLayer();
         imageScrewPins.DOLocalMove(new Vector3(0, 0.2f, 0), 0.3f).OnComplete(() =>
         {
             TF.DOMove(pos, 0.12f).OnComplete(() =>
@@ -69,6 +71,15 @@ public class Screw : GameUnit
     }
     public void ChangeLayer(int layer)
     {
-        gameObject.layer = layer + 6;
+        gameObject.layer = layer + 5;
+        spriteScrew.sortingOrder = layer * 10 + 2;
+        spriteScrewPins.sortingOrder = layer * 10 + 1;
+    }
+
+    public void ChangeSortingLayer()
+    {
+        spriteScrew.sortingOrder = 202;
+        spriteScrewPins.sortingOrder = 201;
+
     }
 }

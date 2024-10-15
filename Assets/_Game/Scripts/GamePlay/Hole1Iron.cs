@@ -11,7 +11,7 @@ public class Hole1Iron : MonoBehaviour
     public bool hasScrew = true;
     public Transform tf;
     public Screw screw;
-
+    public int layer;
     public void OnInit(Level level)
     {
         //Debug.Log("hit");
@@ -20,6 +20,7 @@ public class Hole1Iron : MonoBehaviour
         {
             screw = SimplePool.Spawn<Screw>(PoolType.Screw, transform.position, Quaternion.identity);
             screw.ChangeScrewType(screwType);
+            screw.OnInit(layer);
             level.screws.Add(screw);
         }
     }
