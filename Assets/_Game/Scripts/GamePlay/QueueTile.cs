@@ -88,10 +88,6 @@ public class QueueTile : MonoBehaviour
             screw.Move(tile_screws[numberScrew].tile.TF.position);
             numberScrew++;
         }
-        if (numberScrew == numberTile)
-        {
-            LevelManager.Ins.Defeat();
-        }
         
     }
 
@@ -108,21 +104,23 @@ public class QueueTile : MonoBehaviour
                 tile_screws[i+1].screw = null;
                 tile_screws[i+2].screw = null;
 
-                if (i + 3 == numberScrew) return;
-                for (int j = i; j < numberScrew; j++)
+                if (i + 3 != numberScrew)
                 {
-                    Debug.Log("hit");
-                    if (j < numberScrew - 3)
+                    for (int j = i; j < numberScrew; j++)
                     {
-                        tile_screws[j].screw = tile_screws[j + 3].screw;
-                        tile_screws[j].screw.Move1(tile_screws[j].tile.TF.position);
-                    }
-                    else if (j >= numberScrew - 3)
-                    {
-                        tile_screws[j + i].screw = null;
+                        if (j < numberScrew - 3)
+                        {
+                            tile_screws[j].screw = tile_screws[j + 3].screw;
+                            tile_screws[j].screw.Move1(tile_screws[j].tile.TF.position);
+                        }
+                        else if (j >= numberScrew - 3)
+                        {
+                            tile_screws[j + i].screw = null;
+                        }
                     }
                 }
                 numberScrew -= 3;
+                LevelManager.Ins.currentLevel.numbermatched++;
                 break;
             }
         }

@@ -26,7 +26,7 @@ public class GamePlay : Singleton<GamePlay>
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D[] scols = Physics2D.OverlapPointAll(mousePosition, screwLayerMask);
-
+            Debug.Log("hit");
             if (scols.Length > 0)
             {
                 (Screw, int) maxLayerScrew = (null, -1);
@@ -48,13 +48,13 @@ public class GamePlay : Singleton<GamePlay>
                     for (int i = 0; i < icols.Length; i++)
                     {
                         Iron ir = Cache.GetIron(icols[i]);
-                        if (s != null && s.layer > maxLayerIron)
+                        if (ir != null && ir.layer > maxLayerIron)
                         {
                             maxLayerIron = ir.layer;
                         }
                     }
                 }
-                if (maxLayerScrew.Item2 >= maxLayerIron)
+                if (maxLayerScrew.Item2 >= maxLayerIron && maxLayerScrew.Item1.canPlay)
                 {
                     SelevtedScrew(maxLayerScrew.Item1);
                 }

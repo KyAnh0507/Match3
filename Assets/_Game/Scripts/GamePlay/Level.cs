@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Unity.Collections.AllocatorManager;
@@ -18,6 +19,9 @@ public class Level : MonoBehaviour
     public int numberColor;
     [Header("Super Hard")]
     public int superHardTime;
+
+    public int targetMatch;
+    public int numbermatched = 0;
 
     public void OnInit()
     {
@@ -73,55 +77,40 @@ public class Level : MonoBehaviour
     {
         if (GameManager.Ins.IsState(GameState.GAMEPLAY))
         {
-            /*if (CheckDefeatCondition() && !isDefeatChecked)
+            if (CheckDefeatCondition() && !isDefeatChecked)
             {
                 StartCoroutine(CheckDefeatContinuously());
-            }*/
+            }
+        }
+        if (numbermatched == targetMatch && GameManager.Ins.IsState(GameState.GAMEPLAY))
+        {
+            GameManager.Ins.ChangeState(GameState.FINISH);
+            DOVirtual.DelayedCall(1.5f, () =>
+            {
+                LevelManager.Ins.Victory();
+            });
         }
     }
 
-    /*private IEnumerator CheckDefeatContinuously()
+    private IEnumerator CheckDefeatContinuously()
     {
         isDefeatChecked = true;
         float endTime = Time.time + 3f;
 
         while (Time.time < endTime)
         {
-            if ((!CheckDefeatCondition() && UIManager.Ins.formGame.canLose) || !isDefeatChecked)
+            if (!CheckDefeatCondition() || !isDefeatChecked)
             {
-                Debug.Log("hit");
                 isDefeatChecked = false;
                 yield break; // Ngừng coroutine nếu điều kiện thỏa mãn
             }
             yield return null; // Chờ cho đến khung hình tiếp theo
         }
-        Debug.Log("hit");
-
-        LevelManager.instance.StartAdsEffect();
-        LevelManager.instance.countText.gameObject.SetActive(true);
-        LevelManager.instance.countTween = DOVirtual.Int(5, 0, 5f, value =>
+        if (LevelManager.Ins.currentLevel.isDefeatChecked)
         {
-            LevelManager.instance.countText.text = value.ToString();
-        }).SetEase(Ease.Linear).OnComplete(() =>
-        {
-            if (LevelManager.instance.currentLevel.isDefeatChecked)
-            {
-                LevelManager.instance.Defeat();
-            }
-        });
-
-        endTime = Time.time + 5f;
-        while (Time.time < endTime)
-        {
-            if ((!CheckDefeatCondition() && UIManager.Ins.formGame.canLose) || !isDefeatChecked)
-            {
-                LevelManager.Ins.ResetCountTween();
-                isDefeatChecked = false;
-                yield break; // Ngừng coroutine nếu điều kiện thỏa mãn
-            }
-            yield return null; // Chờ cho đến khung hình tiếp theo
+            LevelManager.Ins.Defeat();
         }
-    }*/
+    }
 
     public void IronRemoveScrew(Screw screw)
     {
@@ -137,21 +126,6 @@ public class Level : MonoBehaviour
 
     public bool CheckDefeatCondition()
     {
-        if (DataManager.Ins.dataSaved.isSuperHard) return false;
-
-        // Kiểm tra điều kiện thua và trả về true nếu thỏa mãn
-        for (int i = 0; i < hole1Irons.Count; i++)
-        {
-            /*if (!holes[i].hasScrew && !holes[i].hasLock && !holes[i].hasAdsHole)
-            {
-                Collider2D[] icol = Physics2D.OverlapCircleAll(holes[i].transform.position, 0.05f, GamePlay.Ins.ironLayerMask);
-                Collider2D[] ihcol = Physics2D.OverlapPointAll(holes[i].transform.position, GamePlay.Ins.ironHoleLayerMask);
-                if (icol.Length == 0 || icol.Length == ihcol.Length)
-                {
-                    return false;
-                }
-            }*/
-        }
-        return true;
+        return queueTile.numberScrew >= queueTile.numberTile;
     }
 }

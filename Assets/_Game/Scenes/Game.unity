@@ -235,6 +235,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6645907613262719224, guid: 712d0d911eec22346ac0114c87c6f191, type: 3}
+      propertyPath: timeFadeIn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645907613262719224, guid: 712d0d911eec22346ac0114c87c6f191, type: 3}
+      propertyPath: timeFadeOut
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8190389489679658685, guid: 712d0d911eec22346ac0114c87c6f191, type: 3}
       propertyPath: m_Sprite
       value: 

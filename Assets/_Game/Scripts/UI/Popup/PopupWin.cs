@@ -7,30 +7,18 @@ public class PopupWin : MonoBehaviour
 {
     public void Home()
     {
+        UIManager.Ins.ChangeScene(Scene.Home);
         Close();
     }
 
     public void NextLevel()
     {
-        Close();
+        if (DataManager.Ins.dataSaved.indexLevel >= LevelManager.Ins.levels.Count)
+        {
+            DataManager.Ins.dataSaved.indexLevel = Random.Range(0, LevelManager.Ins.levels.Count);
+        }
         LevelManager.Ins.LoadLevel();
-        DataManager.Ins.dataSaved.level++;
-        if (DataManager.Ins.dataSaved.level >= LevelManager.Ins.levels.Count)
-        {
-            int newIndex = Random.Range(0, LevelManager.Ins.levels.Count);
-            if (newIndex == DataManager.Ins.dataSaved.indexLevel)
-            {
-                DataManager.Ins.dataSaved.indexLevel++;
-            }
-            else
-            {
-                DataManager.Ins.dataSaved.indexLevel = newIndex;
-            }
-        }
-        else
-        {
-            DataManager.Ins.dataSaved.indexLevel = DataManager.Ins.dataSaved.level;
-        }
+        Close();
     }
     public void Close()
     {

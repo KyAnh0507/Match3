@@ -111,6 +111,8 @@ MonoBehaviour:
   isDefeatChecked: 0
   numberColor: 0
   superHardTime: 0
+  targetMatch: 4
+  numbermatched: 0
 --- !u!1001 &2429688125155480994
 PrefabInstance:
   m_ObjectHideFlags: 0

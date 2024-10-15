@@ -107,6 +107,8 @@ MonoBehaviour:
   isDefeatChecked: 0
   numberColor: 0
   superHardTime: 0
+  targetMatch: 2
+  numbermatched: 0
 --- !u!1001 &7697800246350986694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +128,10 @@ PrefabInstance:
     - target: {fileID: 3394325543139513595, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_Name
       value: Iron (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4820636548822094223, guid: 30d8f346251f0994681cb049753aa814, type: 3}
+      propertyPath: layer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4820636548822094223, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: hole1Irons.Array.size
@@ -272,6 +278,10 @@ PrefabInstance:
     - target: {fileID: 3394325543139513595, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_Name
       value: Iron
+      objectReference: {fileID: 0}
+    - target: {fileID: 4820636548822094223, guid: 30d8f346251f0994681cb049753aa814, type: 3}
+      propertyPath: layer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4820636548822094223, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: hole1Irons.Array.size

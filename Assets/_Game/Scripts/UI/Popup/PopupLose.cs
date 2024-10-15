@@ -15,13 +15,14 @@ public class PopupLose : MonoBehaviour
     
     public void Home()
     {
+        UIManager.Ins.ChangeScene(Scene.Home);
         Close();
     }
 
     public void ReStart()
     {
+        LevelManager.Ins.LoadLevel();
         Close();
-
     }
     public void Close()
     {

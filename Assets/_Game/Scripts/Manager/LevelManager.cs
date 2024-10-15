@@ -31,6 +31,7 @@ public class LevelManager : Singleton<LevelManager>
         currentLevel = Instantiate(levels[level]);
         currentLevel.OnInit();
         UIManager.Ins.formGame.isPauseGame = false;
+        UIManager.Ins.formGame.ResumeGame();
         GameManager.Ins.ChangeState(GameState.GAMEPLAY);
 
     }
@@ -44,6 +45,9 @@ public class LevelManager : Singleton<LevelManager>
 
         currentLevel = Instantiate(levels[indexLevel]);
         currentLevel.OnInit();
+        UIManager.Ins.formGame.isPauseGame = false;
+        UIManager.Ins.formGame.ResumeGame();
+        GameManager.Ins.ChangeState(GameState.GAMEPLAY);
     }
 
     public void Victory()
@@ -51,6 +55,7 @@ public class LevelManager : Singleton<LevelManager>
         GameManager.Ins.ChangeState(GameState.FINISH);
         DataManager.Ins.dataSaved.timeRetry = 0;
         DataManager.Ins.dataSaved.indexLevel++;
+        DataManager.Ins.dataSaved.level++;
         UIManager.Ins.formGame.OpenPopupWin();
     }
 

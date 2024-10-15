@@ -761,7 +761,7 @@ MonoBehaviour:
   formHome: {fileID: 625817661}
   formLoading: {fileID: 0}
   fadePanel: {fileID: 1047149723}
-  timeFadeIn: 0.5
+  timeFadeIn: 1
   timeFadeOut: 1
 --- !u!1 &1088032855
 GameObject:
