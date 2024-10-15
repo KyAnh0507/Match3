@@ -22,7 +22,7 @@ public class GamePlay : Singleton<GamePlay>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !blockPlay)
+        if (Input.GetMouseButtonDown(0) && !blockPlay && !UIManager.Ins.formGame.isPauseGame)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D[] scols = Physics2D.OverlapPointAll(mousePosition, screwLayerMask);
