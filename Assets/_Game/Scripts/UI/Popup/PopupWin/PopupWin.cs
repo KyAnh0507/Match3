@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PopupWin : MonoBehaviour
 {
+    public SpinWin spinWin;
     public void Home()
     {
         UIManager.Ins.ChangeScene(Scene.Home);
