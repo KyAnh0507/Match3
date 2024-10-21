@@ -128,7 +128,50 @@ public class QueueTile : MonoBehaviour
     }
     public void Add1Tile()
     {
+        numberTile++;
+        for (int i = 0; i < numberTile; i++)
+        {
+            if (i == numberTile - 1)
+            {
+                Tile t = SimplePool.Spawn<Tile>(PoolType.Tile, tf);
+                if (numberTile % 2 == 0)
+                {
+                    t.transform.localPosition = new Vector3((-numberTile / 2 + i + 0.5f) / 1.53f, 0, 0);
+                    tile_screws.Add(new Tile_Screw(t, null));
 
+                }
+                else
+                {
+                    t.transform.localPosition = new Vector3((-numberTile / 2 + i) / 1.53f, 0, 0);
+                    tile_screws.Add(new Tile_Screw(t, null));
+
+                }
+                t.TF.localScale = new Vector3(0.05f, 0.05f, 1);
+                t.TF.DOScale(new Vector3(0.6f, 0.6f, 1), 0.5f);
+            }
+            else
+            {
+                if (numberTile % 2 == 0)
+                {
+                    Vector3 v = new Vector3((-numberTile / 2 + i + 0.5f) / 1.53f, 0, 0);
+                    tile_screws[i].tile.TF.DOLocalMove(new Vector3((-numberTile / 2 + i + 0.5f) / 1.53f, 0, 0), 0.5f);
+                    if (tile_screws[i].screw != null)
+                    {
+                        tile_screws[i].screw.TF.DOMove(tf.TransformPoint(v), 0.5f);
+                    }
+                }
+                else
+                {
+                    Vector3 v = new Vector3((-numberTile / 2 + i) / 1.53f, 0, 0);
+                    tile_screws[i].tile.TF.DOLocalMove(new Vector3((-numberTile / 2 + i) / 1.53f, 0, 0), 0.5f);
+                    if (tile_screws[i].screw != null)
+                    {
+                        tile_screws[i].screw.TF.DOMove(tf.TransformPoint(v), 0.5f);
+                    }
+                }
+            }
+            
+        }
     }
 }
 

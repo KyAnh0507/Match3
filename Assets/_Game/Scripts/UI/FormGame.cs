@@ -43,4 +43,21 @@ public class FormGame : MonoBehaviour
         PauseGame();
         popupWin.gameObject.SetActive(true);
     }
+
+    #region booster
+    public void Add1Tile()
+    {
+        LevelManager.Ins.currentLevel.queueTile.Add1Tile();
+    }
+
+    public void DeleteIron()
+    {
+
+    }
+
+    public void ShuffleScrew()
+    {
+
+    }
+    #endregion
 }

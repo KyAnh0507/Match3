@@ -29,7 +29,11 @@ public class Screw : GameUnit
 
     public void Move1(Vector3 pos)
     {
-        TF.DOMove(pos, 0.5f);
+        TF.DOKill();
+        TF.DOMove(pos, 0.5f).OnComplete(() =>
+        {
+            PullDown();
+        });
     }
     public void PullUp(Vector3 pos)
     {
