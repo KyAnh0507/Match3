@@ -52,12 +52,12 @@ public class FormGame : MonoBehaviour
 
     public void DeleteIron()
     {
-
+        GamePlay.Ins.isDeleteIron = true;
     }
 
     public void ShuffleScrew()
     {
-
+        LevelManager.Ins.currentLevel.ShufflerScrew();
     }
     #endregion
 }

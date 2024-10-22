@@ -10,8 +10,9 @@ public class QueueTile : MonoBehaviour
     public int numberTile;
     public int numberScrew;
     public bool[] hasScrewType = new bool[15];
+    public bool isMatching = false;
     // Start is called before the first frame update
-    void Start()
+    public void OnInit()
     {
         for (int i = 0; i < numberTile; i++)
         {
@@ -46,6 +47,9 @@ public class QueueTile : MonoBehaviour
     {
         if (numberScrew < numberTile)
         {
+            screw.canPlay = false;
+            screw.collider2D.isTrigger = true;
+            LevelManager.Ins.currentLevel.IronRemoveScrew(screw);
             for (int i = 0; i < numberScrew; i++)
             {
                 if (!hasScrewType[screw.screwType]) break;
@@ -61,10 +65,10 @@ public class QueueTile : MonoBehaviour
                         numberScrew++;
                         tile_screws[i + 2].screw = screw;
                         screw.Move(tile_screws[i + 2].tile.TF.position);
-                        DOVirtual.DelayedCall(0.8f, Match3);
+                        StartCoroutine(Match3());
                         return;
                     }
-                    else if (i+1 == numberScrew)
+                    else if (i + 1 == numberScrew)
                     {
                         break;
                     }
@@ -91,40 +95,48 @@ public class QueueTile : MonoBehaviour
         
     }
 
-    public void Match3()
+    public IEnumerator Match3()
     {
-        for (int i = 0; i < numberScrew-2; i++)
+        yield return new WaitUntil(() => !isMatching);
+        isMatching = true;
+        int i;
+        LevelManager.Ins.currentLevel.canWin = false;
+        for (i = 0; i < numberScrew-2; i++)
         {
             if (tile_screws[i].screw.screwType == tile_screws[i+1].screw.screwType && tile_screws[i+1].screw.screwType == tile_screws[i+2].screw.screwType)
             {
                 tile_screws[i].screw.Match3();
                 tile_screws[i+1].screw.Match3();
                 tile_screws[i+2].screw.Match3();
-                tile_screws[i].screw = null;
-                tile_screws[i+1].screw = null;
-                tile_screws[i+2].screw = null;
-
-                if (i + 3 != numberScrew)
-                {
-                    for (int j = i; j < numberScrew; j++)
-                    {
-                        if (j < numberScrew - 3)
-                        {
-                            tile_screws[j].screw = tile_screws[j + 3].screw;
-                            tile_screws[j].screw.Move1(tile_screws[j].tile.TF.position);
-                        }
-                        else if (j >= numberScrew - 3)
-                        {
-                            tile_screws[j + i].screw = null;
-                        }
-                    }
-                }
-                numberScrew -= 3;
-                LevelManager.Ins.currentLevel.numbermatched++;
+                
                 break;
             }
         }
-        
+        yield return new WaitForSeconds(1f);
+        yield return new WaitForEndOfFrame();
+        if (i + 3 != numberScrew)
+        {
+            for (int j = i; j < numberScrew; j++)
+            {
+                if (j < numberScrew - 3)
+                {
+                    tile_screws[j].screw = tile_screws[j + 3].screw;
+                    tile_screws[j].screw.Move1(tile_screws[j].tile.TF.position);
+
+                }
+                else if (j >= numberScrew - 3)
+                {
+                    tile_screws[j].screw = null;
+                }
+            }
+        }
+        numberScrew -= 3;
+        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForEndOfFrame();
+        LevelManager.Ins.currentLevel.numbermatched++;
+        LevelManager.Ins.currentLevel.canWin = true;
+        isMatching = false;
+
     }
     public void Add1Tile()
     {

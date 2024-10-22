@@ -21,6 +21,7 @@ public class Hole1Iron : MonoBehaviour
             screw = SimplePool.Spawn<Screw>(PoolType.Screw, transform.position, Quaternion.identity);
             screw.ChangeScrewType(screwType);
             screw.OnInit(layer);
+            screw.TF.SetParent(level.transform);
             level.screws.Add(screw);
         }
     }

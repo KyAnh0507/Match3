@@ -119,7 +119,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 758217269593993029, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1018095914642936212, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: screwType

@@ -16,6 +16,8 @@ public class Level : MonoBehaviour
     public Hole1Iron hole1Iron;
 
     public bool isDefeatChecked;
+    public bool canWin;
+    public bool canLose;
     public int numberColor;
     [Header("Super Hard")]
     public int superHardTime;
@@ -25,6 +27,7 @@ public class Level : MonoBehaviour
 
     public void OnInit()
     {
+        queueTile.OnInit();
         for (int i = 0; i < hole2Irons.Count; i++)
         {
             int maxLayer = 1;
@@ -82,7 +85,7 @@ public class Level : MonoBehaviour
                 StartCoroutine(CheckDefeatContinuously());
             }
         }
-        if (numbermatched == targetMatch && GameManager.Ins.IsState(GameState.GAMEPLAY))
+        if (numbermatched == targetMatch && GameManager.Ins.IsState(GameState.GAMEPLAY) && canWin)
         {
             GameManager.Ins.ChangeState(GameState.FINISH);
             DOVirtual.DelayedCall(1.5f, () =>
@@ -127,5 +130,38 @@ public class Level : MonoBehaviour
     public bool CheckDefeatCondition()
     {
         return queueTile.numberScrew >= queueTile.numberTile;
+    }
+
+    public void ShufflerScrew()
+    {
+        List<int> ints = new List<int>();
+        List<int> intsShuffler = new List<int>();
+        for (int i = 0; i < screws.Count; i++)
+        {
+            if (screws[i].canPlay)
+            {
+                ints.Add(i);
+                intsShuffler.Add(screws[i].screwType);
+            }
+        }
+        if (ints.Count > 1)
+        {
+            for (int i = 0; i < ints.Count; i++)
+            {
+                int j = (int)Random.Range(0, ints.Count);
+                int k;
+                do
+                {
+                    k = (int)Random.Range(0, ints.Count);
+                } while (k == j);
+                int tmp = intsShuffler[j];
+                intsShuffler[j] = intsShuffler[k];
+                intsShuffler[k] = tmp;
+            }
+        }
+        for (int i = 0;i < ints.Count; i++)
+        {
+            screws[ints[i]].ChangeScrewType(intsShuffler[i]);
+        }
     }
 }

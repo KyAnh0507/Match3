@@ -1,3 +1,4 @@
+using AssetKits.ParticleImage;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,12 @@ using UnityEngine;
 public class PopupWin : MonoBehaviour
 {
     public SpinWin spinWin;
+    public ParticleImage vfxConfetti;
+
+    private void OnEnable()
+    {
+        vfxConfetti.Play();
+    }
     public void Home()
     {
         UIManager.Ins.ChangeScene(Scene.Home);

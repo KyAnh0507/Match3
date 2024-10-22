@@ -9,10 +9,10 @@ public class SpinWin : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        arrow.rotation = Quaternion.Euler(new Vector3(0, 0, 85f));
-        arrow.DORotate(new Vector3(0, 0, -85f), 0.75f).OnComplete(() =>
+        arrow.rotation = Quaternion.Euler(new Vector3(0, 0, 89f));
+        arrow.DORotate(new Vector3(0, 0, -89f), 0.75f).OnComplete(() =>
         {
-            RotateArrow(85f);
+            RotateArrow(89f);
         });
     }
 

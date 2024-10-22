@@ -12,6 +12,7 @@ public class GamePlay : Singleton<GamePlay>
     public float radiusHole = 0.2f;
 
     public bool blockPlay = false;
+    public bool isDeleteIron = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,27 @@ public class GamePlay : Singleton<GamePlay>
     // Update is called once per frame
     void Update()
     {
+        if (isDeleteIron)
+        {
+            if (Input.GetMouseButtonDown(0) && !blockPlay && !UIManager.Ins.formGame.isPauseGame)
+            {
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D[] icols = Physics2D.OverlapPointAll(mousePosition, ironLayerMask);
+                (Iron, int) maxLayerIron = (null, -1);
+                for (int i = 0; i < icols.Length; i++)
+                {
+                    Iron iron = Cache.GetIron(icols[i]);
+                    if (iron != null && iron.layer > maxLayerIron.Item2)
+                    {
+                        maxLayerIron = (iron, iron.layer);
+                    }
+                }
+                LevelManager.Ins.currentLevel.irons.Remove(maxLayerIron.Item1);
+                Destroy(maxLayerIron.Item1.gameObject);
+                isDeleteIron = false;
+            }
+            return;
+        }
         if (Input.GetMouseButtonDown(0) && !blockPlay && !UIManager.Ins.formGame.isPauseGame)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -65,9 +87,6 @@ public class GamePlay : Singleton<GamePlay>
 
     public void SelevtedScrew(Screw screw)
     {
-        screw.canPlay = false;
-        screw.collider2D.isTrigger= true;
-        LevelManager.Ins.currentLevel.IronRemoveScrew(screw);
         LevelManager.Ins.currentLevel.queueTile.AddScrew(screw);
     }
 }
