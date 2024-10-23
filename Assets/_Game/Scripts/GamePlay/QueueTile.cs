@@ -45,6 +45,7 @@ public class QueueTile : MonoBehaviour
 
     public void AddScrew(Screw screw)
     {
+        UndoManager.Ins.AddDataUndo(screw);
         if (numberScrew < numberTile)
         {
             screw.canPlay = false;
@@ -114,6 +115,15 @@ public class QueueTile : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         yield return new WaitForEndOfFrame();
+        Debug.Log("numberScrew: "+ numberScrew + "......" + "i: " + i);
+        for (int j = i; j < numberScrew - 2; j++)
+        {
+            if (tile_screws[j].screw.screwType == tile_screws[j + 1].screw.screwType && tile_screws[j + 1].screw.screwType == tile_screws[j + 2].screw.screwType)
+            {
+                i = j;
+                break;
+            }
+        }
         if (i + 3 != numberScrew)
         {
             for (int j = i; j < numberScrew; j++)

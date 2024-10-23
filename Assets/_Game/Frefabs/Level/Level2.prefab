@@ -49,6 +49,7 @@ MonoBehaviour:
   numberTile: 6
   numberScrew: 0
   hasScrewType: 000000000000000000000000000000
+  isMatching: 0
 --- !u!1 &9213483900778641286
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +110,8 @@ MonoBehaviour:
   hole2Irons: []
   hole1Iron: {fileID: 4202438808743986008, guid: 29e4b8ed3dfc3cf4fb30f5b1f0c9dc1a, type: 3}
   isDefeatChecked: 0
+  canWin: 0
+  canLose: 0
   numberColor: 0
   superHardTime: 0
   targetMatch: 4
@@ -475,6 +478,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 758217269593993029, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_ConnectedAnchor.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758217269593993029, guid: 30d8f346251f0994681cb049753aa814, type: 3}
+      propertyPath: m_AutoConfigureConnectedAnchor
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1018095914642936212, guid: 30d8f346251f0994681cb049753aa814, type: 3}

@@ -72,6 +72,7 @@ public class Level : MonoBehaviour
         
         //queueTile
         isDefeatChecked = false;
+        UndoManager.Ins.OnInit(this);
 
         GameManager.Ins.ChangeState(GameState.GAMEPLAY);
     }
@@ -162,6 +163,16 @@ public class Level : MonoBehaviour
         for (int i = 0;i < ints.Count; i++)
         {
             screws[ints[i]].ChangeScrewType(intsShuffler[i]);
+        }
+    }
+
+    public void Undo()
+    {
+        if (queueTile.numberScrew > 0)
+        {
+            UndoManager.Ins.Undo(queueTile.tile_screws[queueTile.numberScrew - 1].screw);
+            queueTile.tile_screws[queueTile.numberScrew - 1].screw = null;
+            queueTile.numberScrew--;
         }
     }
 }

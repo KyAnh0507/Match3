@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Iron : MonoBehaviour
+public class Iron : MonoBehaviour, IBaseUnitUndo
 {
     public List<SpriteRenderer> allRends = new List<SpriteRenderer>();
 
@@ -11,9 +11,9 @@ public class Iron : MonoBehaviour
     public List<Hole1Iron> hole1Irons;
     public HingeJoint2D hinge;
     public Rigidbody2D rb;
-
     public int layer;
 
+    public bool isTrigger = false;
     /*private void Start()
     {
         foreach (var screw_hole in screws_holes)
@@ -27,7 +27,8 @@ public class Iron : MonoBehaviour
         if (HoleHasScrew() == 1)
         {
             int a = FindHoleHasScrew();
-            hinge.connectedBody = screws_holes[a].hole1Iron.rb;
+            hinge.enabled = true;
+            hinge.connectedBody = screws_holes[a].hole1Iron.screw.rb;
             hinge.anchor = new Vector3(screws_holes[a].anchorX, screws_holes[a].anchorY, 0);
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
@@ -42,6 +43,7 @@ public class Iron : MonoBehaviour
         if (HoleHasScrew() >= 2)
         {
             rb.bodyType = RigidbodyType2D.Static;
+            hinge.enabled = true;
         }
     }
     public int HoleHasScrew()
@@ -88,6 +90,54 @@ public class Iron : MonoBehaviour
         }
         return null;
     }
+
+    public void AddDataUndo(UndoModel undoModel)
+    {
+        if (!isTrigger)
+        {
+            IronUndoModel model = new IronUndoModel();
+            model.index = UndoManager.Ins.currentCountMove;
+            model.position = transform.position;
+            model.rotation = transform.rotation;
+            for (int i = 0; i < screws_holes.Count; i++)
+            {
+                model.screws_holes.Add(new Screw_Hole(screws_holes[i].screw,
+                                                      screws_holes[i].hole1Iron,
+                                                      screws_holes[i].anchorX,
+                                                      screws_holes[i].anchorY,
+                                                      screws_holes[i].hasScrew));
+            }
+            model.isTrigger = isTrigger;
+            model.velocity = rb.velocity;
+
+            undoModel.ironUndoModels.Add(model);
+        }
+        else
+        {
+            undoModel.ironUndoModels.Clear();
+        }
+    }
+
+    public void Undo(Screw screw, UndoModel undoModel, int n)
+    {
+        IronUndoModel model = undoModel.ironUndoModels[n];
+        if (!isTrigger)
+        {
+            screws_holes = model.screws_holes;
+            for (int i = 0;i < screws_holes.Count; i++)
+            {
+                if (!screws_holes[i].screw.canPlay || !screws_holes[i].screw.gameObject.activeSelf)
+                {
+                    screws_holes[i].hasScrew = false;
+                }
+            }
+            transform.position = model.position;
+            transform.rotation = model.rotation;
+            rb.bodyType = RigidbodyType2D.Static;
+            rb.gravityScale = 1;
+            rb.velocity = model.velocity;
+        }
+    }
 }
 
 [System.Serializable]
@@ -110,6 +160,15 @@ public class Screw_Hole
         this.hole1Iron = hole1Iron;
         this.anchorX = hole1Iron.tf.localPosition.x;
         this.anchorY = hole1Iron.tf.localPosition.y;
+        this.hasScrew = hasScrew;
+    }
+
+    public Screw_Hole(Screw screw, Hole1Iron hole1Iron, float anchorX, float anchorY, bool hasScrew = true)
+    {
+        this.screw = screw;
+        this.hole1Iron = hole1Iron;
+        this.anchorX = anchorX;
+        this.anchorY = anchorY;
         this.hasScrew = hasScrew;
     }
 }

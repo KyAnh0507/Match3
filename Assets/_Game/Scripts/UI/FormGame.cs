@@ -59,5 +59,10 @@ public class FormGame : MonoBehaviour
     {
         LevelManager.Ins.currentLevel.ShufflerScrew();
     }
+
+    public void Undo()
+    {
+        LevelManager.Ins.currentLevel.Undo();
+    }
     #endregion
 }

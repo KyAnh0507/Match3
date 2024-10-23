@@ -10,10 +10,8 @@ public class SpinWin : MonoBehaviour
     void OnEnable()
     {
         arrow.rotation = Quaternion.Euler(new Vector3(0, 0, 89f));
-        arrow.DORotate(new Vector3(0, 0, -89f), 0.75f).OnComplete(() =>
-        {
-            RotateArrow(89f);
-        });
+        RotateArrow(-89f);
+
     }
 
     public void RotateArrow(float z)

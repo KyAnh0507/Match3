@@ -48,7 +48,6 @@ public class GamePlay : Singleton<GamePlay>
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D[] scols = Physics2D.OverlapPointAll(mousePosition, screwLayerMask);
-            Debug.Log("hit");
             if (scols.Length > 0)
             {
                 (Screw, int) maxLayerScrew = (null, -1);
