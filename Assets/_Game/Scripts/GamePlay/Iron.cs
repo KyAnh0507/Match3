@@ -123,19 +123,43 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
         IronUndoModel model = undoModel.ironUndoModels[n];
         if (!isTrigger)
         {
-            screws_holes = model.screws_holes;
-            for (int i = 0;i < screws_holes.Count; i++)
+            if (rb.bodyType != RigidbodyType2D.Static)
             {
-                if (!screws_holes[i].screw.canPlay || !screws_holes[i].screw.gameObject.activeSelf)
+                screws_holes = model.screws_holes;
+                for (int i = 0; i < screws_holes.Count; i++)
                 {
-                    screws_holes[i].hasScrew = false;
+                    if (!screws_holes[i].screw.canPlay || !screws_holes[i].screw.gameObject.activeSelf)
+                    {
+                        screws_holes[i].hasScrew = false;
+                    }
+                    else
+                    {
+                        screws_holes[i].hasScrew = true;
+                    }
                 }
+                transform.position = model.position;
+                transform.rotation = model.rotation;
+                rb.bodyType = RigidbodyType2D.Static;
+                rb.gravityScale = 1;
+                rb.velocity = model.velocity;
             }
-            transform.position = model.position;
-            transform.rotation = model.rotation;
-            rb.bodyType = RigidbodyType2D.Static;
-            rb.gravityScale = 1;
-            rb.velocity = model.velocity;
+            else
+            {
+                screws_holes = model.screws_holes;
+                for (int i = 0; i < screws_holes.Count; i++)
+                {
+                    if (!screws_holes[i].screw.canPlay || !screws_holes[i].screw.gameObject.activeSelf)
+                    {
+                        screws_holes[i].hasScrew = false;
+                    }
+                    else
+                    {
+                        screws_holes[i].hasScrew = true;
+                    }
+                }
+                rb.bodyType = RigidbodyType2D.Static;
+                rb.gravityScale = 1;
+            }
         }
     }
 }

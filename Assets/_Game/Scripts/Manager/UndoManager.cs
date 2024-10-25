@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UndoManager : Singleton<UndoManager>
 {
     public Stack<UndoModel> undoModels = new Stack<UndoModel>();
+    public Stack<UndoModel> undoModels2 = new Stack<UndoModel>();
     public List<UndoModel> listUndoModels;
     public Button btn;
     public int currentCountMove = 0;
@@ -51,7 +52,8 @@ public class UndoManager : Singleton<UndoManager>
                 do
                 {
                     undoModel = undoModels.Pop();
-                    listUndoModels.RemoveAt(listUndoModels.Count - 1);
+                    //listUndoModels.RemoveAt(listUndoModels.Count - 1);
+                    undoModels2.Push(undoModel);
                 } while (undoModel.screwUndo != screw && undoModels.Count > 0);
             }
             else
@@ -65,6 +67,14 @@ public class UndoManager : Singleton<UndoManager>
             for (int i = 0; i < unitUndos.Count; i++)
             {
                 unitUndos[i].Undo(screw, undoModel, i);
+            }
+            if (undoModels2.Count > 0)
+            {
+                undoModels2.Pop();
+            }
+            while (undoModels2.Count > 0)
+            {
+                undoModels.Push(undoModels2.Pop());
             }
         }
     }
