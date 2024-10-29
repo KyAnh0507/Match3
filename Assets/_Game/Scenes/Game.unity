@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f072b58c1a83674b89383c3642f04d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDontDesstroyOnLoad: 1
+  isDontDesstroyOnLoad: 0
   color:
   - {r: 1, g: 0.30588236, b: 0.30588236, a: 1}
   - {r: 1, g: 0.9529412, b: 0.30588233, a: 1}

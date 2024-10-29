@@ -16,6 +16,8 @@ public class UndoManager : Singleton<UndoManager>
     public void OnInit(Level level)
     {
         undoModels.Clear();
+        undoModels2.Clear();
+        unitUndos.Clear();
         listUndoModels.Clear();
         for (int i = 0; i < level.irons.Count; i++)
         {

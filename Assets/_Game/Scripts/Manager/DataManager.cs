@@ -100,13 +100,17 @@ public class DataManager : Singleton<DataManager>
         public bool isNew = true;
         public int timeInstall;
         public int timeLastOpen;
+        public int streakDays;
         public int daysPlayed; // So ngay user co choi game
         public int totalDays;  // So ngay user da cai game
         public int totalSession;
+        public bool isClaimDailyReward;
 
         public int level;
         public int indexLevel;
+
         public int coin;
+        public int gems;
 
         [Header("Booster")]
         public int boosterSuffer;

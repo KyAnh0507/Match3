@@ -39,6 +39,7 @@ public class GamePlay : Singleton<GamePlay>
                     }
                 }
                 LevelManager.Ins.currentLevel.irons.Remove(maxLayerIron.Item1);
+                UndoManager.Ins.unitUndos.Remove(maxLayerIron.Item1);
                 Destroy(maxLayerIron.Item1.gameObject);
                 isDeleteIron = false;
             }
