@@ -26,7 +26,7 @@ public class DailyRewardUI : MonoBehaviour
     public void Claim()
     {
         Claimed();
-        Debug.Log("hit");
+        DataManager.Ins.dataSaved.isClaimDailyReward = true;
         switch (reward.rewardType)
         {
             case RewardType.Coin:

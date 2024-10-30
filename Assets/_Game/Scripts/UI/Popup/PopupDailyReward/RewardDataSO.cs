@@ -11,7 +11,6 @@ public class RewardDataSO : ScriptableObject
 [System.Serializable]
 public class RewardData
 {
-    public bool isClaim;
     public RewardType rewardType;
     public int amount;
 }

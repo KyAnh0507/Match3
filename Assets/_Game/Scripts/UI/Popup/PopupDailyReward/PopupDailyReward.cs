@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PopupDailyReward : MonoBehaviour
 {
+    public RectTransform tf;
     public List<DailyRewardUI> dailyRewardUIs;
     public GameObject notify;
     public int streakDay;

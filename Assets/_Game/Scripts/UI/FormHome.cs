@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,8 +13,7 @@ public class FormHome : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        textCoin.text = DataManager.Ins.dataSaved.coin.ToString();
-        textGems.text = DataManager.Ins.dataSaved.gems.ToString();
+        LoadTextCoin();
 
         int timeLastOpen = int.Parse(DateTime.Now.Date.ToString("yyyyMMdd"));
         if (timeLastOpen - DataManager.Ins.dataSaved.timeLastOpen == 1)
@@ -29,6 +29,10 @@ public class FormHome : MonoBehaviour
             popupDailyReward.Notify(true);
             DataManager.Ins.dataSaved.streakDays = 0;
             popupDailyReward.streakDay = 0;
+        }else if (DataManager.Ins.dataSaved.isClaimDailyReward)
+        {
+            popupDailyReward.Notify(false);
+            popupDailyReward.streakDay = DataManager.Ins.dataSaved.streakDays;
         }
         DataManager.Ins.dataSaved.timeLastOpen = timeLastOpen;
     }
@@ -46,6 +50,8 @@ public class FormHome : MonoBehaviour
     public void OpenPopupDailyReward()
     {
         popupDailyReward.gameObject.SetActive(true);
+        popupDailyReward.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
+        popupDailyReward.tf.DOScale(Vector3.one, 0.5f);
         popupDailyReward.SetupReward();
     }
 }
