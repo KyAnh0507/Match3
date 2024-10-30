@@ -8,9 +8,9 @@ public class GameManager : Singleton<GameManager>
 {
     public GameState state;
     // Start is called before the first frame update
-    void Awake()
+    void OnEnable()
     {
-        
+        DataManager.Ins.StartData();
     }
 
     public bool IsState(GameState gameState) => gameState == state;

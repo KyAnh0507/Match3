@@ -65,7 +65,7 @@ public class DataManager : Singleton<DataManager>
     {
         try
         {
-            if (!isLoaded) return;
+            //if (!isLoaded) return;
 
             if (dataSaved == null)
             {

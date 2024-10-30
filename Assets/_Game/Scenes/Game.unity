@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb25dc30e303b1f479b15c6694e737c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDontDesstroyOnLoad: 1
+  isDontDesstroyOnLoad: 0
   levels:
   - {fileID: 3550617384722011479, guid: 769f2f26865fcbc49b610b85aa1e17ed, type: 3}
   - {fileID: 3550617384722011479, guid: 0cbd6d09f19b1e348bc5e89356cb88e6, type: 3}

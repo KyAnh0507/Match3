@@ -38,6 +38,11 @@ public class FormHome : MonoBehaviour
         UIManager.Ins.ChangeScene(Scene.Game);
     }
 
+    public void LoadTextCoin()
+    {
+        textCoin.text = DataManager.Ins.dataSaved.coin.ToString();
+        textGems.text = DataManager.Ins.dataSaved.gems.ToString();
+    }
     public void OpenPopupDailyReward()
     {
         popupDailyReward.gameObject.SetActive(true);

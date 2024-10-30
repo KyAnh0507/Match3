@@ -35,6 +35,8 @@ public class PopupDailyReward : MonoBehaviour
 
         buttonClaim.SetActive(false);
         buttonClaimed.SetActive(true);
+
+        UIManager.Ins.formHome.LoadTextCoin();
     }
 
     public void Notify(bool b)
