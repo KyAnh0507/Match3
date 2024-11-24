@@ -4,54 +4,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopupDailyReward : MonoBehaviour
+public class PopupDailyChallenge : MonoBehaviour
 {
     public RectTransform tf;
-    public List<DailyRewardUI> dailyRewardUIs;
-    public GameObject notify;
-    public int streakDay;
-    public RewardDataSO rewardDataSO;
-    public List<Sprite> spriteLists = new List<Sprite>();
+    public List<DayInDaylyChallenge> dayInDaylyChallenges = new List<DayInDaylyChallenge>();
 
     public ParticleImage flyCoin;
     public GameObject buttonClaim;
     public GameObject buttonClaimed;
-    // Start is called before the first frame update
+
+
     void OnEnable()
     {
-        for (int i = 0; i < dailyRewardUIs.Count; i++)
-        {
-            dailyRewardUIs[i].SetupData(rewardDataSO.rewardDatas[i]);
-        }
-        flyCoin.gameObject.SetActive(false);
+        SetUpCalendar();
     }
 
-    public void Claim()
+    public void SetUpCalendar()
     {
-        flyCoin.gameObject.SetActive(true);
-        flyCoin.rectTransform.position = dailyRewardUIs[streakDay].transform.position;
-        flyCoin.Play();
-        dailyRewardUIs[streakDay].Claim();
-        DataManager.Ins.dataSaved.streakDays++;
-        streakDay++;
 
-        buttonClaim.SetActive(false);
-        buttonClaimed.SetActive(true);
-
-        UIManager.Ins.formHome.LoadTextCoin();
     }
 
-    public void Notify(bool b)
+    public void SetUpDayInDaylyChallenge()
     {
-        notify.SetActive(b);
+        
     }
+
     public void SetupReward()
     {
-        if (DataManager.Ins.dataSaved.isClaimDailyReward)
+        /*if (DataManager.Ins.dataSaved.isClaimDailyReward)
         {
             buttonClaim.SetActive(false);
             buttonClaimed.SetActive(true);
-        }else
+        }
+        else
         {
             buttonClaim.SetActive(true);
             buttonClaimed.SetActive(false);
@@ -77,7 +62,7 @@ public class PopupDailyReward : MonoBehaviour
 
             dailyRewardUIs[6].NoClaim();
 
-        }
+        }*/
 
     }
 
@@ -89,5 +74,3 @@ public class PopupDailyReward : MonoBehaviour
         });
     }
 }
-
-

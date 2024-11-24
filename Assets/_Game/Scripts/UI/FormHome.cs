@@ -10,6 +10,7 @@ public class FormHome : MonoBehaviour
     public Text textCoin;
     public Text textGems;
     public PopupDailyReward popupDailyReward;
+    public PopupDailyChallenge popupDailyChallenge;
     // Start is called before the first frame update
     void Awake()
     {
@@ -53,5 +54,13 @@ public class FormHome : MonoBehaviour
         popupDailyReward.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
         popupDailyReward.tf.DOScale(Vector3.one, 0.5f);
         popupDailyReward.SetupReward();
+    }
+
+    public void OpenPopupDailyChallenge()
+    {
+        popupDailyChallenge.gameObject.SetActive(true);
+        popupDailyChallenge.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
+        popupDailyChallenge.tf.DOScale(Vector3.one, 0.5f);
+        popupDailyChallenge.SetupReward();
     }
 }

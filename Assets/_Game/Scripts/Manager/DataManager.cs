@@ -112,6 +112,9 @@ public class DataManager : Singleton<DataManager>
         public int coin;
         public int gems;
 
+        [Header("DailyChallenge")]
+        public int currentMonth;
+
         [Header("Booster")]
         public int boosterSuffer;
         public int boosterBomb;
