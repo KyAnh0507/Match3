@@ -115,6 +115,8 @@ public class DataManager : Singleton<DataManager>
         [Header("DailyChallenge")]
         public int currentMonth;
 
+        public List<bool> statusDays;
+
         [Header("Booster")]
         public int boosterSuffer;
         public int boosterBomb;
@@ -169,6 +171,12 @@ public class DataManager : Singleton<DataManager>
             level = 0;
             indexLevel = 0;
             coin = 0;
+            gems = 0;
+
+            // DailyChalenge
+            currentMonth = 0;
+            statusDays = new List<bool>(42);
+
 
             // Booster
             boosterSuffer = 0;

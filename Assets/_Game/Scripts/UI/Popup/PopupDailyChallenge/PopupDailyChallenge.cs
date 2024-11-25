@@ -19,9 +19,11 @@ public class PopupDailyChallenge : MonoBehaviour
     public ParticleImage flyCoin;
     public ParticleImage flyGems;
 
+    public Sprite imageSelect;
+    public Sprite imageDay;
+
     public GameObject buttonPlay;
     public GameObject buttonFinished;
-
 
     void OnEnable()
     {
@@ -32,6 +34,15 @@ public class PopupDailyChallenge : MonoBehaviour
     {
         textMonth.text = DateTime.Now.ToString("MMMM, yyyy");
         int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+        if (daysInMonth > DataManager.Ins.dataSaved.currentMonth)
+        {
+            for (int i = 0; i < DataManager.Ins.dataSaved.statusDays.Count; i++)
+            {
+                DataManager.Ins.dataSaved.statusDays[i] = false;
+            }
+
+        }
+
         int daysInLastMonth = 0;
         if (DateTime.Now.Month > 1)
         {
@@ -56,6 +67,10 @@ public class PopupDailyChallenge : MonoBehaviour
             else if (i >= (int)dayOfWeek && i < (int)dayOfWeek + daysInMonth)
             {
                 dayInDaylyChallenges[i].SetupDay(i - (int)dayOfWeek + 1);
+                if (i - (int)dayOfWeek + 1 == nowDay)
+                {
+                    dayInDaylyChallenges[i].Notify(true);
+                }
                 if (i - (int)dayOfWeek + 1 > nowDay)
                 {
                     dayInDaylyChallenges[i].GetComponent<Button>().interactable = false;
@@ -130,6 +145,19 @@ public class PopupDailyChallenge : MonoBehaviour
 
     }
 
+    public void CheckFinishChallenge(DayInDaylyChallenge dayInDaylyChallenge)
+    {
+        if (DataManager.Ins.dataSaved.statusDays[dayInDaylyChallenge.order])
+        {
+            buttonPlay.SetActive(false);
+            buttonFinished.SetActive(true);
+        }
+        else
+        {
+            buttonPlay.SetActive(true);
+            buttonFinished.SetActive(false);
+        }
+    }
     public void PlayChallenge()
     {
 
@@ -138,7 +166,7 @@ public class PopupDailyChallenge : MonoBehaviour
     public void SelectDay(DayInDaylyChallenge dayInDaylyChallenge)
     {
         currentDay = dayInDaylyChallenge;
-
+        CheckFinishChallenge(currentDay);
     }
     public void Close()
     {

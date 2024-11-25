@@ -9,6 +9,8 @@ public class DayInDaylyChallenge : MonoBehaviour
 
     public GameObject noti;
 
+    public Image image;
+    public int order;
     public void SetupDay(int day)
     {
         numberDay.text = day.ToString();
@@ -17,10 +19,5 @@ public class DayInDaylyChallenge : MonoBehaviour
     public void Notify(bool b)
     {
         noti.SetActive(b);
-    }
-
-    public void SelectDay()
-    {
-
     }
 }
