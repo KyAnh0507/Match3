@@ -14,6 +14,7 @@ public class PopupDailyReward : MonoBehaviour
     public List<Sprite> spriteLists = new List<Sprite>();
 
     public ParticleImage flyCoin;
+    public ParticleImage flyGem;
     public GameObject buttonClaim;
     public GameObject buttonClaimed;
     // Start is called before the first frame update
@@ -24,13 +25,24 @@ public class PopupDailyReward : MonoBehaviour
             dailyRewardUIs[i].SetupData(rewardDataSO.rewardDatas[i]);
         }
         flyCoin.gameObject.SetActive(false);
+        flyGem.gameObject.SetActive(false);
     }
 
     public void Claim()
     {
-        flyCoin.gameObject.SetActive(true);
-        flyCoin.rectTransform.position = dailyRewardUIs[streakDay].transform.position;
-        flyCoin.Play();
+        if (dailyRewardUIs[streakDay].reward.rewardType == RewardType.Coin)
+        {
+            flyCoin.gameObject.SetActive(true);
+            flyCoin.rectTransform.position = dailyRewardUIs[streakDay].transform.position;
+            flyCoin.Play();
+        }
+
+        if (dailyRewardUIs[streakDay].reward.rewardType == RewardType.Gems)
+        {
+            flyGem.gameObject.SetActive(true);
+            flyGem.rectTransform.position = dailyRewardUIs[streakDay].transform.position;
+            flyGem.Play();
+        }
         dailyRewardUIs[streakDay].Claim();
         DataManager.Ins.dataSaved.streakDays++;
         streakDay++;

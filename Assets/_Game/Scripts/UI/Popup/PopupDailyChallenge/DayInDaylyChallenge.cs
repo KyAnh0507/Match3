@@ -7,9 +7,20 @@ public class DayInDaylyChallenge : MonoBehaviour
 {
     public Text numberDay;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject noti;
+
+    public void SetupDay(int day)
     {
-        
+        numberDay.text = day.ToString();
+    }
+
+    public void Notify(bool b)
+    {
+        noti.SetActive(b);
+    }
+
+    public void SelectDay()
+    {
+
     }
 }
