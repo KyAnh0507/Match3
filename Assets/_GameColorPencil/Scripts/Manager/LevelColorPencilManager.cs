@@ -34,13 +34,6 @@ public class LevelManagerColorPencil : Singleton<LevelManagerColorPencil>
         GamePlayColorPencil.Ins.canPlay = true;
     }
 
-    
-
-    private void Update()
-    {
-        
-    }
-
     public void Victory()
     {
         GamePlayColorPencil.Ins.canPlay = false;
@@ -49,7 +42,7 @@ public class LevelManagerColorPencil : Singleton<LevelManagerColorPencil>
 
         DOVirtual.DelayedCall(1f, () =>
         {
-            UIManagerColorPencil.Ins.OpenUI<UIWin>().OpenUIWin();
+            UIManagerColorPencil.Ins.OpenUI<UIWinColoPencil>();
         });
     }
 

@@ -248,7 +248,15 @@ public class PopupDailyChallenge : MonoBehaviour
     }
     public void PlayChallenge()
     {
+        Close();
+        DOVirtual.DelayedCall(0.5f, () =>
+        {
 
+        }).OnComplete(() =>
+        {
+            UIManager.Ins.ChangeScene(Scene.GameColorPencil);
+
+        });
     }
 
     public void SelectDay(DayInDaylyChallenge dayInDaylyChallenge)

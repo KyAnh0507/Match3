@@ -36,5 +36,15 @@ public class SceneSwitcher : MonoBehaviour
             EditorSceneManager.OpenScene("Assets/_Game/Scenes/Game.unity");
         }
     }
+
+    [MenuItem("Scenes/GameColorPencil #4")]
+    public static void OpenGameColorPencil()
+    {
+        if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            //EditorSceneManager.OpenScene("Assets/_Game/Scenes/Home.unity");
+            EditorSceneManager.OpenScene("Assets/_Game/Scenes/GameColorPencil.unity");
+        }
+    }
 }
 #endif

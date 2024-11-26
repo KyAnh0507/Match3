@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 4104246438150889713}
   - component: {fileID: 123602029540390668}
   - component: {fileID: 783114649445049365}
-  m_Layer: 8
+  m_Layer: 18
   m_Name: BoxPencil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c1c640718548b499a3dab544852de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolType: 10
+  poolType: 1001
   sprite: {fileID: 4104246436452988425}
   tick: {fileID: 6524389540995736923}
   blank: {fileID: 4104246437574044769}
@@ -324,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3517067579117388108}
   - component: {fileID: 5483691797945408024}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Tick
   m_TagString: Untagged
   m_Icon: {fileID: 0}

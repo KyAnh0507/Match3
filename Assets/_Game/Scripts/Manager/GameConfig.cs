@@ -17,5 +17,5 @@ public class GameConfig : MonoBehaviour
     }
 }
 
-public enum Scene { Loading, Home, Game }
+public enum Scene { Loading, Home, Game, GameColorPencil}
 

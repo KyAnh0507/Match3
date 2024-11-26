@@ -14,13 +14,18 @@
 ///             Close delay time
 ///
 
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class UIManagerColorPencil : Singleton<UIManagerColorPencil>
 {
+    public CanvasGroup fadePanel;
+    public float timeFadeIn;
+    public float timeFadeOut;
     //dict for quick query UI prefab
     //dict dung de lu thong tin prefab canvas truy cap cho nhanh
     private Dictionary<System.Type, UICanvas> uiCanvasPrefab = new Dictionary<System.Type, UICanvas>();
@@ -195,4 +200,17 @@ public class UIManagerColorPencil : Singleton<UIManagerColorPencil>
     }
 
     #endregion
+
+    public void ChangeScene(Scene newScene)
+    {
+        DOTween.KillAll();
+
+        fadePanel.gameObject.SetActive(true);
+        fadePanel.alpha = 0f;
+        DOVirtual.Float(0f, 1f, timeFadeOut, value => { fadePanel.alpha = value; })
+            .OnComplete(() =>
+            {
+                SceneManager.LoadSceneAsync(newScene.ToString());
+            });
+    }
 }
