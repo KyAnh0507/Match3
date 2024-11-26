@@ -151,8 +151,12 @@ public enum PoolType
 {
     None = 0,
     Tile = 1,
-    Screw = 2
+    Screw = 2,
 
+
+
+    Pencil = 1000,
+    BoxPencil = 1001
 }
 
 

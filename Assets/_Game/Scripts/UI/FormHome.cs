@@ -61,6 +61,5 @@ public class FormHome : MonoBehaviour
         popupDailyChallenge.gameObject.SetActive(true);
         popupDailyChallenge.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
         popupDailyChallenge.tf.DOScale(Vector3.one, 0.5f);
-        popupDailyChallenge.SetupReward();
     }
 }

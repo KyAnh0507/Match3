@@ -3,6 +3,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class PopupDailyChallenge : MonoBehaviour
     public RectTransform bg1;
     public RectTransform bg2;
     public List<DayInDaylyChallenge> dayInDaylyChallenges = new List<DayInDaylyChallenge>();
+    public List<RewardChallengeButton> rewardChallengeButtons = new List<RewardChallengeButton>();
 
     public Text textMonth;
     public DayInDaylyChallenge currentDay;
@@ -21,13 +23,19 @@ public class PopupDailyChallenge : MonoBehaviour
 
     public Sprite imageSelect;
     public Sprite imageDay;
+    public Sprite imageFinished;
 
+    public GameObject fillProgress;
     public GameObject buttonPlay;
     public GameObject buttonFinished;
+
+
+    public RewardChallengeSO rewardChallengeSO;
 
     void OnEnable()
     {
         SetUpCalendar();
+        SetupReward();
     }
 
     public void SetUpCalendar()
@@ -36,11 +44,11 @@ public class PopupDailyChallenge : MonoBehaviour
         int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
         if (daysInMonth > DataManager.Ins.dataSaved.currentMonth)
         {
-            for (int i = 0; i < DataManager.Ins.dataSaved.statusDays.Count; i++)
+            DataManager.Ins.dataSaved.currentMonth = daysInMonth;
+            for (int i = 0; i < 42; i++)
             {
                 DataManager.Ins.dataSaved.statusDays[i] = false;
             }
-
         }
 
         int daysInLastMonth = 0;
@@ -58,6 +66,7 @@ public class PopupDailyChallenge : MonoBehaviour
         bool has5Week = false;
         for (int i = 0; i < dayInDaylyChallenges.Count; i++)
         {
+            dayInDaylyChallenges[i].order = i;
             if(i < 7 && i < (int)dayOfWeek)
             {
                 dayInDaylyChallenges[i].gameObject.SetActive(false);
@@ -67,9 +76,17 @@ public class PopupDailyChallenge : MonoBehaviour
             else if (i >= (int)dayOfWeek && i < (int)dayOfWeek + daysInMonth)
             {
                 dayInDaylyChallenges[i].SetupDay(i - (int)dayOfWeek + 1);
+                if (DataManager.Ins.dataSaved.statusDays[i])
+                {
+                    dayInDaylyChallenges[i].image.sprite = imageFinished;
+                }
                 if (i - (int)dayOfWeek + 1 == nowDay)
                 {
-                    dayInDaylyChallenges[i].Notify(true);
+                    currentDay = dayInDaylyChallenges[i];
+                    if (!DataManager.Ins.dataSaved.statusDays[i])
+                    {
+                        dayInDaylyChallenges[i].Notify(true);
+                    }
                 }
                 if (i - (int)dayOfWeek + 1 > nowDay)
                 {
@@ -103,46 +120,117 @@ public class PopupDailyChallenge : MonoBehaviour
             rt2.anchoredPosition = new Vector2(rt2.anchoredPosition.x, -580f);
         }
 
-
+        CheckFinishChallenge(currentDay);
         int nMonth = DateTime.Now.Year*12 + DateTime.Now.Month;
 
     }
 
     public void SetupReward()
     {
-        /*if (DataManager.Ins.dataSaved.isClaimDailyReward)
+        int count = 0;
+        for (int i = 0; i < rewardChallengeButtons.Count; i++)
         {
-            buttonClaim.SetActive(false);
-            buttonClaimed.SetActive(true);
+            rewardChallengeButtons[i].target.text = rewardChallengeSO.rewardDatas[i].numberTarget.ToString();
+            rewardChallengeButtons[i].reward = rewardChallengeSO.rewardDatas[i];
+            rewardChallengeButtons[i].order = i;
+        }
+        for (int i = 0; i < DataManager.Ins.dataSaved.statusDays.Count; i++)
+        {
+            if (DataManager.Ins.dataSaved.statusDays[i])
+            {
+                count++;
+            }
+        }
+        fillProgress.transform.localScale = new Vector3(0, 1f, 1f);
+        if (count < int.Parse(rewardChallengeButtons[0].target.text))
+        {
+            fillProgress.transform.DOScale(new Vector3(count*0.2f, 1f, 1f), 0.5f);
+        }else if (count < int.Parse(rewardChallengeButtons[1].target.text))
+        {
+            fillProgress.transform.DOScale(new Vector3((float)(count - int.Parse(rewardChallengeButtons[0].target.text)) / (int.Parse(rewardChallengeButtons[1].target.text) - int.Parse(rewardChallengeButtons[0].target.text)) * 0.2f + 0.2f, 1f, 1f), 0.5f);
+            DataManager.Ins.dataSaved.statusUnlockReward[0] = true;
+            rewardChallengeButtons[0].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[0]);
+        }
+        else if (count < int.Parse(rewardChallengeButtons[2].target.text))
+        {
+            fillProgress.transform.DOScale(new Vector3((float)(count - int.Parse(rewardChallengeButtons[1].target.text)) / (int.Parse(rewardChallengeButtons[2].target.text) - int.Parse(rewardChallengeButtons[1].target.text)) * 0.2f + 0.4f, 1f, 1f), 0.5f);
+            DataManager.Ins.dataSaved.statusUnlockReward[0] = true;
+            DataManager.Ins.dataSaved.statusUnlockReward[1] = true;
+
+            rewardChallengeButtons[0].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[0]);
+            rewardChallengeButtons[1].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[1]);
+        }
+        else if (count < int.Parse(rewardChallengeButtons[3].target.text))
+        {
+            fillProgress.transform.DOScale(new Vector3((float)(count - int.Parse(rewardChallengeButtons[2].target.text)) / (int.Parse(rewardChallengeButtons[3].target.text) - int.Parse(rewardChallengeButtons[2].target.text)) * 0.2f + 0.6f, 1f, 1f), 0.5f);
+            DataManager.Ins.dataSaved.statusUnlockReward[0] = true;
+            DataManager.Ins.dataSaved.statusUnlockReward[1] = true;
+            DataManager.Ins.dataSaved.statusUnlockReward[2] = true;
+            rewardChallengeButtons[0].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[0]);
+            rewardChallengeButtons[1].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[1]);
+            rewardChallengeButtons[2].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[2]);
+        }
+        else if (count < int.Parse(rewardChallengeButtons[4].target.text))
+        {
+            fillProgress.transform.DOScale(new Vector3((float)(count - int.Parse(rewardChallengeButtons[3].target.text)) / (int.Parse(rewardChallengeButtons[4].target.text) - int.Parse(rewardChallengeButtons[3].target.text)) * 0.2f + 0.8f, 1f, 1f), 0.5f);
+            DataManager.Ins.dataSaved.statusUnlockReward[0] = true;
+            DataManager.Ins.dataSaved.statusUnlockReward[1] = true;
+            DataManager.Ins.dataSaved.statusUnlockReward[2] = true;
+            DataManager.Ins.dataSaved.statusUnlockReward[3] = true;
+            rewardChallengeButtons[0].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[0]);
+            rewardChallengeButtons[1].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[1]);
+            rewardChallengeButtons[2].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[2]);
+            rewardChallengeButtons[3].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[3]);
         }
         else
         {
-            buttonClaim.SetActive(true);
-            buttonClaimed.SetActive(false);
+            fillProgress.transform.DOScale(Vector3.one, 0.5f);
+            DataManager.Ins.dataSaved.statusUnlockReward[0] = true; 
+            DataManager.Ins.dataSaved.statusUnlockReward[1] = true;
+            DataManager.Ins.dataSaved.statusUnlockReward[2] = true;
+            DataManager.Ins.dataSaved.statusUnlockReward[3] = true;
+            DataManager.Ins.dataSaved.statusUnlockReward[4] = true;
+            rewardChallengeButtons[0].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[0]);
+            rewardChallengeButtons[1].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[1]);
+            rewardChallengeButtons[2].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[2]);
+            rewardChallengeButtons[3].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[3]);
+            rewardChallengeButtons[4].ActiveHighlight(!DataManager.Ins.dataSaved.statusReward[4]);
         }
-        if (streakDay < 6)
-        {
-            for (int i = 0; i < streakDay; i++)
-            {
-                dailyRewardUIs[i].Claimed();
-            }
+    }
 
-            for (int i = streakDay; i < dailyRewardUIs.Count; i++)
+    public void ReceiveReward(RewardChallengeButton rewardChallenge)
+    {
+        if (rewardChallenge.highlight.activeSelf)
+        {
+            DataManager.Ins.dataSaved.statusReward[rewardChallenge.order] = true;
+            rewardChallenge.ActiveHighlight(false);
+            switch (rewardChallenge.reward.rewardType)
             {
-                dailyRewardUIs[i].NoClaim();
+                case RewardType.Coin:
+                    DataManager.Ins.dataSaved.coin += rewardChallenge.reward.amount1;
+                    flyCoin.gameObject.SetActive(true);
+                    flyCoin.rectTransform.position = rewardChallenge.transform.position;
+                    flyCoin.Play();
+                    break;
+                case RewardType.Gems:
+                    DataManager.Ins.dataSaved.gems += rewardChallenge.reward.amount1;
+                    flyGems.gameObject.SetActive(true);
+                    flyGems.rectTransform.position = rewardChallenge.transform.position;
+                    flyGems.Play();
+                    flyGems.LayoutComplete();
+                    break;
+                case RewardType.CoinAndGems:
+                    DataManager.Ins.dataSaved.coin += rewardChallenge.reward.amount1;
+                    DataManager.Ins.dataSaved.gems += rewardChallenge.reward.amount1;
+                    flyCoin.gameObject.SetActive(true);
+                    flyCoin.rectTransform.position = rewardChallenge.transform.position;
+                    flyCoin.Play();
+                    flyGems.gameObject.SetActive(true);
+                    flyGems.rectTransform.position = rewardChallenge.transform.position;
+                    flyGems.Play();
+                    break;
             }
         }
-        else
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                dailyRewardUIs[i].Claimed();
-            }
-
-            dailyRewardUIs[6].NoClaim();
-
-        }*/
-
     }
 
     public void CheckFinishChallenge(DayInDaylyChallenge dayInDaylyChallenge)
@@ -165,7 +253,16 @@ public class PopupDailyChallenge : MonoBehaviour
 
     public void SelectDay(DayInDaylyChallenge dayInDaylyChallenge)
     {
+        if (DataManager.Ins.dataSaved.statusDays[currentDay.order])
+        {
+            currentDay.image.sprite = imageFinished;
+        }
+        else
+        {
+            currentDay.image.sprite = imageDay;
+        }
         currentDay = dayInDaylyChallenge;
+        currentDay.image.sprite = imageSelect;
         CheckFinishChallenge(currentDay);
     }
     public void Close()

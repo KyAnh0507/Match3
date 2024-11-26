@@ -46,4 +46,15 @@ public static class Cache
 
         return hole1Irons[collider2D];
     }
+
+    private static Dictionary<Collider2D, BoxPencil> boxPencils = new Dictionary<Collider2D, BoxPencil>();
+    public static BoxPencil GetBoxPencil(Collider2D collider2D)
+    {
+        if (!boxPencils.ContainsKey(collider2D))
+        {
+            boxPencils.Add(collider2D, collider2D.GetComponent<BoxPencil>());
+        }
+
+        return boxPencils[collider2D];
+    }
 }

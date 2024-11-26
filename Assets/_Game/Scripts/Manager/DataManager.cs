@@ -116,6 +116,12 @@ public class DataManager : Singleton<DataManager>
         public int currentMonth;
 
         public List<bool> statusDays;
+        public List<bool> statusReward;
+        public List<bool> statusUnlockReward;
+
+        [Header("Game Color Pencil")]
+        public int indexLevelColorPencil;
+
 
         [Header("Booster")]
         public int boosterSuffer;
@@ -175,8 +181,25 @@ public class DataManager : Singleton<DataManager>
 
             // DailyChalenge
             currentMonth = 0;
-            statusDays = new List<bool>(42);
+            statusDays = new List<bool>();
+            for (int i = 0; i < 42; i++)
+            {
+                statusDays.Add(false);
+            }
 
+            statusReward = new List<bool>();
+            for (int i = 0; i < 5; i++)
+            {
+                statusReward.Add(false);
+            }
+
+            statusUnlockReward = new List<bool>();
+            for (int i = 0; i < 5; i++)
+            {
+                statusUnlockReward.Add(false);
+            }
+
+            indexLevelColorPencil = 0;
 
             // Booster
             boosterSuffer = 0;

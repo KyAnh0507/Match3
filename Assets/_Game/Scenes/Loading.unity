@@ -279,12 +279,17 @@ MonoBehaviour:
     isNew: 1
     timeInstall: 0
     timeLastOpen: 0
+    streakDays: 0
     daysPlayed: 1
     totalDays: 0
     totalSession: 0
+    isClaimDailyReward: 0
     level: 0
     indexLevel: 0
     coin: 0
+    gems: 0
+    currentMonth: 0
+    statusDays: 
     boosterSuffer: 0
     boosterBomb: 0
     boosterAdd1: 0
@@ -800,6 +805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDontDesstroyOnLoad: 0
   formGame: {fileID: 0}
+  formHome: {fileID: 0}
   formLoading: {fileID: 917900079}
   fadePanel: {fileID: 970960223}
   timeFadeIn: 0
