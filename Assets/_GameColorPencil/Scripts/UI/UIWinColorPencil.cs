@@ -10,6 +10,7 @@ public class UIWinColorPencil : UICanvas
 
     public void OnEnable()
     {
+        DataManager.Ins.dataSaved.completeChallenge = true;
         canvasGroup.DOFade(1, 0.5f);
         DataManager.Ins.dataSaved.statusDays[DataManager.Ins.dataSaved.indexCurrentDay] = true;
         DOVirtual.DelayedCall(3.5f, () =>

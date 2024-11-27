@@ -34,7 +34,15 @@ public class PopupDailyChallenge : MonoBehaviour
 
     void OnEnable()
     {
-        SetUpCalendar();
+        if (DataManager.Ins.dataSaved.completeChallenge)
+        {
+            DataManager.Ins.dataSaved.completeChallenge = false;
+            SetUpCalendarCompleteChallenge();
+        }
+        else
+        {
+            SetUpCalendar();
+        }
         SetupReward();
     }
 
@@ -127,6 +135,99 @@ public class PopupDailyChallenge : MonoBehaviour
         int nMonth = DateTime.Now.Year*12 + DateTime.Now.Month;
 
     }
+
+    public void SetUpCalendarCompleteChallenge()
+    {
+        textMonth.text = DateTime.Now.ToString("MMMM, yyyy");
+        int daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+        if (daysInMonth > DataManager.Ins.dataSaved.currentMonth)
+        {
+            DataManager.Ins.dataSaved.currentMonth = daysInMonth;
+            for (int i = 0; i < 42; i++)
+            {
+                DataManager.Ins.dataSaved.statusDays[i] = false;
+            }
+        }
+
+        int daysInLastMonth = 0;
+        if (DateTime.Now.Month > 1)
+        {
+            daysInLastMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month - 1);
+        }
+        else
+        {
+            daysInLastMonth = 31;
+        }
+        DateTime firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+        DayOfWeek dayOfWeek = firstDayOfMonth.DayOfWeek;
+        int nowDay = DateTime.Now.Day;
+        bool has5Week = false;
+        for (int i = 0; i < dayInDaylyChallenges.Count; i++)
+        {
+            dayInDaylyChallenges[i].order = i;
+            if (i < 7 && i < (int)dayOfWeek)
+            {
+                dayInDaylyChallenges[i].gameObject.SetActive(false);
+                /*dayInDaylyChallenges[i].SetupDay(daysInLastMonth - ((int)dayOfWeek - i) + 1);
+                dayInDaylyChallenges[i].GetComponent<Button>().interactable = false;*/
+            }
+            else if (i >= (int)dayOfWeek && i < (int)dayOfWeek + daysInMonth)
+            {
+                dayInDaylyChallenges[i].SetupDay(i - (int)dayOfWeek + 1);
+                if (DataManager.Ins.dataSaved.statusDays[i])
+                {
+                    dayInDaylyChallenges[i].image.sprite = imageFinished;
+                }
+                if (i == DataManager.Ins.dataSaved.indexCurrentDay)
+                {
+                    currentDay = dayInDaylyChallenges[i];
+                    currentDay.image.sprite = imageSelect;
+                    CheckFinishChallenge(currentDay);
+                }
+                if (i - (int)dayOfWeek + 1 == nowDay)
+                {
+                    if (!DataManager.Ins.dataSaved.statusDays[i])
+                    {
+                        dayInDaylyChallenges[i].Notify(true);
+                    }
+                }
+                if (i - (int)dayOfWeek + 1 > nowDay)
+                {
+                    dayInDaylyChallenges[i].GetComponent<Button>().interactable = false;
+                }
+
+            }
+            else
+            {
+                if (i < 35 || daysInMonth + (int)dayOfWeek < 35)
+                {
+                    dayInDaylyChallenges[i].gameObject.SetActive(false);
+                    /*dayInDaylyChallenges[i].SetupDay(i - (int)dayOfWeek - daysInMonth + 1);
+                    dayInDaylyChallenges[i].GetComponent<Button>().interactable = false;*/
+                }
+                else
+                {
+                    has5Week = true;
+                    dayInDaylyChallenges[i].gameObject.SetActive(false);
+                }
+            }
+        }
+        if (has5Week)
+        {
+            bg1.anchoredPosition = new Vector2(bg1.anchoredPosition.x, -315f);
+            bg1.sizeDelta = new Vector2(bg1.sizeDelta.x, 1430f);
+            bg2.offsetMin = new Vector2(bg2.offsetMin.x, -150f);
+            RectTransform rt1 = buttonPlay.GetComponent<RectTransform>();
+            rt1.anchoredPosition = new Vector2(rt1.anchoredPosition.x, -580f);
+            RectTransform rt2 = buttonFinished.GetComponent<RectTransform>();
+            rt2.anchoredPosition = new Vector2(rt2.anchoredPosition.x, -580f);
+        }
+
+        CheckFinishChallenge(currentDay);
+        int nMonth = DateTime.Now.Year * 12 + DateTime.Now.Month;
+
+    }
+
 
     public void SetupReward()
     {

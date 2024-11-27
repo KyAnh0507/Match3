@@ -118,6 +118,7 @@ public class DataManager : Singleton<DataManager>
         public List<bool> statusDays;
         public List<bool> statusReward;
         public List<bool> statusUnlockReward;
+        public bool completeChallenge;
 
         [Header("Game Color Pencil")]
         public int indexLevelColorPencil;
@@ -199,7 +200,7 @@ public class DataManager : Singleton<DataManager>
             {
                 statusUnlockReward.Add(false);
             }
-
+            completeChallenge = false;
             indexLevelColorPencil = 0;
 
             // Booster

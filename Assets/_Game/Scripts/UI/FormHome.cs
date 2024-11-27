@@ -11,8 +11,9 @@ public class FormHome : MonoBehaviour
     public Text textGems;
     public PopupDailyReward popupDailyReward;
     public PopupDailyChallenge popupDailyChallenge;
+
     // Start is called before the first frame update
-    void Awake()
+    void OnEnable()
     {
         LoadTextCoin();
 
@@ -36,6 +37,10 @@ public class FormHome : MonoBehaviour
             popupDailyReward.streakDay = DataManager.Ins.dataSaved.streakDays;
         }
         DataManager.Ins.dataSaved.timeLastOpen = timeLastOpen;
+        if (DataManager.Ins.dataSaved.completeChallenge)
+        {
+            OpenPopupDailyChallenge();
+        }
     }
 
     public void LoadGame()
