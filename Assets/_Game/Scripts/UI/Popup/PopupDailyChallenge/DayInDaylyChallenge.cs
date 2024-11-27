@@ -11,6 +11,7 @@ public class DayInDaylyChallenge : MonoBehaviour
 
     public Image image;
     public int order;
+    public int indexLevelColorPencil;
     public void SetupDay(int day)
     {
         numberDay.text = day.ToString();

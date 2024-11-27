@@ -42,7 +42,7 @@ public class LevelManagerColorPencil : Singleton<LevelManagerColorPencil>
 
         DOVirtual.DelayedCall(1f, () =>
         {
-            UIManagerColorPencil.Ins.OpenUI<UIWinColoPencil>();
+            UIManagerColorPencil.Ins.OpenUI<UIWinColorPencil>();
         });
     }
 

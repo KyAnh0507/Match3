@@ -42,6 +42,17 @@ public class UIManagerColorPencil : Singleton<UIManagerColorPencil>
     //canvas chua dung cac canvas con, nen la mot canvas - root de chua cac canvas nay
     public Transform CanvasParentTF;
 
+    void OnEnable()
+    {
+        fadePanel.gameObject.SetActive(true);
+        fadePanel.alpha = 1f;
+        DOVirtual.Float(1f, 0f, timeFadeIn, value => { fadePanel.alpha = value; })
+            .OnComplete(() =>
+            {
+                fadePanel.gameObject.SetActive(false);
+            });
+    }
+
     #region Canvas
 
     //open UI

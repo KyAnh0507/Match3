@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIWinColoPencil : UICanvas
+public class UIWinColorPencil : UICanvas
 {
     public CanvasGroup canvasGroup;
 
     public void OnEnable()
     {
-        DOVirtual.DelayedCall(5f, () =>
+        canvasGroup.DOFade(1, 0.5f);
+        DataManager.Ins.dataSaved.statusDays[DataManager.Ins.dataSaved.indexCurrentDay] = true;
+        DOVirtual.DelayedCall(3.5f, () =>
         {
 
         }).OnComplete(() =>

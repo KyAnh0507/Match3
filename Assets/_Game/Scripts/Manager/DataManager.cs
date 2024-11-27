@@ -121,6 +121,7 @@ public class DataManager : Singleton<DataManager>
 
         [Header("Game Color Pencil")]
         public int indexLevelColorPencil;
+        public int indexCurrentDay;
 
 
         [Header("Booster")]

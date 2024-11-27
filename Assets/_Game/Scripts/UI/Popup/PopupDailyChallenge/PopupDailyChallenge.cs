@@ -87,6 +87,9 @@ public class PopupDailyChallenge : MonoBehaviour
                     {
                         dayInDaylyChallenges[i].Notify(true);
                     }
+                    currentDay = dayInDaylyChallenges[i];
+                    currentDay.image.sprite = imageSelect;
+                    CheckFinishChallenge(currentDay);
                 }
                 if (i - (int)dayOfWeek + 1 > nowDay)
                 {
@@ -239,7 +242,7 @@ public class PopupDailyChallenge : MonoBehaviour
         {
             buttonPlay.SetActive(false);
             buttonFinished.SetActive(true);
-        }
+        } 
         else
         {
             buttonPlay.SetActive(true);
@@ -248,6 +251,8 @@ public class PopupDailyChallenge : MonoBehaviour
     }
     public void PlayChallenge()
     {
+        DataManager.Ins.dataSaved.indexLevelColorPencil = currentDay.indexLevelColorPencil;
+        DataManager.Ins.dataSaved.indexCurrentDay = currentDay.order;
         Close();
         DOVirtual.DelayedCall(0.5f, () =>
         {
