@@ -126,6 +126,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7051757397181775599}
     m_Modifications:
+    - target: {fileID: 3161147780050161396, guid: b975586479240c1488e22b66962b7a1a, type: 3}
+      propertyPath: layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5354923413720042203, guid: b975586479240c1488e22b66962b7a1a, type: 3}
       propertyPath: m_Name
       value: Hole2Iron (1)
@@ -199,6 +203,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7051757397181775599}
     m_Modifications:
+    - target: {fileID: 3161147780050161396, guid: b975586479240c1488e22b66962b7a1a, type: 3}
+      propertyPath: layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5354923413720042203, guid: b975586479240c1488e22b66962b7a1a, type: 3}
       propertyPath: m_Name
       value: Hole2Iron
@@ -306,15 +314,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5289532308577623316, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.29
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5289532308577623316, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.087
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 5289532308577623316, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.29
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5289532308577623316, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_LocalPosition.x
@@ -446,15 +454,15 @@ PrefabInstance:
       objectReference: {fileID: 651823634514769323}
     - target: {fileID: 5289532308577623316, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.29
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5289532308577623316, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.087
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 5289532308577623316, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.29
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5289532308577623316, guid: 30d8f346251f0994681cb049753aa814, type: 3}
       propertyPath: m_LocalPosition.x

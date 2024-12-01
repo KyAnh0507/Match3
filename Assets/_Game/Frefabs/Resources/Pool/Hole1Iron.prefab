@@ -55,6 +55,7 @@ MonoBehaviour:
   hasScrew: 1
   tf: {fileID: 8146365865183699936}
   screw: {fileID: 0}
+  layer: 0
 --- !u!50 &6608449673528470999
 Rigidbody2D:
   serializedVersion: 4
@@ -116,7 +117,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.42
+  m_Radius: 0.56
 --- !u!1 &8084944862102331279
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +145,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.39, y: 0.39, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8146365865183699936}
@@ -227,7 +228,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.117, y: 0.117, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8146365865183699936}

@@ -28,6 +28,19 @@ public class Level : MonoBehaviour
     public void OnInit()
     {
         queueTile.OnInit();
+
+        for (int j = 0; j < irons.Count; j++)
+        {
+            for (int i = 0; i < irons[j].hole1Irons.Count; i++)
+            {
+                irons[j].hole1Irons[i].layer = irons[j].layer;
+                irons[j].hole1Irons[i].OnInit(this);
+
+                Screw_Hole screw_Hole = new Screw_Hole(irons[j].hole1Irons[i].screw, irons[j].hole1Irons[i]);
+                irons[j].screws_holes.Add(screw_Hole);
+            }
+        }
+
         for (int i = 0; i < hole2Irons.Count; i++)
         {
             int maxLayer = 1;
@@ -50,25 +63,19 @@ public class Level : MonoBehaviour
                         h.SetParent(iron.transform);
                         h.SetOrderInLayer(4 + iron.layer * 2);
                         h.SetRotation();
-                        h.SetScale(1 / iron.transform.localScale.x, 1 / iron.transform.localScale.y);
+                        h.SetScale(1, 3.333333f);
                         iron.hole1Irons.Add(h);
+
+                        Screw_Hole screw_Hole = new Screw_Hole(hole2Irons[i].screw, h);
+                        h.screw = hole2Irons[i].screw;
+                        iron.screws_holes.Add(screw_Hole);
                     }
                 }
             }
             hole2Irons[i].layer = maxLayer;
         }
 
-        for (int j = 0; j < irons.Count; j++)
-        {
-            for (int i = 0; i < irons[j].hole1Irons.Count; i++)
-            {
-                irons[j].hole1Irons[i].layer = irons[j].layer;
-                irons[j].hole1Irons[i].OnInit(this);
-
-                Screw_Hole screw_Hole = new Screw_Hole(irons[j].hole1Irons[i].screw, irons[j].hole1Irons[i]);
-                irons[j].screws_holes.Add(screw_Hole);
-            }
-        }
+        
         
         //queueTile
         isDefeatChecked = false;
