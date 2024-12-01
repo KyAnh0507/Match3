@@ -17,6 +17,7 @@ public class LevelManagerColorPencil : Singleton<LevelManagerColorPencil>
     private void Start()
     {
         LoadLevel();
+        UIManagerColorPencil.Ins.OpenUI<UIGamePlay>();
     }
 
     // Tải level

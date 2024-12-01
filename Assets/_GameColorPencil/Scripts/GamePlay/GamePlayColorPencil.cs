@@ -15,6 +15,8 @@ public class GamePlayColorPencil : Singleton<GamePlayColorPencil>
 
     public bool canPlay;
 
+    public bool isPause = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class GamePlayColorPencil : Singleton<GamePlayColorPencil>
     // Update is called once per frame
     void Update()
     {
-        if (canPlay)
+        if (canPlay && !isPause)
         {
             if (Input.GetMouseButtonDown(0))
             {
