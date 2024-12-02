@@ -116,7 +116,7 @@ MonoBehaviour:
   canLose: 0
   numberColor: 0
   superHardTime: 0
-  targetMatch: 4
+  targetMatch: 2
   numbermatched: 0
 --- !u!1001 &72535768985617257
 PrefabInstance:
@@ -129,6 +129,10 @@ PrefabInstance:
     - target: {fileID: 3161147780050161396, guid: b975586479240c1488e22b66962b7a1a, type: 3}
       propertyPath: layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161147780050161396, guid: b975586479240c1488e22b66962b7a1a, type: 3}
+      propertyPath: screwType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5354923413720042203, guid: b975586479240c1488e22b66962b7a1a, type: 3}
       propertyPath: m_Name
