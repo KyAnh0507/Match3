@@ -107,7 +107,7 @@ public class PopupDailyChallenge : MonoBehaviour
             }
             else 
             {
-                if (i < 35 || daysInMonth + (int)dayOfWeek < 35)
+                if (i < 35 || daysInMonth + (int)dayOfWeek >= 36)
                 {
                     dayInDaylyChallenges[i].gameObject.SetActive(false);
                     /*dayInDaylyChallenges[i].SetupDay(i - (int)dayOfWeek - daysInMonth + 1);
@@ -199,7 +199,7 @@ public class PopupDailyChallenge : MonoBehaviour
             }
             else
             {
-                if (i < 35 || daysInMonth + (int)dayOfWeek < 35)
+                if (i < 35 || daysInMonth + (int)dayOfWeek >= 36)
                 {
                     dayInDaylyChallenges[i].gameObject.SetActive(false);
                     /*dayInDaylyChallenges[i].SetupDay(i - (int)dayOfWeek - daysInMonth + 1);

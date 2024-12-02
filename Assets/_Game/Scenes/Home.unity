@@ -424,6 +424,7 @@ MonoBehaviour:
   noti: {fileID: 1593606965}
   image: {fileID: 26030300}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &34767630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1311,7 @@ MonoBehaviour:
   noti: {fileID: 436917719}
   image: {fileID: 66147286}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &83004393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1348,7 @@ MonoBehaviour:
   noti: {fileID: 1959067280}
   image: {fileID: 83004397}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!224 &83004395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1766,6 +1769,7 @@ MonoBehaviour:
   noti: {fileID: 1389402579}
   image: {fileID: 91601486}
   order: 1
+  indexLevelColorPencil: 0
 --- !u!1 &97148250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1921,7 @@ MonoBehaviour:
   noti: {fileID: 1937020376}
   image: {fileID: 97148253}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &113951053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,6 +2399,7 @@ MonoBehaviour:
   noti: {fileID: 53125680}
   image: {fileID: 143836768}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &144082289
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,6 +2915,7 @@ MonoBehaviour:
   noti: {fileID: 128263516}
   image: {fileID: 159195099}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &160714593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,6 +3484,7 @@ MonoBehaviour:
   noti: {fileID: 805535758}
   image: {fileID: 199465439}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &203367469
 GameObject:
   m_ObjectHideFlags: 0
@@ -3749,6 +3757,7 @@ MonoBehaviour:
   noti: {fileID: 986038135}
   image: {fileID: 236549767}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &242095455
 GameObject:
   m_ObjectHideFlags: 0
@@ -4516,6 +4525,7 @@ MonoBehaviour:
   noti: {fileID: 1085560005}
   image: {fileID: 314230356}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &321995283
 GameObject:
   m_ObjectHideFlags: 0
@@ -4754,6 +4764,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1952818685}
     m_Modifications:
     - target: {fileID: 4596038176438582090, guid: e11d5abf265217f489b08a2354821d11, type: 3}
+      propertyPath: _startDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596038176438582090, guid: e11d5abf265217f489b08a2354821d11, type: 3}
       propertyPath: _attractorTarget
       value: 
       objectReference: {fileID: 648412258}
@@ -4856,6 +4870,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4974518237577479983, guid: e11d5abf265217f489b08a2354821d11, type: 3}
   m_PrefabInstance: {fileID: 355242638}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &355242640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4596038176438582090, guid: e11d5abf265217f489b08a2354821d11, type: 3}
+  m_PrefabInstance: {fileID: 355242638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ce80c06832d4a49a2a30ece9fb2df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &361048298
 GameObject:
   m_ObjectHideFlags: 0
@@ -5352,6 +5377,7 @@ MonoBehaviour:
   noti: {fileID: 847440458}
   image: {fileID: 416237298}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &428263627
 GameObject:
   m_ObjectHideFlags: 0
@@ -5503,6 +5529,7 @@ MonoBehaviour:
   noti: {fileID: 1569201129}
   image: {fileID: 428263630}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &436917719
 GameObject:
   m_ObjectHideFlags: 0
@@ -5883,6 +5910,7 @@ MonoBehaviour:
   noti: {fileID: 1306066062}
   image: {fileID: 459248600}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &469684427
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,6 +6141,7 @@ MonoBehaviour:
   noti: {fileID: 303206677}
   image: {fileID: 479840381}
   order: 5
+  indexLevelColorPencil: 0
 --- !u!1 &484375055
 GameObject:
   m_ObjectHideFlags: 0
@@ -6903,6 +6932,7 @@ MonoBehaviour:
   noti: {fileID: 90234049}
   image: {fileID: 564304143}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &573106656
 GameObject:
   m_ObjectHideFlags: 0
@@ -8353,6 +8383,7 @@ MonoBehaviour:
   noti: {fileID: 754087779}
   image: {fileID: 748767107}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &754087779
 GameObject:
   m_ObjectHideFlags: 0
@@ -9858,6 +9889,7 @@ MonoBehaviour:
   noti: {fileID: 1705485660}
   image: {fileID: 904658552}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &917170554
 GameObject:
   m_ObjectHideFlags: 0
@@ -10242,6 +10274,7 @@ MonoBehaviour:
   noti: {fileID: 114517381}
   image: {fileID: 946707408}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &949348573
 GameObject:
   m_ObjectHideFlags: 0
@@ -10827,7 +10860,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cd9d2a266a4664cd692ce7c032361041, type: 3}
   - {fileID: 21300000, guid: 8f9c5aecfebbd41eea10f82fb2fbb11d, type: 3}
   flyCoin: {fileID: 1505665190}
-  flyGem: {fileID: 0}
+  flyGem: {fileID: 355242640}
   buttonClaim: {fileID: 1486382288}
   buttonClaimed: {fileID: 1478083400}
 --- !u!1 &1031815071
@@ -11709,6 +11742,7 @@ MonoBehaviour:
   noti: {fileID: 588334326}
   image: {fileID: 1089093489}
   order: 3
+  indexLevelColorPencil: 0
 --- !u!1 &1104154942
 GameObject:
   m_ObjectHideFlags: 0
@@ -12512,6 +12546,7 @@ MonoBehaviour:
   noti: {fileID: 2106313588}
   image: {fileID: 1137762187}
   order: 2
+  indexLevelColorPencil: 0
 --- !u!1 &1147519879
 GameObject:
   m_ObjectHideFlags: 0
@@ -13362,6 +13397,7 @@ MonoBehaviour:
   noti: {fileID: 573566926}
   image: {fileID: 1252396183}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1261337245
 GameObject:
   m_ObjectHideFlags: 0
@@ -13645,6 +13681,7 @@ MonoBehaviour:
   noti: {fileID: 5018927}
   image: {fileID: 1280945206}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1294485411
 GameObject:
   m_ObjectHideFlags: 0
@@ -14915,6 +14952,7 @@ MonoBehaviour:
   noti: {fileID: 196343946}
   image: {fileID: 1386186265}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1389402579
 GameObject:
   m_ObjectHideFlags: 0
@@ -15141,6 +15179,7 @@ MonoBehaviour:
   noti: {fileID: 849619082}
   image: {fileID: 1394333030}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1402717161
 GameObject:
   m_ObjectHideFlags: 0
@@ -16493,6 +16532,7 @@ MonoBehaviour:
   noti: {fileID: 1444328072}
   image: {fileID: 1550769969}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1569053287
 GameObject:
   m_ObjectHideFlags: 0
@@ -17005,6 +17045,7 @@ MonoBehaviour:
   noti: {fileID: 1370669522}
   image: {fileID: 1582702513}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1585638768
 GameObject:
   m_ObjectHideFlags: 0
@@ -17156,6 +17197,7 @@ MonoBehaviour:
   noti: {fileID: 1424386303}
   image: {fileID: 1585638771}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1593606965
 GameObject:
   m_ObjectHideFlags: 0
@@ -17382,6 +17424,7 @@ MonoBehaviour:
   noti: {fileID: 1461060499}
   image: {fileID: 1601183105}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1601859700
 GameObject:
   m_ObjectHideFlags: 0
@@ -18109,6 +18152,7 @@ MonoBehaviour:
   noti: {fileID: 917777430}
   image: {fileID: 1622472682}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1633794184
 GameObject:
   m_ObjectHideFlags: 0
@@ -18260,6 +18304,7 @@ MonoBehaviour:
   noti: {fileID: 375548603}
   image: {fileID: 1633794187}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1643583179
 GameObject:
   m_ObjectHideFlags: 0
@@ -18880,6 +18925,7 @@ MonoBehaviour:
   noti: {fileID: 329348978}
   image: {fileID: 1677892681}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1690272968
 GameObject:
   m_ObjectHideFlags: 0
@@ -19106,6 +19152,7 @@ MonoBehaviour:
   noti: {fileID: 1954945158}
   image: {fileID: 1698692909}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1699453309
 GameObject:
   m_ObjectHideFlags: 0
@@ -19257,6 +19304,7 @@ MonoBehaviour:
   noti: {fileID: 1787987794}
   image: {fileID: 1699453312}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1700090863
 GameObject:
   m_ObjectHideFlags: 0
@@ -19731,6 +19779,7 @@ MonoBehaviour:
   noti: {fileID: 1648399736}
   image: {fileID: 1739585036}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1740286172
 GameObject:
   m_ObjectHideFlags: 0
@@ -19961,6 +20010,7 @@ MonoBehaviour:
   noti: {fileID: 715464120}
   image: {fileID: 1744056618}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1745358631
 GameObject:
   m_ObjectHideFlags: 0
@@ -20410,6 +20460,7 @@ MonoBehaviour:
   noti: {fileID: 1410894771}
   image: {fileID: 1780589283}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1782111492
 GameObject:
   m_ObjectHideFlags: 0
@@ -22337,6 +22388,7 @@ MonoBehaviour:
   noti: {fileID: 497080302}
   image: {fileID: 1905891498}
   order: 4
+  indexLevelColorPencil: 0
 --- !u!1 &1907556802
 GameObject:
   m_ObjectHideFlags: 0
@@ -23649,6 +23701,7 @@ MonoBehaviour:
   noti: {fileID: 1537045371}
   image: {fileID: 1986584667}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &1989381013
 GameObject:
   m_ObjectHideFlags: 0
@@ -23920,6 +23973,7 @@ MonoBehaviour:
   noti: {fileID: 2102146147}
   image: {fileID: 1993471648}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &2005615027
 GameObject:
   m_ObjectHideFlags: 0
@@ -24225,6 +24279,7 @@ MonoBehaviour:
   noti: {fileID: 1948534402}
   image: {fileID: 2053631638}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &2081595712
 GameObject:
   m_ObjectHideFlags: 0
@@ -24842,6 +24897,7 @@ MonoBehaviour:
   noti: {fileID: 1075579378}
   image: {fileID: 2119922682}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1 &2135596393
 GameObject:
   m_ObjectHideFlags: 0
@@ -25164,6 +25220,7 @@ MonoBehaviour:
   noti: {fileID: 458527557}
   image: {fileID: 2140452860}
   order: 0
+  indexLevelColorPencil: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

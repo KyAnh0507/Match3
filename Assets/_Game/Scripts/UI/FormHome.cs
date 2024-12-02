@@ -17,12 +17,13 @@ public class FormHome : MonoBehaviour
     {
         LoadTextCoin();
 
-        int timeLastOpen = int.Parse(DateTime.Now.Date.ToString("yyyyMMdd"));
+        //int timeLastOpen = int.Parse(DateTime.Now.Date.ToString("yyyyMMdd"));
+        TimeSpan t = DateTime.Now.Date - TimeConfig.startTime;
+        int timeLastOpen = t.Days;
         if (timeLastOpen - DataManager.Ins.dataSaved.timeLastOpen == 1)
         {
             DataManager.Ins.dataSaved.isClaimDailyReward = false;
             popupDailyReward.Notify(true);
-            DataManager.Ins.dataSaved.streakDays++;
             popupDailyReward.streakDay = DataManager.Ins.dataSaved.streakDays;
         }
         else if (timeLastOpen - DataManager.Ins.dataSaved.timeLastOpen > 1)
