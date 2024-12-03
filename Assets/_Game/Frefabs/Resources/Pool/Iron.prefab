@@ -201,6 +201,8 @@ MonoBehaviour:
   hole1Irons: []
   hinge: {fileID: 758217269593993029}
   rb: {fileID: 2567797183210842429}
+  spriteIron: {fileID: 323206068911525501}
+  sortingGroup: {fileID: 7894996661586988249}
   layer: 0
   isTrigger: 0
 --- !u!212 &323206068911525501

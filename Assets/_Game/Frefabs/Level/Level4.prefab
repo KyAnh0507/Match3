@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 7051757397181775599}
   - component: {fileID: 3550617384722011479}
   m_Layer: 0
-  m_Name: Level3 1
+  m_Name: Level4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   canLose: 0
   numberColor: 0
   superHardTime: 0
-  targetMatch: 2
+  targetMatch: 3
   numbermatched: 0
 --- !u!1001 &72535768985617257
 PrefabInstance:

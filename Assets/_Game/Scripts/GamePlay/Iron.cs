@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Iron : MonoBehaviour, IBaseUnitUndo
 {
@@ -11,9 +12,17 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
     public List<Hole1Iron> hole1Irons;
     public HingeJoint2D hinge;
     public Rigidbody2D rb;
+    public SpriteRenderer spriteIron;
+    public SortingGroup sortingGroup;
     public int layer;
 
     public bool isTrigger = false;
+
+    private void OnEnable()
+    {
+        ChangeLayer();
+        
+    }
     /*private void Start()
     {
         foreach (var screw_hole in screws_holes)
@@ -89,6 +98,13 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
             }
         }
         return null;
+    }
+
+    public void ChangeLayer()
+    {
+        gameObject.layer = layer + 11;
+        spriteIron.sortingOrder = layer * 10;
+        sortingGroup.sortingOrder = layer * 10;
     }
 
     public void AddDataUndo(UndoModel undoModel)
