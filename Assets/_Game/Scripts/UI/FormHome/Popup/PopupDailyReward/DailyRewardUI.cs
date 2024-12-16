@@ -51,5 +51,5 @@ public class DailyRewardUI : MonoBehaviour
 
 public enum RewardType
 {
-    Coin, Gems, CoinAndGems
+    Coin, Gems, CoinAndGems, Add1Tile, DeleteIron, Shuffle, Undo
 }

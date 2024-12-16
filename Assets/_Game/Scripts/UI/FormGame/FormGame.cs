@@ -10,8 +10,7 @@ public class FormGame : MonoBehaviour
     public PopupLose popupLose;
     public PopupWin popupWin;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         
     }

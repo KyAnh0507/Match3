@@ -100,11 +100,10 @@ public class DataManager : Singleton<DataManager>
         public bool isNew = true;
         public int timeInstall;
         public int timeLastOpen;
-        public int streakDays;
         public int daysPlayed; // So ngay user co choi game
         public int totalDays;  // So ngay user da cai game
         public int totalSession;
-        public bool isClaimDailyReward;
+
 
         public int level;
         public int indexLevel;
@@ -112,13 +111,19 @@ public class DataManager : Singleton<DataManager>
         public int coin;
         public int gems;
 
+        [Header("DailyReward")]
+        public int streakDays;
+        public bool isClaimDailyReward;
+
         [Header("DailyChallenge")]
         public int currentMonth;
-
         public List<bool> statusDays;
         public List<bool> statusReward;
         public List<bool> statusUnlockReward;
         public bool completeChallenge;
+
+        [Header("SpinHome")]
+        public bool isClaimSpinHome;
 
         [Header("Game Color Pencil")]
         public int indexLevelColorPencil;
@@ -129,7 +134,9 @@ public class DataManager : Singleton<DataManager>
         public int boosterSuffer;
         public int boosterBomb;
         public int boosterAdd1;
+        public int boosterUndo;
 
+        [Header("Sound")]
         public bool isMusicOn;
         public bool isSoundOn;
         public bool isVibrate;
@@ -203,10 +210,14 @@ public class DataManager : Singleton<DataManager>
             completeChallenge = false;
             indexLevelColorPencil = 0;
 
+            // Spin
+            isClaimSpinHome = false;
+
             // Booster
             boosterSuffer = 0;
             boosterBomb = 0;
             boosterAdd1 = 0;
+            boosterUndo = 0;
 
             isMusicOn = true;
             isSoundOn = true;
