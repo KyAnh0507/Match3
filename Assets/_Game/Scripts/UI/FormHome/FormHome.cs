@@ -12,6 +12,7 @@ public class FormHome : MonoBehaviour
     public PopupDailyReward popupDailyReward;
     public PopupDailyChallenge popupDailyChallenge;
     public PopupSpinHome popupSpinHome;
+    public PopupShop popupShop;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -75,5 +76,12 @@ public class FormHome : MonoBehaviour
         popupSpinHome.gameObject.SetActive(true);
         popupSpinHome.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
         popupSpinHome.tf.DOScale(Vector3.one, 0.5f);
+    }
+
+    public void OpenPopupShop()
+    {
+        popupShop.gameObject.SetActive(true);
+        popupShop.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
+        popupShop.tf.DOScale(Vector3.one, 0.5f);
     }
 }

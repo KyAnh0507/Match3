@@ -93,7 +93,6 @@ public class QueueTile : MonoBehaviour
             screw.Move(tile_screws[numberScrew].tile.TF.position);
             numberScrew++;
         }
-        
     }
 
     public IEnumerator Match3()
@@ -147,6 +146,8 @@ public class QueueTile : MonoBehaviour
         LevelManager.Ins.currentLevel.canWin = true;
         isMatching = false;
 
+
+        UIManager.Ins.formGame.boosterUndo.ActiceBoosster(numberScrew > 0, DataManager.Ins.dataSaved.boosterUndo);
     }
     public void Add1Tile()
     {

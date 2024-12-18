@@ -36,8 +36,33 @@ public class PopupSpinHome : MonoBehaviour
     {
         int angle = 360*n + Random.Range(0, 360);
 
-        spin.DORotate(new Vector3(n, 0, angle), 5f).SetEase(Ease.OutQuad);
+        spin.DORotate(new Vector3(n, 0, angle), 5f, RotateMode.FastBeyond360).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            ClaimReward(uiRewardSpinHomes[(angle % 360) / 60]);
+        });
 
 
+    }
+
+    public void ClaimReward(UIRewardSpinHome reward)
+    {
+        switch(reward.reward.Type)
+        {
+            case RewardType.Coin:
+                DataManager.Ins.dataSaved.coin += reward.reward.amount;
+                break;
+            case RewardType.Gems:
+                DataManager.Ins.dataSaved.gems += reward.reward.amount;
+                break;
+            case RewardType.Add1Tile:
+                DataManager.Ins.dataSaved.boosterAdd1 += reward.reward.amount;
+                break;
+            case RewardType.Undo:
+                DataManager.Ins.dataSaved.boosterUndo += reward.reward.amount;
+                break;
+            case RewardType.Shuffle:
+                DataManager.Ins.dataSaved.boosterSuffer += reward.reward.amount;
+                break;
+        }
     }
 }
