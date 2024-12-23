@@ -59,7 +59,7 @@ public class FormGame : MonoBehaviour
         {
             LevelManager.Ins.currentLevel.queueTile.Add1Tile();
             DataManager.Ins.dataSaved.boosterAdd1--;
-            boosterAdd1.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterAdd1);
+            boosterAdd1.ActiceBoosster(false, DataManager.Ins.dataSaved.boosterAdd1);
         }
     }
 
@@ -90,7 +90,7 @@ public class FormGame : MonoBehaviour
         {
             LevelManager.Ins.currentLevel.Undo();
             DataManager.Ins.dataSaved.boosterUndo--;
-            boosterUndo.ActiceBoosster(false, DataManager.Ins.dataSaved.boosterUndo);
+            boosterUndo.ActiceBoosster(LevelManager.Ins.currentLevel.queueTile.numberScrew > 0, DataManager.Ins.dataSaved.boosterUndo);
 
         }
     }

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class UIShopItem : MonoBehaviour
 {
-    public RewardType typeBuy;
-    public RewardType typeReceive;
+    public RewardType currencyType;
+    public RewardType receiveType;
 
     public int price;
     public int quantity;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
 }
