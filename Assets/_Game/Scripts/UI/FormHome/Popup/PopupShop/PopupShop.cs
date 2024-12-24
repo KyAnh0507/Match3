@@ -45,24 +45,28 @@ public class PopupShop : MonoBehaviour
                     fx.texture = images[0];
                     fx.transform.position = uiShopItem.transform.position;
                     fx.gameObject.SetActive(true);
+                    fx.Play();
                     break;
                 case RewardType.DeleteIron:
                     DataManager.Ins.dataSaved.boosterBomb += uiShopItem.quantity;
                     fx.texture = images[1];
                     fx.transform.position = uiShopItem.transform.position;
                     fx.gameObject.SetActive(true);
+                    fx.Play();
                     break;
                 case RewardType.Shuffle:
                     DataManager.Ins.dataSaved.boosterSuffer += uiShopItem.quantity;
                     fx.texture = images[2];
                     fx.transform.position = uiShopItem.transform.position;
                     fx.gameObject.SetActive(true);
+                    fx.Play();
                     break;
                 case RewardType.Undo:
                     DataManager.Ins.dataSaved.boosterUndo += uiShopItem.quantity;
                     fx.texture = images[3];
                     fx.transform.position = uiShopItem.transform.position;
                     fx.gameObject.SetActive(true);
+                    fx.Play();
                     break; 
             }
         }
