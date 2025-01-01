@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,12 @@ public class FormGame : MonoBehaviour
 {
     public bool isPauseGame;
 
+    public Text textLevel;
 
     public PopupLose popupLose;
     public PopupWin popupWin;
+    public PopupShop popupShop;
+    public PopupSetting popupSetting;
 
     public Booster boosterAdd1;
     public Booster boosterDelete;
@@ -22,6 +26,8 @@ public class FormGame : MonoBehaviour
         boosterDelete.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterBomb);
         boosterShuffle.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterSuffer);
         boosterUndo.ActiceBoosster(false, DataManager.Ins.dataSaved.boosterUndo);
+
+        textLevel.text = Constant.LEVEL + " " + (DataManager.Ins.dataSaved.indexLevel + 1).ToString();
     }
 
     // Update is called once per frame
@@ -39,6 +45,8 @@ public class FormGame : MonoBehaviour
     {
         isPauseGame = false;
     }
+
+    #region Open Popup
     public void OpenPopupLose()
     {
         PauseGame();
@@ -51,6 +59,21 @@ public class FormGame : MonoBehaviour
         PauseGame();
         popupWin.gameObject.SetActive(true);
     }
+
+    public void OpenPopupSetting()
+    {
+        popupSetting.gameObject.SetActive(true);
+        popupSetting.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
+        popupSetting.tf.DOScale(Vector3.one, 0.5f);
+    }
+
+    public void OpenPopupShop()
+    {
+        popupShop.gameObject.SetActive(true);
+        popupShop.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
+        popupShop.tf.DOScale(Vector3.one, 0.5f);
+    }
+    #endregion 
 
     #region booster
     public void Add1Tile()
