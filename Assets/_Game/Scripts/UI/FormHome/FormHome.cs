@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class FormHome : MonoBehaviour
 {
+    public Image background;
     public Text textCoin;
     public Text textGems;
     public PopupDailyReward popupDailyReward;
@@ -18,7 +19,7 @@ public class FormHome : MonoBehaviour
     void OnEnable()
     {
         LoadTextCoin();
-
+        background.sprite = GameConfig.Ins.themeGames[DataManager.Ins.dataSaved.theme].sprites[1];
         //int timeLastOpen = int.Parse(DateTime.Now.Date.ToString("yyyyMMdd"));
         TimeSpan t = DateTime.Now.Date - TimeConfig.startTime;
         int timeLastOpen = t.Days;

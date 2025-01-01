@@ -7926,6 +7926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eac2e185c345564c863dae5cdd45e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {fileID: 1738003584}
   textCoin: {fileID: 1032101655}
   textGems: {fileID: 144082291}
   popupDailyReward: {fileID: 1019537276}

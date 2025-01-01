@@ -675,6 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba85a69f9a1994a499ac7ae4c774883e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {fileID: 1342097737}
   loadDuration: 2
   text: {fileID: 1100061674}
   fillImage: {fileID: 906028110}

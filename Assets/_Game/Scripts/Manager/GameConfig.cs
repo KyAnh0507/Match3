@@ -6,8 +6,8 @@ using UnityEngine;
 public class GameConfig : Singleton<GameConfig>
 {
     public List<ThemeGame> themeGames;
-    // Start is called before the first frame update
-    void Awake()
+
+    private void OnEnable()
     {
         
     }

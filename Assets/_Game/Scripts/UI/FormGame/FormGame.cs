@@ -27,6 +27,7 @@ public class FormGame : MonoBehaviour
     {
         LoadBooster();
         LoadTextCoin();
+        background.sprite = GameConfig.Ins.themeGames[DataManager.Ins.dataSaved.theme].sprites[2];
         textLevel.text = Constant.LEVEL + " " + (DataManager.Ins.dataSaved.indexLevel + 1).ToString();
     }
 

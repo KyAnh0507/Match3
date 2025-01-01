@@ -3900,6 +3900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPauseGame: 0
+  background: {fileID: 334573673}
   textLevel: {fileID: 252704419}
   textCoin: {fileID: 86675142}
   textGems: {fileID: 587623004}
