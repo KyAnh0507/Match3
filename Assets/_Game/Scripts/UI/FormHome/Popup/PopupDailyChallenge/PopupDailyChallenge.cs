@@ -334,6 +334,7 @@ public class PopupDailyChallenge : MonoBehaviour
                     flyGems.Play();
                     break;
             }
+            UIManager.Ins.LoadTextCoin();
         }
     }
 

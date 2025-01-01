@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class GameConfig : Singleton<GameConfig>
 {
+    public List<ThemeGame> themeGames;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
         
     }
 }
 
+[System.Serializable]
+public class ThemeGame
+{
+    public List<Sprite> sprites;
+}
 public enum Scene { Loading, Home, Game, GameColorPencil}
 
 

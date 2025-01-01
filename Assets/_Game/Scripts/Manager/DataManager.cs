@@ -111,6 +111,10 @@ public class DataManager : Singleton<DataManager>
         public int coin;
         public int gems;
 
+        [Header("Theme")]
+        public int theme;
+        public List<bool> statusTheme;
+
         [Header("DailyReward")]
         public int streakDays;
         public bool isClaimDailyReward;
@@ -187,6 +191,21 @@ public class DataManager : Singleton<DataManager>
             indexLevel = 0;
             coin = 0;
             gems = 0;
+
+            //Theme
+            theme = 0;
+            statusTheme = new List<bool>();
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == 0)
+                {
+                    statusTheme.Add(true);
+                }
+                else
+                {
+                    statusTheme.Add(false);
+                }
+            }
 
             // DailyChalenge
             currentMonth = 0;

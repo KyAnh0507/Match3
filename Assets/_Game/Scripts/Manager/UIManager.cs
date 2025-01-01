@@ -37,4 +37,16 @@ public class UIManager : Singleton<UIManager>
                 SceneManager.LoadSceneAsync(newScene.ToString());
             });
     }
+
+    public void LoadTextCoin()
+    {
+        if (formGame != null)
+        {
+            formGame.LoadTextCoin();
+        }
+        if (formHome != null)
+        {
+            formHome.LoadTextCoin();
+        }
+    }
 }

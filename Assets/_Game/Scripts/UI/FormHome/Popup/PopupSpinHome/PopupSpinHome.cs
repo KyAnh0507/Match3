@@ -64,6 +64,7 @@ public class PopupSpinHome : MonoBehaviour
                 DataManager.Ins.dataSaved.boosterSuffer += reward.reward.amount;
                 break;
         }
+        UIManager.Ins.LoadTextCoin();
     }
 
     public void Close()

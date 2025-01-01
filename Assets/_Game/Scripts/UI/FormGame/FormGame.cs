@@ -8,7 +8,10 @@ public class FormGame : MonoBehaviour
 {
     public bool isPauseGame;
 
+    public Image background;
     public Text textLevel;
+    public Text textCoin;
+    public Text textGems;
 
     public PopupLose popupLose;
     public PopupWin popupWin;
@@ -22,11 +25,8 @@ public class FormGame : MonoBehaviour
 
     private void OnEnable()
     {
-        boosterAdd1.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterAdd1);
-        boosterDelete.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterBomb);
-        boosterShuffle.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterSuffer);
-        boosterUndo.ActiceBoosster(false, DataManager.Ins.dataSaved.boosterUndo);
-
+        LoadBooster();
+        LoadTextCoin();
         textLevel.text = Constant.LEVEL + " " + (DataManager.Ins.dataSaved.indexLevel + 1).ToString();
     }
 
@@ -46,6 +46,20 @@ public class FormGame : MonoBehaviour
         isPauseGame = false;
     }
 
+    public void LoadTextCoin()
+    {
+        textCoin.text = DataManager.Ins.dataSaved.coin.ToString();
+        textGems.text = DataManager.Ins.dataSaved.gems.ToString();
+    }
+
+    public void LoadBooster()
+    {
+        boosterAdd1.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterAdd1);
+        boosterDelete.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterBomb);
+        boosterShuffle.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterSuffer);
+        boosterUndo.ActiceBoosster(false, DataManager.Ins.dataSaved.boosterUndo);
+    }
+
     #region Open Popup
     public void OpenPopupLose()
     {
@@ -62,6 +76,7 @@ public class FormGame : MonoBehaviour
 
     public void OpenPopupSetting()
     {
+        PauseGame();
         popupSetting.gameObject.SetActive(true);
         popupSetting.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
         popupSetting.tf.DOScale(Vector3.one, 0.5f);
@@ -69,6 +84,7 @@ public class FormGame : MonoBehaviour
 
     public void OpenPopupShop()
     {
+        PauseGame();
         popupShop.gameObject.SetActive(true);
         popupShop.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
         popupShop.tf.DOScale(Vector3.one, 0.5f);

@@ -46,6 +46,10 @@ public class PopupSetting : MonoBehaviour
         tf.DOScale(new Vector3(0.01f, 0.01f, 1f), 0.5f).OnComplete(() =>
         {
             this.gameObject.SetActive(false);
+            if (UIManager.Ins.formGame != null)
+            {
+                UIManager.Ins.formGame.ResumeGame();
+            }
         });
     }
 }
