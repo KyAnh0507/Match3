@@ -77,6 +77,26 @@ public class PopupShop : MonoBehaviour
         }
     }
 
+    public void BuyTheme(UIShopItemTheme uiShopItemTheme)
+    {
+        switch (uiShopItemTheme.currencyType)
+        {
+            case RewardType.Coin:
+                if (DataManager.Ins.dataSaved.coin >= uiShopItemTheme.price)
+                {
+                    DataManager.Ins.dataSaved.coin -= uiShopItemTheme.price;
+                }
+                break;
+            case RewardType.Gems:
+                if (DataManager.Ins.dataSaved.gems >= uiShopItemTheme.price)
+                {
+                    DataManager.Ins.dataSaved.gems -= uiShopItemTheme.price;
+                }
+                break;
+        }
+        UIManager.Ins.LoadBackground();
+    }
+
     public void ParticalFinish()
     {
         fx.gameObject.SetActive(false);

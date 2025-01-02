@@ -38,6 +38,18 @@ public class UIManager : Singleton<UIManager>
             });
     }
 
+    public void LoadBackground()
+    {
+        if (formGame != null)
+        {
+            formGame.background.sprite = GameConfig.Ins.themeGames[DataManager.Ins.dataSaved.theme].sprites[2];
+        }
+        if (formHome != null)
+        {
+            formHome.background.sprite = GameConfig.Ins.themeGames[DataManager.Ins.dataSaved.theme].sprites[1];
+        }
+    }
+
     public void LoadTextCoin()
     {
         if (formGame != null)
