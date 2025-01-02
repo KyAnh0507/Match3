@@ -28,18 +28,22 @@ public class PopupSetting : MonoBehaviour
     public void ActiveMusic(bool b)
     {
         DataManager.Ins.dataSaved.isMusicOn = b;
+        musicOn.SetActive(DataManager.Ins.dataSaved.isMusicOn);
+        musicOff.SetActive(!DataManager.Ins.dataSaved.isMusicOn);
     }
 
     public void ActiveSound(bool b)
     {
         DataManager.Ins.dataSaved.isSoundOn = b;
-
+        soundOn.SetActive(DataManager.Ins.dataSaved.isSoundOn);
+        soundOff.SetActive(!DataManager.Ins.dataSaved.isSoundOn);
     }
 
     public void ActiveVibrate(bool b)
     {
         DataManager.Ins.dataSaved.isVibrate = b;
-
+        vibrateOn.SetActive(DataManager.Ins.dataSaved.isVibrate);
+        vibrateOff.SetActive(!DataManager.Ins.dataSaved.isVibrate);
     }
     public void Close()
     {

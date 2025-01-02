@@ -116,6 +116,7 @@ MonoBehaviour:
   superHardTime: 0
   targetMatch: 4
   numbermatched: 0
+  timeLevel: 15
 --- !u!1001 &2429688125155480994
 PrefabInstance:
   m_ObjectHideFlags: 0

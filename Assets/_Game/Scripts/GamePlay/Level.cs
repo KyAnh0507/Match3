@@ -25,6 +25,7 @@ public class Level : MonoBehaviour
     public int targetMatch;
     public int numbermatched = 0;
 
+    public int timeLevel = 0;
     public void OnInit()
     {
         queueTile.OnInit();

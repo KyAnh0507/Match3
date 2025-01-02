@@ -9,24 +9,73 @@ public class SoundManager : Singleton<SoundManager>
 
     public AudioClip bgClip;
 
-    // Start is called before the first frame update
-    void Start()
+    public AudioClip screwInsertClip;
+    public AudioClip uiClickClip;
+    public AudioClip popupClip;
+    public AudioClip gameWinClip;
+    public AudioClip metalClip1;
+    public AudioClip metalClip2;
+
+    private void OnEnable()
     {
-        
+        bgAudio.mute = !DataManager.Ins.dataSaved.isMusicOn;
+        fxAudio.mute = !DataManager.Ins.dataSaved.isSoundOn;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeMusicSetting(bool b)
     {
-        
+        DataManager.Ins.dataSaved.isMusicOn = b;
+        bgAudio.mute = !b;
     }
 
-    public void ChangeSound()
+    public void ChangeSoundSetting()
     {
+        DataManager.Ins.dataSaved.isSoundOn = !DataManager.Ins.dataSaved.isSoundOn;
+        fxAudio.mute = !DataManager.Ins.dataSaved.isSoundOn;
+    }
 
+    public void ChangeSound(SoundType soundType)
+    {
+        if (DataManager.Ins.dataSaved.isSoundOn)
+        {
+            switch (soundType)
+            {
+                case SoundType.SCREW_INSERT:
+                    fxAudio.clip = screwInsertClip;
+                    fxAudio.Play();
+                    break;
+                case SoundType.UI_CLICK:
+                    fxAudio.clip = uiClickClip;
+                    fxAudio.Play();
+                    break;
+                case SoundType.POPUP_CLICK:
+                    fxAudio.clip = popupClip;
+                    fxAudio.Play();
+                    break;
+                case SoundType.GAME_WIN:
+                    fxAudio.clip = gameWinClip;
+                    fxAudio.Play();
+                    break;
+                case SoundType.METAL_1:
+                    fxAudio.clip = metalClip1;
+                    fxAudio.Play();
+                    break;
+                case SoundType.METAL_2:
+                    fxAudio.clip = metalClip2;
+                    fxAudio.Play();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 
 public enum SoundType{
-
+    SCREW_INSERT,
+    UI_CLICK,
+    POPUP_CLICK,
+    GAME_WIN,
+    METAL_1,
+    METAL_2
 }

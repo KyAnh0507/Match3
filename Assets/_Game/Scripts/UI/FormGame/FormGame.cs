@@ -8,6 +8,9 @@ public class FormGame : MonoBehaviour
 {
     public bool isPauseGame;
 
+    public Text timeLevel;
+    public bool hasTime = false;
+
     public Image background;
     public Text textLevel;
     public Text textCoin;
@@ -29,12 +32,48 @@ public class FormGame : MonoBehaviour
         LoadTextCoin();
         background.sprite = GameConfig.Ins.themeGames[DataManager.Ins.dataSaved.theme].sprites[2];
         textLevel.text = Constant.LEVEL + " " + (DataManager.Ins.dataSaved.indexLevel + 1).ToString();
+        StartCoroutine(SetTimeLevel());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public IEnumerator SetTimeLevel()
+    {
+        yield return new WaitUntil(() => LevelManager.Ins.currentLevel != null);
+        bool redTime = false;
+        if (LevelManager.Ins.currentLevel.timeLevel > 10)
+        {
+            hasTime = true;
+            timeLevel.gameObject.SetActive(true);
+            timeLevel.text = Calculater.CalculaterTime(LevelManager.Ins.currentLevel.timeLevel);
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(1f);
+            DOVirtual.Float(LevelManager.Ins.currentLevel.timeLevel, 0, LevelManager.Ins.currentLevel.timeLevel, (value) =>
+            {
+                timeLevel.text = Calculater.CalculaterTime(value);
+                if (!redTime && value < 6f)
+                {
+                    redTime = true;
+                    timeLevel.transform.DOScale(1.2f * Vector3.one, 0.5f).SetEase(Ease.Linear).SetLoops(12, LoopType.Yoyo);
+                    timeLevel.DOColor(Color.red, 0.5f).SetEase(Ease.Linear).SetLoops(12, LoopType.Yoyo);
+                }
+            }).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                DOVirtual.DelayedCall(0.5f, () =>
+                {
+                    LevelManager.Ins.Defeat();
+                });
+            });
+        }
+        else
+        {
+            hasTime = false;
+            timeLevel.gameObject.SetActive(false);
+        }
     }
 
     public void PauseGame()
