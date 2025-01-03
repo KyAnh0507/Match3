@@ -8,12 +8,18 @@ public class PopupShop : MonoBehaviour
 {
     public Transform tf;
     public List<UIShopItem> uIShopItems;
+    public List<UIShopItemTheme> uiShopItemsTheme;
     public List<Texture> images;
     public ParticleImage fx;
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < uiShopItemsTheme.Count; i++)
+        {
+            uiShopItemsTheme[i].Setup();
+        }
+
+        uiShopItemsTheme[DataManager.Ins.dataSaved.theme].Buy();
     }
 
     public void Buy(UIShopItem uiShopItem)
@@ -85,18 +91,33 @@ public class PopupShop : MonoBehaviour
                 if (DataManager.Ins.dataSaved.coin >= uiShopItemTheme.price)
                 {
                     DataManager.Ins.dataSaved.coin -= uiShopItemTheme.price;
+                    uiShopItemsTheme[DataManager.Ins.dataSaved.theme].Setup();
+                    DataManager.Ins.dataSaved.theme = uiShopItemTheme.nTheme;
+                    DataManager.Ins.dataSaved.statusTheme[uiShopItemTheme.nTheme] = true;
+                    uiShopItemTheme.Buy();
                 }
                 break;
             case RewardType.Gems:
                 if (DataManager.Ins.dataSaved.gems >= uiShopItemTheme.price)
                 {
                     DataManager.Ins.dataSaved.gems -= uiShopItemTheme.price;
+                    uiShopItemsTheme[DataManager.Ins.dataSaved.theme].Setup();
+                    DataManager.Ins.dataSaved.theme = uiShopItemTheme.nTheme;
+                    DataManager.Ins.dataSaved.statusTheme[uiShopItemTheme.nTheme] = true;
+                    uiShopItemTheme.Buy();
                 }
                 break;
         }
         UIManager.Ins.LoadBackground();
     }
 
+    public void SelectTheme(UIShopItemTheme uiShopItemTheme)
+    {
+        uiShopItemsTheme[DataManager.Ins.dataSaved.theme].Setup();
+        DataManager.Ins.dataSaved.theme = uiShopItemTheme.nTheme;
+        uiShopItemTheme.Buy();
+        UIManager.Ins.LoadBackground();
+    }
     public void ParticalFinish()
     {
         fx.gameObject.SetActive(false);
