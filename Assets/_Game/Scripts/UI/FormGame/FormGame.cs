@@ -112,6 +112,8 @@ public class FormGame : MonoBehaviour
     {
         PauseGame();
         popupWin.gameObject.SetActive(true);
+
+        SoundManager.Ins.ChangeSound(SoundType.GAME_WIN);
     }
 
     public void OpenPopupSetting()
@@ -120,6 +122,8 @@ public class FormGame : MonoBehaviour
         popupSetting.gameObject.SetActive(true);
         popupSetting.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
         popupSetting.tf.DOScale(Vector3.one, 0.5f);
+
+        SoundManager.Ins.ChangeSound(SoundType.POPUP_CLICK);
     }
 
     public void OpenPopupShop()
@@ -128,6 +132,8 @@ public class FormGame : MonoBehaviour
         popupShop.gameObject.SetActive(true);
         popupShop.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
         popupShop.tf.DOScale(Vector3.one, 0.5f);
+
+        SoundManager.Ins.ChangeSound(SoundType.POPUP_CLICK);
     }
     #endregion 
 

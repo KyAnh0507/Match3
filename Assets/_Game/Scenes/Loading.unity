@@ -269,12 +269,12 @@ MonoBehaviour:
   bgAudio: {fileID: 207446699}
   fxAudio: {fileID: 207446701}
   bgClip: {fileID: 8300000, guid: 9080244e9d3d70b449a322d47cd04ea3, type: 3}
-  screwInsertClip: {fileID: 0}
-  uiClickClip: {fileID: 0}
-  popupClip: {fileID: 0}
-  gameWinClip: {fileID: 0}
-  metalClip1: {fileID: 0}
-  metalClip2: {fileID: 0}
+  screwInsertClip: {fileID: 8300000, guid: 15d0adec074a4fb4f9e9fb9526b5f58f, type: 3}
+  uiClickClip: {fileID: 8300000, guid: 5b78658b7b4fda24b9561011a59a5e30, type: 3}
+  popupClip: {fileID: 8300000, guid: 0f08244da46459549945f9e937e8a4bc, type: 3}
+  gameWinClip: {fileID: 8300000, guid: 236010fe44f50e047a39cf7265456c17, type: 3}
+  metalClip1: {fileID: 8300000, guid: 7792f6a4f6dee9e40a13fceb0af4d6e5, type: 3}
+  metalClip2: {fileID: 8300000, guid: 2d6f01751c5cbe84283a1ac12bb8912c, type: 3}
 --- !u!82 &207446701
 AudioSource:
   m_ObjectHideFlags: 0
@@ -412,6 +412,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 540, y: 960, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &514946602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514946603}
+  m_Layer: 0
+  m_Name: VibrateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &514946603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514946602}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 590.2016, y: 1060.788, z: -6.4518633}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1509,3 +1540,4 @@ SceneRoots:
   - {fileID: 207446698}
   - {fileID: 1024291485}
   - {fileID: 1696861238}
+  - {fileID: 514946603}

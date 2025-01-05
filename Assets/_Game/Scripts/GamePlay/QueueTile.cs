@@ -92,6 +92,8 @@ public class QueueTile : MonoBehaviour
             tile_screws[numberScrew].screw = screw;
             screw.Move(tile_screws[numberScrew].tile.TF.position);
             numberScrew++;
+
+            SoundManager.Ins.ChangeSound(SoundType.SCREW_INSERT);
         }
     }
 

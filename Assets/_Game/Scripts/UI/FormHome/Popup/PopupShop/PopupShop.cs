@@ -81,6 +81,9 @@ public class PopupShop : MonoBehaviour
                 UIManager.Ins.formGame.LoadBooster();
             }
         }
+
+        SoundManager.Ins.ChangeSound(SoundType.UI_CLICK);
+        VibrateManager.Ins.TriggerVibrate();
     }
 
     public void BuyTheme(UIShopItemTheme uiShopItemTheme)
@@ -109,6 +112,9 @@ public class PopupShop : MonoBehaviour
                 break;
         }
         UIManager.Ins.LoadBackground();
+
+        SoundManager.Ins.ChangeSound(SoundType.UI_CLICK);
+        VibrateManager.Ins.TriggerVibrate();
     }
 
     public void SelectTheme(UIShopItemTheme uiShopItemTheme)
@@ -117,6 +123,9 @@ public class PopupShop : MonoBehaviour
         DataManager.Ins.dataSaved.theme = uiShopItemTheme.nTheme;
         uiShopItemTheme.Buy();
         UIManager.Ins.LoadBackground();
+
+        SoundManager.Ins.ChangeSound(SoundType.UI_CLICK);
+        VibrateManager.Ins.TriggerVibrate();
     }
     public void ParticalFinish()
     {

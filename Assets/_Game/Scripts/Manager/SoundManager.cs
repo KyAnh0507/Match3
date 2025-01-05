@@ -28,9 +28,9 @@ public class SoundManager : Singleton<SoundManager>
         bgAudio.mute = !b;
     }
 
-    public void ChangeSoundSetting()
+    public void ChangeSoundSetting(bool b)
     {
-        DataManager.Ins.dataSaved.isSoundOn = !DataManager.Ins.dataSaved.isSoundOn;
+        DataManager.Ins.dataSaved.isSoundOn = b;
         fxAudio.mute = !DataManager.Ins.dataSaved.isSoundOn;
     }
 

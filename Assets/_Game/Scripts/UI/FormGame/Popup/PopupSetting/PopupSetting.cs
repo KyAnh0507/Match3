@@ -27,16 +27,22 @@ public class PopupSetting : MonoBehaviour
 
     public void ActiveMusic(bool b)
     {
-        DataManager.Ins.dataSaved.isMusicOn = b;
+        SoundManager.Ins.ChangeMusicSetting(b);
         musicOn.SetActive(DataManager.Ins.dataSaved.isMusicOn);
         musicOff.SetActive(!DataManager.Ins.dataSaved.isMusicOn);
+
+        SoundManager.Ins.ChangeSound(SoundType.UI_CLICK);
+        VibrateManager.Ins.TriggerVibrate();
     }
 
     public void ActiveSound(bool b)
     {
-        DataManager.Ins.dataSaved.isSoundOn = b;
+        SoundManager.Ins.ChangeSoundSetting(b);
         soundOn.SetActive(DataManager.Ins.dataSaved.isSoundOn);
         soundOff.SetActive(!DataManager.Ins.dataSaved.isSoundOn);
+
+        SoundManager.Ins.ChangeSound(SoundType.UI_CLICK);
+        VibrateManager.Ins.TriggerVibrate();
     }
 
     public void ActiveVibrate(bool b)
@@ -44,6 +50,9 @@ public class PopupSetting : MonoBehaviour
         DataManager.Ins.dataSaved.isVibrate = b;
         vibrateOn.SetActive(DataManager.Ins.dataSaved.isVibrate);
         vibrateOff.SetActive(!DataManager.Ins.dataSaved.isVibrate);
+
+        SoundManager.Ins.ChangeSound(SoundType.UI_CLICK);
+        VibrateManager.Ins.TriggerVibrate();
     }
     public void Close()
     {
