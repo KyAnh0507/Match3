@@ -919,7 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   formLoading: {fileID: 917900079}
   fadePanel: {fileID: 970960223}
   timeFadeIn: 0
-  timeFadeOut: 0.5
+  timeFadeOut: 1
 --- !u!1 &1100061671
 GameObject:
   m_ObjectHideFlags: 0

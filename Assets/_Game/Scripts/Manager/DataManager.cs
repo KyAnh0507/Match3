@@ -189,8 +189,8 @@ public class DataManager : Singleton<DataManager>
 
             level = 0;
             indexLevel = 0;
-            coin = 0;
-            gems = 0;
+            coin = 2000;
+            gems = 2000;
 
             //Theme
             theme = 0;

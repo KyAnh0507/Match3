@@ -33,6 +33,7 @@ public class LevelManager : Singleton<LevelManager>
         UIManager.Ins.formGame.ResumeGame();
         GameManager.Ins.ChangeState(GameState.GAMEPLAY);
 
+        UIManager.Ins.formGame.textLevel.text = Constant.LEVEL + " " + (DataManager.Ins.dataSaved.indexLevel + 1).ToString();
     }
     public void LoadLevel()
     {
@@ -47,6 +48,8 @@ public class LevelManager : Singleton<LevelManager>
         UIManager.Ins.formGame.isPauseGame = false;
         UIManager.Ins.formGame.ResumeGame();
         GameManager.Ins.ChangeState(GameState.GAMEPLAY);
+
+        UIManager.Ins.formGame.textLevel.text = Constant.LEVEL + " " + (DataManager.Ins.dataSaved.indexLevel + 1).ToString();
     }
 
     public void Victory()
