@@ -20,6 +20,7 @@ public class FormGame : MonoBehaviour
     public PopupWin popupWin;
     public PopupShop popupShop;
     public PopupSetting popupSetting;
+    public PopupPauseGame popupPauseGame;
 
     public Booster boosterAdd1;
     public Booster boosterDelete;
@@ -114,6 +115,14 @@ public class FormGame : MonoBehaviour
         popupWin.gameObject.SetActive(true);
 
         SoundManager.Ins.ChangeSound(SoundType.GAME_WIN);
+    }
+
+    public void OpenPopupPause()
+    {
+        PauseGame();
+        popupPauseGame.gameObject.SetActive(true);
+
+        SoundManager.Ins.ChangeSound(SoundType.POPUP_CLICK);
     }
 
     public void OpenPopupSetting()
