@@ -182,6 +182,29 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
             }
         }
     }
+
+    public int nIronVaCham = 0;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (CreateLeveManager.ins != null)
+        {
+            if (collision.collider.CompareTag("iron"))
+            {
+                nIronVaCham++;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (CreateLeveManager.ins != null)
+        {
+            if (collision.collider.CompareTag("iron"))
+            {
+                nIronVaCham--;
+            }
+        }
+    }
 }
 
 [System.Serializable]
