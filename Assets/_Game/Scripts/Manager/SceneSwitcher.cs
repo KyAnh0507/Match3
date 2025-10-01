@@ -46,5 +46,15 @@ public class SceneSwitcher : MonoBehaviour
             EditorSceneManager.OpenScene("Assets/_Game/Scenes/GameColorPencil.unity");
         }
     }
+
+    [MenuItem("Scenes/CreateLevel #5")]
+    public static void OpenCreateLevel()
+    {
+        if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            //EditorSceneManager.OpenScene("Assets/_Game/Scenes/Home.unity");
+            EditorSceneManager.OpenScene("Assets/_Game/Scenes/CreateLevel.unity");
+        }
+    }
 }
 #endif

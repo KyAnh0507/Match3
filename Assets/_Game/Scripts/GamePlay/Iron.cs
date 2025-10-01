@@ -14,7 +14,11 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
     public Rigidbody2D rb;
     public SpriteRenderer spriteIron;
     public SortingGroup sortingGroup;
+
+    public int id;
+    public PolygonCollider2D polygonCollider;
     public int layer;
+    public bool hasIce;
 
     public bool isTrigger = false;
 

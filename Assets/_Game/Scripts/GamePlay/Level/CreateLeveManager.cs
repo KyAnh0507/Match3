@@ -34,15 +34,13 @@ public class CreateLeveManager : MonoBehaviour
 
     [Header("Property")]
     public List<SnakeBulletPreset> snakeBulletPresets = new List<SnakeBulletPreset>();
+    public List<Iron> irons = new List<Iron>();
 
-
-    public TMP_InputField inputField_soCot;
-    public TMP_InputField inputField_soHang;
+    public TMP_InputField inputField_soLayer;
     public TMP_InputField inputField_level;
 
     public Camera mainCamera;
-    public int caroStatus = 0; // 0 là hole, 1 là snake, 2 là wall
-    public int realSnakeCount = 0;
+    public int ironCount = 0;
     public Image img_hole;
     public Image img_snake;
     public Image img_wall;
@@ -55,6 +53,8 @@ public class CreateLeveManager : MonoBehaviour
     public BodyPart tailPrefab;
     public Image currentColorImage;
     public TMP_Text txt_snakeCount;
+
+    public Iron ironPrefab;
 
     private void Awake()
     {
@@ -137,7 +137,6 @@ public class CreateLeveManager : MonoBehaviour
 
     public void Btn_hole()
     {
-        caroStatus = 0;
         img_hole.color = Color.yellow;
         img_snake.color = Color.white;
         img_wall.color = Color.white;
@@ -146,7 +145,6 @@ public class CreateLeveManager : MonoBehaviour
 
     public void Btn_snake()
     {
-        caroStatus = 1;
         img_hole.color = Color.white;
         img_snake.color = Color.yellow;
         img_wall.color = Color.white;
@@ -155,7 +153,6 @@ public class CreateLeveManager : MonoBehaviour
 
     public void Btn_wall()
     {
-        caroStatus = 2;
         img_hole.color = Color.white;
         img_snake.color = Color.white;
         img_wall.color = Color.yellow;
@@ -164,7 +161,6 @@ public class CreateLeveManager : MonoBehaviour
 
     public void Btn_tunnel()
     {
-        caroStatus = 3;
         img_hole.color = Color.white;
         img_snake.color = Color.white;
         img_wall.color = Color.white;
@@ -429,9 +425,9 @@ public class CreateLeveManager : MonoBehaviour
         AssetDatabase.SaveAssets();
     }
 
-    /*public T FindOrCreateAsset<T>(string folderPath, string assetName) where T : ScriptableObject
+    public T FindOrCreateAsset<T>(string folderPath, string assetName) where T : ScriptableObject
     {
-        *//*// Đảm bảo folder tồn tại
+        // Đảm bảo folder tồn tại
         if (!AssetDatabase.IsValidFolder(folderPath))
         {
             string[] parts = folderPath.Split('/');
@@ -463,21 +459,20 @@ public class CreateLeveManager : MonoBehaviour
             Debug.Log($"✅ Found existing {typeof(T).Name} at: {assetPath}");
         }
 
-        return asset;*//*
-    }*/
+        return asset;
+    }
 
     public void btn_loadLevel()
     {
-        /*Btn_clear();
+        Btn_clear();
 
         if (inputField_level.text == "") return;
         assetName = "lv " + inputField_level.text;
-        Level_SO level = FindOrCreateAsset<Level_SO>(folder, assetName);
+        LevelGameModel level = FindOrCreateAsset<LevelGameModel>(folder, assetName);
 
-        inputField_soCot.text = level.width.ToString();
-        inputField_soHang.text = level.height.ToString();
+        inputField_soLayer.text = level.levelModel.soLayer.ToString();
 
-        realSnakeCount = level.snakeDatas.Count;
+        ironCount = level.levelModel.ironModes.Length;
 
         //txt_snakeCount.text = "snake: " + level.snakeDatas.Count;
 
@@ -486,16 +481,23 @@ public class CreateLeveManager : MonoBehaviour
 
 
         // spawn rắn
-        for (int i = 0; i < level.snakeDatas.Count; i++)
+        for (int i = 0; i < level.levelModel.ironModes.Length; i++)
         {
-            Snake _snake = Instantiate(snakePrefab);
-            snakes.Add(_snake);
-            _snake.index = level.snakeDatas[i].index;
-            _snake.bullet = level.snakeDatas[i].bullet;
-            _snake.colorType = level.snakeDatas[i].colorType;
-            _snake.curCaroIndexs = level.snakeDatas[i].curCaroIndexs;
+            Iron iron = Instantiate(ironPrefab);
+            irons.Add(iron);
+            iron.id = level.levelModel.ironModes[i].id;
+            iron.layer = level.levelModel.ironModes[i].layer;
+            iron.hasIce = level.levelModel.ironModes[i].hasIce;
+            iron.polygonCollider = iron .gameObject.AddComponent<PolygonCollider2D>();
+            iron.polygonCollider.pathCount = level.levelModel.ironModes[i].polygonColliderPoints.Length;
+            iron.polygonCollider.SetPath(0, level.levelModel.ironModes[i].polygonColliderPoints);
+            iron.transform.position = level.levelModel.ironModes[i].transModel.position;
+            iron.transform.rotation = Quaternion.Euler(level.levelModel.ironModes[i].transModel.rotation);
+            iron.transform.localScale = level.levelModel.ironModes[i].transModel.localScale;
 
-            _snake.coConThu2 = level.snakeDatas[i].coConThu2;
+
+
+            /*_snake.coConThu2 = level.snakeDatas[i].coConThu2;
             _snake.colorConthu2 = level.snakeDatas[i].colorConthu2;
             _snake.indexConThu2 = level.snakeDatas[i].indexConThu2;
             _snake.bulletConThu2 = level.snakeDatas[i].bulletConThu2;
@@ -504,11 +506,6 @@ public class CreateLeveManager : MonoBehaviour
             {
                 realSnakeCount += 1;
             }
-
-            _snake.numLock = level.snakeDatas[i].numLock;
-            _snake.numIce = level.snakeDatas[i].numIce;
-            _snake.numCocoon = level.snakeDatas[i].numCocoon;
-
 
             for (int j = 0; j < level.snakeDatas[i].curCaroIndexs.Count; j++)
             {
@@ -575,11 +572,11 @@ public class CreateLeveManager : MonoBehaviour
             _snake.txt_index.text = _snake.index.ToString();
             _snake.txt_bullet.text = _snake.bullet.ToString();
 
-            if (_snake.coConThu2) _snake.txt_index.text += "*";
+            if (_snake.coConThu2) _snake.txt_index.text += "*";*/
 
         }
 
-        for (int i = 0; i < level.caroDatas.Count; i++)
+        /*for (int i = 0; i < level.caroDatas.Count; i++)
         {
             if (level.caroDatas[i].isWall)
             {
