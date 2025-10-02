@@ -100,18 +100,23 @@ public class CreateLeveManager : MonoBehaviour
         {
             for (int j = 0; j < soIron1Layer; j++)
             {
-                int m = -1, n = -1;
+                int m = -1, n = -1, l = 0;
                 do
                 {
-                    int m = Random.Range(0, 9) - 4;
-                    int n = Random.Range(0, 9) - 4;
+                    l++;
+                    m = Random.Range(0, 9) - 4;
+                    n = Random.Range(0, 9) - 4;
                     Iron iron = Instantiate(ironPrefabs[Random.Range(0, ironPrefabs.Count)], tfLevel);
-
+                    iron.transform.position = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
+                    iron.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 12) * 30));
+                    
+                    yield return new WaitForSeconds(0.1f);
+                    if (iron.nIronVaCham > 0) continue;
                     for (int k = 0; k < iron.hole1Irons.Count; k++)
                     {
                         this.hole1Irons.Add(iron.hole1Irons[i]);
                     }
-                }while (true);
+                }while (l < 70);
                 
                 yield return new WaitForSeconds(0.1f);
             }
@@ -130,7 +135,7 @@ public class CreateLeveManager : MonoBehaviour
                 r = Random.Range(0, colors.Count);
             } while (randomColors.ContainsKey(r) && l < 500);
             if (l >= 500) Debug.LogError("Không tạo được colorrrrrrrr");
-            randomColors.Add(r, hole1Irons.Count / soColor);
+            randomColors.Add(r, hole1Irons.Count / soColor + (i < (hole1Irons.Count % soColor) ? 3 : 0));
 
         }
         yield return new WaitForSeconds(0.1f);
