@@ -311,66 +311,39 @@ public class CreateLeveManager : MonoBehaviour
 
     public void Btn_save()
     {
-        /*if (inputField_level.text == "") return;
+        if (inputField_level.text != "") assetName = "lv " + inputField_level.text;
+        else assetName = "lv " + "2000";
 
-        assetName = "lv " + inputField_level.text;
-        Level_SO level = FindOrCreateAsset<Level_SO>(folder, assetName);
+        LevelGameModel level = FindOrCreateAsset<LevelGameModel>(folder, assetName);
 
-        level.width = int.Parse(inputField_soCot.text);
-        level.height = int.Parse(inputField_soHang.text);
+        level.levelModel.soLayer = int.Parse(inputField_soLayer.text);
+        level.levelModel.hole2Models.Clear();
+        level.levelModel.ironModes.Clear();
+        level.levelModel.keyModels.Clear();
 
-        level.snakeDatas.Clear();
-        level.caroDatas.Clear();
-
-        snakes.Sort((a, b) => a.index.CompareTo(b.index)); // sắp xếp lại theo index
-
-
-        for (int i = 0; i < snakes.Count; i++)
+        for (int i = 0; i < irons.Count; i++)
         {
-            SnakeData snakeData = new SnakeData();
-            snakeData.colorType = snakes[i].colorType;
-            snakeData.curCaroIndexs = snakes[i].curCaroIndexs;
-            snakeData.index = snakes[i].index;
-            snakeData.bullet = snakes[i].bullet;
+            IronMode ironData = new IronMode();
+            ironData.id = irons[i].id;
+            ironData.layer = irons[i].layer;
+            ironData.hasIce = irons[i].hasIce;
+            ItemTransModel trans = new ItemTransModel(irons[i].transform.position, irons[i].transform.localScale, irons[i].transform.rotation.eulerAngles);
+            ironData.transModel = trans;
 
-            snakeData.coConThu2 = snakes[i].coConThu2;
-            snakeData.colorConthu2 = snakes[i].colorConthu2;
-            snakeData.indexConThu2 = snakes[i].indexConThu2;
-            snakeData.bulletConThu2 = snakes[i].bulletConThu2;
-
-            snakeData.isLock = snakes[i].numLock > 0;
-            snakeData.numLock = snakes[i].numLock;
-            snakeData.numIce = snakes[i].numIce;
-            snakeData.numCocoon = snakes[i].numCocoon;
-
-            level.snakeDatas.Add(snakeData);
-        }
-
-        //level.snakeDatas.Sort((a, b) => a.index.CompareTo(b.index)); // sắp xếp lại theo index
-
-        for (int i = 0; i < caros.Count; i++)
-        {
-            CaroData caroData = new CaroData();
-            caroData.isWall = caros[i].isWall;
-            caroData.isHole = caros[i].isHole;
-            caroData.isTunnel = caros[i].isTunnel;
-            caroData.holeColor = caros[i].holeColor;
-            if (caroData.isTunnel)
+            for (int j = 0; j < irons[i].polygonCollider.GetPath(0).Length; j++)
             {
-                caroData.queueSnakes = caros[i].tunnel.queueSnakes;
-                caroData.indexTempSnake = snakes.IndexOf(caros[i].tunnel.tempSnake); // chỉ số rắn tạm thời nếu có
-            }
-            caroData.isSpecialHole = caros[i].isSpecialHole;
+                ironData.polygonColliderPoints.Add(irons[i].polygonCollider.GetPath(0)[j]);
 
-            level.caroDatas.Add(caroData);
-        
+            }
+
+            level.levelModel.ironModes.Add(ironData);
         }
 
-        
+
 
         // Đánh dấu thay đổi và lưu lại
         EditorUtility.SetDirty(level);
-        AssetDatabase.SaveAssets();*/
+        AssetDatabase.SaveAssets();
     }
 
     public void Btn_save(int lv)
@@ -482,16 +455,16 @@ public class CreateLeveManager : MonoBehaviour
 
         inputField_soLayer.text = level.levelModel.soLayer.ToString();
 
-        ironCount = level.levelModel.ironModes.Length;
+        ironCount = level.levelModel.ironModes.Count;
 
         //txt_snakeCount.text = "snake: " + level.snakeDatas.Count;
 
         // tạo caro
-        Btn_create();
+        //Btn_create();
 
 
         // spawn rắn
-        for (int i = 0; i < level.levelModel.ironModes.Length; i++)
+        for (int i = 0; i < level.levelModel.ironModes.Count; i++)
         {
             Iron iron = Instantiate(ironTemplate[level.levelModel.ironModes[i].id], tfLevel);
             irons.Add(iron);
@@ -499,13 +472,12 @@ public class CreateLeveManager : MonoBehaviour
             iron.layer = level.levelModel.ironModes[i].layer;
             iron.hasIce = level.levelModel.ironModes[i].hasIce;
             iron.polygonCollider = iron .gameObject.AddComponent<PolygonCollider2D>();
-            iron.polygonCollider.pathCount = level.levelModel.ironModes[i].polygonColliderPoints.Length;
             iron.polygonCollider.SetPath(0, level.levelModel.ironModes[i].polygonColliderPoints);
             iron.transform.position = level.levelModel.ironModes[i].transModel.position;
             iron.transform.rotation = Quaternion.Euler(level.levelModel.ironModes[i].transModel.rotation);
             iron.transform.localScale = level.levelModel.ironModes[i].transModel.localScale;
 
-            for (int j = 0; j < level.levelModel.ironModes[i].holeModels.Length; j++)
+            for (int j = 0; j < level.levelModel.ironModes[i].holeModels.Count; j++)
             {
                 Hole1Iron hole1Iron = Instantiate(hole1Prefab, iron.transform);
                 hole1Iron.trans.localPosition = level.levelModel.ironModes[i].holeModels[j].transModel.position;

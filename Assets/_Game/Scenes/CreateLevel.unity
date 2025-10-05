@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -354,13 +354,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   irons: []
   hole1Irons: []
-  colors: []
+  colors:
+  - {r: 1, g: 0.30588236, b: 0.30588236, a: 1}
+  - {r: 1, g: 0.9529412, b: 0.30588236, a: 1}
+  - {r: 1, g: 0.30588236, b: 0.94509804, a: 1}
+  - {r: 1, g: 0.30588236, b: 0.5254902, a: 1}
+  - {r: 0.64705884, g: 0.30588236, b: 1, a: 1}
+  - {r: 0.3372549, g: 0.30588236, b: 1, a: 1}
+  - {r: 0.30588236, g: 0.627451, b: 1, a: 1}
+  - {r: 0.30588236, g: 1, b: 0.94509804, a: 1}
+  - {r: 0.30588236, g: 1, b: 0.5686275, a: 1}
+  - {r: 0.7647059, g: 1, b: 0.30588236, a: 1}
   ironPrefabs: []
   inputField_soLayer: {fileID: 742195073}
   inputField_soIron1Layer: {fileID: 564150791}
   inputField_soColor: {fileID: 267093082}
   inputField_level: {fileID: 548160409}
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 1156069495}
   ironCount: 0
   img_hole: {fileID: 0}
   img_snake: {fileID: 0}
