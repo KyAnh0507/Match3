@@ -37,6 +37,7 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
 
     private void Update()
     {
+        if (CreateLeveManager.ins != null) return;
         if (HoleHasScrew() == 1)
         {
             int a = FindHoleHasScrew();

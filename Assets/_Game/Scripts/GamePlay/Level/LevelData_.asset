@@ -15,7 +15,27 @@ MonoBehaviour:
   level: 0
   levelModel:
     soLayer: 0
-    holeModels: []
-    ironModes: []
+    hole2Models: []
+    ironModes:
+    - id: 0
+      holeModels: []
+      transModel:
+        position:
+          x: 0
+          y: 0
+          z: 0
+        localScale:
+          x: 0
+          y: 0
+          z: 0
+        rotation:
+          x: 0
+          y: 0
+          z: 0
+      layer: 0
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints: []
+      hasIce: 0
     keyModels: []
     boardIncreaseSize: 0

@@ -12,27 +12,6 @@ public class CreateLeveManager : MonoBehaviour
 {
     public static CreateLeveManager ins;
 
-    [PropertyOrder(-1)]
-    [Button("Apply Bullets")]
-    public void ApplyBullets()
-    {
-        /*foreach (Snake snake in snakes)
-        {
-            foreach (SnakeBulletPreset preset in snakeBulletPresets)
-            {
-                if (snake.curCaroIndexs.Count == preset.length)
-                {
-                    snake.bullet = preset.bullet;
-                    snake.txt_bullet.text = snake.bullet.ToString();
-                    if (snake.coConThu2) snake.bulletConThu2 = preset.bullet;
-                    break;
-                }
-            }
-        }*/
-    }
-
-
-
     [Header("Property")]
     public List<Iron> irons = new List<Iron>();
     public List<Hole1Iron> hole1Irons = new List<Hole1Iron>();
@@ -46,21 +25,14 @@ public class CreateLeveManager : MonoBehaviour
 
     public Camera mainCamera;
     public int ironCount = 0;
-    public Image img_hole;
-    public Image img_snake;
-    public Image img_wall;
-    public Image img_tunnel;
     public ColorType colorType;
     public TMP_Dropdown dropdown;
 
-    public BodyPart headPrefab;
-    public BodyPart bodyPrefab;
-    public BodyPart tailPrefab;
     public Image currentColorImage;
-    public TMP_Text txt_snakeCount;
 
     public List<Iron> ironTemplate;
     public Hole1Iron hole1Prefab;
+    public Screw screwPrefab;
 
     public Transform tfLevel;
     private void Awake()
@@ -147,34 +119,7 @@ public class CreateLeveManager : MonoBehaviour
 
     public void Btn_hole()
     {
-        img_hole.color = Color.yellow;
-        img_snake.color = Color.white;
-        img_wall.color = Color.white;
-        img_tunnel.color = Color.white;
-    }
-
-    public void Btn_snake()
-    {
-        img_hole.color = Color.white;
-        img_snake.color = Color.yellow;
-        img_wall.color = Color.white;
-        img_tunnel.color = Color.white;
-    }
-
-    public void Btn_wall()
-    {
-        img_hole.color = Color.white;
-        img_snake.color = Color.white;
-        img_wall.color = Color.yellow;
-        img_tunnel.color = Color.white;
-    }
-
-    public void Btn_tunnel()
-    {
-        img_hole.color = Color.white;
-        img_snake.color = Color.white;
-        img_wall.color = Color.white;
-        img_tunnel.color = Color.yellow;
+        
     }
 
     public void OnChangeColor()
@@ -187,70 +132,6 @@ public class CreateLeveManager : MonoBehaviour
     {
         /*colorType = (ColorType)i;
         currentColorImage.color = dic_colorMaterials[colorType]._material.color;*/
-    }
-
-    public void CreateSnake()
-    {
-        /*if (previousCaro == null)
-        {
-            currentSnake.colorType = colorType;
-            currentSnake.transform.position = caro_CreateLevel.transform.position;
-            BodyPart head = Instantiate(headPrefab, currentSnake.transform);
-            head.transform.position = caro_CreateLevel.transform.position;
-            currentSnake.bodyParts.Add(head);
-            head.renderer1.material = dic_colorMaterials[colorType]._material;
-            head.renderer2.material = dic_colorMaterials[colorType]._material;
-
-            Material[] mats = head.renderer2.materials; // tạo bản sao array material hiện tại
-            if (mats.Length > 1)
-            {
-                mats[1] = dic_colorMaterials[colorType]._material; // gán vào Element 1
-                head.renderer2.materials = mats; // gán lại mảng material
-            }
-
-            currentSnake.curCaroIndexs = new List<int>();
-        }
-        else
-        {
-            BodyPart tailPart = Instantiate(tailPrefab, currentSnake.transform);
-            tailPart.transform.position = caro_CreateLevel.transform.position;
-            currentSnake.bodyParts.Add(tailPart);
-            tailPart.transform.LookAt(previousCaro.transform.position);
-            tailPart.renderer1.material = dic_colorMaterials[colorType]._material;
-            tailPart.renderer2.material = dic_colorMaterials[colorType]._material;
-
-            Material[] mats = tailPart.renderer1.materials; // tạo bản sao array material hiện tại
-            if (mats.Length > 1)
-            {
-                mats[1] = dic_colorMaterials[colorType]._material; // gán vào Element 1
-                tailPart.renderer1.materials = mats; // gán lại mảng material
-            }
-
-            currentSnake.bodyParts[currentSnake.bodyParts.Count - 2].transform.LookAt(2 * previousCaro.transform.position - caro_CreateLevel.transform.position);
-
-            if (currentSnake.bodyParts.Count > 2)
-            {
-                BodyPart bodyPart = Instantiate(bodyPrefab, currentSnake.transform);
-                bodyPart.transform.position = currentSnake.bodyParts[currentSnake.bodyParts.Count - 2].transform.position;
-                bodyPart.transform.eulerAngles = currentSnake.bodyParts[currentSnake.bodyParts.Count - 2].transform.eulerAngles;
-                GameObject waitDes = currentSnake.bodyParts[currentSnake.bodyParts.Count - 2].gameObject;
-                currentSnake.bodyParts[currentSnake.bodyParts.Count - 2] = bodyPart;
-                Destroy(waitDes);
-
-                Material[] mats1 = bodyPart.renderer1.materials; // tạo bản sao array material hiện tại
-                Material[] mats2 = bodyPart.renderer2.materials; // tạo bản sao array material hiện tại
-                                                                 // if (mats.Length > 1)
-                                                                 // {
-                mats1[1] = dic_colorMaterials[colorType]._material; //gán vào Element 1
-                mats2[1] = dic_colorMaterials[colorType]._material; // gán vào Element 1
-                bodyPart.renderer1.materials = mats1; // gán lại mảng material
-                bodyPart.renderer2.materials = mats2;
-            }
-        }
-
-        previousCaro = caro_CreateLevel;
-
-        currentSnake.curCaroIndexs.Add(caros.IndexOf(caro_CreateLevel));*/
     }
 
     public void Btn_createSnake()
@@ -306,9 +187,10 @@ public class CreateLeveManager : MonoBehaviour
         txt_snakeCount.text = "";*/
     }
 
-    string folder = "Assets/0_Game/_level_SO";
+    string folder = "Assets/_Game/_level_SO";
     string assetName = "lv 1";
 
+    [Button]
     public void Btn_save()
     {
         if (inputField_level.text != "") assetName = "lv " + inputField_level.text;
@@ -329,13 +211,25 @@ public class CreateLeveManager : MonoBehaviour
             ironData.hasIce = irons[i].hasIce;
             ItemTransModel trans = new ItemTransModel(irons[i].transform.position, irons[i].transform.localScale, irons[i].transform.rotation.eulerAngles);
             ironData.transModel = trans;
+            ironData.polygonColliderPoints = new List<Vector2>();
+            ironData.holeModels = new List<Hole1Model>();
 
             for (int j = 0; j < irons[i].polygonCollider.GetPath(0).Length; j++)
             {
                 ironData.polygonColliderPoints.Add(irons[i].polygonCollider.GetPath(0)[j]);
-
             }
 
+            for (int j = 0;j < irons[i].hole1Irons.Count; j++)
+            {
+                Hole1Model hole1Model = new Hole1Model();
+                ItemTransModel h = new ItemTransModel(irons[i].hole1Irons[j].transform.localPosition, irons[i].hole1Irons[j].transform.localScale, irons[i].hole1Irons[j].transform.localRotation.eulerAngles);
+                hole1Model.transModel = h;
+                hole1Model.screwType = irons[i].hole1Irons[j].screwType;
+                hole1Model.hasScrew = irons[i].hole1Irons[j].hasScrew;
+                hole1Model.hasLock = irons[i].hole1Irons[j].hasLock;
+
+                ironData.holeModels.Add(hole1Model);
+            }
             level.levelModel.ironModes.Add(ironData);
         }
 
@@ -445,12 +339,13 @@ public class CreateLeveManager : MonoBehaviour
         return asset;
     }
 
+    [Button]
     public void btn_loadLevel()
     {
         Btn_clear();
 
-        if (inputField_level.text == "") return;
-        assetName = "lv " + inputField_level.text;
+        if (inputField_level.text == "") assetName = "lv " + "2000";
+        else assetName = "lv " + inputField_level.text;
         LevelGameModel level = FindOrCreateAsset<LevelGameModel>(folder, assetName);
 
         inputField_soLayer.text = level.levelModel.soLayer.ToString();

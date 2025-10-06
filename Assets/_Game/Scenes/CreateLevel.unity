@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &8725343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8725344}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8725344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &29358973
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,24 +403,18 @@ MonoBehaviour:
   inputField_level: {fileID: 548160409}
   mainCamera: {fileID: 1156069495}
   ironCount: 0
-  img_hole: {fileID: 0}
-  img_snake: {fileID: 0}
-  img_wall: {fileID: 0}
-  img_tunnel: {fileID: 0}
   colorType: 0
   dropdown: {fileID: 0}
-  headPrefab: 0
-  bodyPrefab: 0
-  tailPrefab: 0
   currentColorImage: {fileID: 0}
-  txt_snakeCount: {fileID: 0}
-  ironTemplate: []
-  hole1Prefab: {fileID: 0}
-  tfLevel: {fileID: 0}
+  ironTemplate:
+  - {fileID: 4820636548822094223, guid: 4910ed5839c855d4b9c3b1354439bbdc, type: 3}
+  hole1Prefab: {fileID: 4202438808743986008, guid: 29e4b8ed3dfc3cf4fb30f5b1f0c9dc1a, type: 3}
+  screwPrefab: {fileID: 4200317584786449188, guid: f3cccc6d84a42ad4cbb7212c920ceeba, type: 3}
+  tfLevel: {fileID: 8725344}
   sizeBroad: 0.6
   ironLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 258048
 --- !u!4 &87522380
 Transform:
   m_ObjectHideFlags: 0
@@ -3842,38 +3867,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1169215051
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,17 +4915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!1 &1691114692
 GameObject:
   m_ObjectHideFlags: 0
@@ -6049,4 +6031,5 @@ SceneRoots:
   - {fileID: 87522380}
   - {fileID: 76216123}
   - {fileID: 1772048172}
+  - {fileID: 8725344}
   - {fileID: 1509776972}
