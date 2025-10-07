@@ -48,7 +48,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3394325543139513595}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -66,7 +66,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!233 &758217269593993029
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3394325543139513595}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
@@ -207,7 +207,7 @@ MonoBehaviour:
   spriteIron: {fileID: 323206068911525501}
   sortingGroup: {fileID: 7894996661586988249}
   id: 0
-  polygonCollider: {fileID: 0}
+  polygonCollider: {fileID: 7921800511635250309}
   layer: 0
   hasIce: 0
   isTrigger: 0

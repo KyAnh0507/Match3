@@ -57,8 +57,15 @@ public class CreateLeveManager : MonoBehaviour
         StartCoroutine(CreateLevel());
     }
 
-    public float sizeBroad = 0.6f;
+    public float sizeBroad = 20f;
     public LayerMask ironLayerMask;
+
+    [Button]
+    public void CreateLevelRandom()
+    {
+        StartCoroutine(CreateLevel());
+    }
+    public int currentLayer = 0;
     public IEnumerator CreateLevel()
     {
         int soLayer = int.Parse(inputField_soLayer.text);
@@ -70,6 +77,7 @@ public class CreateLeveManager : MonoBehaviour
 
         for (int i = 0; i < soLayer; i++)
         {
+            currentLayer = i;
             for (int j = 0; j < soIron1Layer; j++)
             {
                 int m = -1, n = -1, l = 0;
@@ -78,17 +86,26 @@ public class CreateLeveManager : MonoBehaviour
                     l++;
                     m = Random.Range(0, 9) - 4;
                     n = Random.Range(0, 9) - 4;
-                    Iron iron = Instantiate(ironPrefabs[Random.Range(0, ironPrefabs.Count)], tfLevel);
-                    iron.transform.position = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
+                    Iron iron = Instantiate(ironTemplate[Random.Range(0, ironTemplate.Count)], tfLevel);
+                    iron.transform.localPosition = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
                     iron.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 12) * 30));
-                    
+                    Debug.Log("position:       " + iron.transform.localPosition);
+
                     yield return new WaitForSeconds(0.1f);
-                    if (iron.nIronVaCham > 0) continue;
+                    if (iron.nIronVaCham > 0)
+                    {
+                        Destroy(iron.gameObject);
+                        continue;
+                    }
+                    Debug.Log("m:       " + m + "  n:        " + n);
+                    Debug.Log("position:       " + iron.transform.localPosition);
+                    irons.Add(iron);
                     for (int k = 0; k < iron.hole1Irons.Count; k++)
                     {
-                        this.hole1Irons.Add(iron.hole1Irons[i]);
+                        this.hole1Irons.Add(iron.hole1Irons[k]);
                     }
-                }while (l < 70);
+                    break;
+                } while (l < 70);
                 
                 yield return new WaitForSeconds(0.1f);
             }
@@ -114,6 +131,11 @@ public class CreateLeveManager : MonoBehaviour
         if (hole1Irons.Count % 3 != 0)
         {
             Debug.LogError("So dinh khong chia het cho 3!!!!!!!!!!!");
+        }
+
+        for (int i = 0; i < hole1Irons.Count; i++)
+        {
+            hole1Irons[i].OnInit();
         }
     }
 
@@ -199,9 +221,9 @@ public class CreateLeveManager : MonoBehaviour
         LevelGameModel level = FindOrCreateAsset<LevelGameModel>(folder, assetName);
 
         level.levelModel.soLayer = int.Parse(inputField_soLayer.text);
-        level.levelModel.hole2Models.Clear();
+        /*level.levelModel.hole2Models.Clear();
         level.levelModel.ironModes.Clear();
-        level.levelModel.keyModels.Clear();
+        level.levelModel.keyModels.Clear();*/
 
         for (int i = 0; i < irons.Count; i++)
         {

@@ -35,6 +35,7 @@ public class Hole1Iron : MonoBehaviour
             screw.ChangeScrewType1(screwType);
             screw.OnInit(layer);
             screw.transform.SetParent(transform);
+            screw.transform.localScale *= 3;
         }
     }
     public void SetParent(Transform parent)

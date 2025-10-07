@@ -24,6 +24,7 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
 
     private void OnEnable()
     {
+        if (CreateLeveManager.ins != null) layer = CreateLeveManager.ins.currentLayer;
         ChangeLayer();
         
     }
@@ -191,18 +192,27 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
         {
             if (collision.collider.CompareTag("iron"))
             {
-                nIronVaCham++;
+                int b = collision.collider.transform.GetComponent<Iron>().layer;
+                if (b == this.layer)
+                {
+                    nIronVaCham++;
+                }
             }
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+
         if (CreateLeveManager.ins != null)
         {
             if (collision.collider.CompareTag("iron"))
             {
-                nIronVaCham--;
+                int b = collision.collider.transform.GetComponent<Iron>().layer;
+                if (b == this.layer)
+                {
+                    nIronVaCham++;
+                }
             }
         }
     }

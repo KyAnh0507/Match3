@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 8725343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -411,10 +411,11 @@ MonoBehaviour:
   hole1Prefab: {fileID: 4202438808743986008, guid: 29e4b8ed3dfc3cf4fb30f5b1f0c9dc1a, type: 3}
   screwPrefab: {fileID: 4200317584786449188, guid: f3cccc6d84a42ad4cbb7212c920ceeba, type: 3}
   tfLevel: {fileID: 8725344}
-  sizeBroad: 0.6
+  sizeBroad: 0.8
   ironLayerMask:
     serializedVersion: 2
     m_Bits: 258048
+  currentLayer: 0
 --- !u!4 &87522380
 Transform:
   m_ObjectHideFlags: 0
@@ -3824,7 +3825,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3848,13 +3849,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156069493}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6883546, y: 0, z: 0, w: 0.72537434}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 87, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1156069497
 MonoBehaviour:
   m_ObjectHideFlags: 0
