@@ -34,7 +34,7 @@ public class Hole1Iron : MonoBehaviour
             screw = Instantiate(CreateLeveManager.ins.screwPrefab, transform.position, Quaternion.identity);
             screw.ChangeScrewType1(screwType);
             screw.OnInit(layer);
-            screw.transform.SetParent(transform);
+            screw.transform.SetParent(CreateLeveManager.ins.tfScrew);
             screw.transform.localScale *= 3;
         }
     }

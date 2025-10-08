@@ -35,6 +35,7 @@ public class CreateLeveManager : MonoBehaviour
     public Screw screwPrefab;
 
     public Transform tfLevel;
+    public Transform tfScrew;
     private void Awake()
     {
         ins = this;
@@ -89,7 +90,6 @@ public class CreateLeveManager : MonoBehaviour
                     Iron iron = Instantiate(ironTemplate[Random.Range(0, ironTemplate.Count)], tfLevel);
                     iron.transform.localPosition = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
                     iron.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 12) * 30));
-                    Debug.Log("position:       " + iron.transform.localPosition);
 
                     yield return new WaitForSeconds(0.1f);
                     if (iron.nIronVaCham > 0)
@@ -97,8 +97,6 @@ public class CreateLeveManager : MonoBehaviour
                         Destroy(iron.gameObject);
                         continue;
                     }
-                    Debug.Log("m:       " + m + "  n:        " + n);
-                    Debug.Log("position:       " + iron.transform.localPosition);
                     irons.Add(iron);
                     for (int k = 0; k < iron.hole1Irons.Count; k++)
                     {
@@ -112,9 +110,63 @@ public class CreateLeveManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        if (hole1Irons.Count % 3 == 1)
+        {
+            currentLayer = soLayer;
+            int m = -1, n = -1, l = 0;
+            do
+            {
+                l++;
+                m = Random.Range(0, 9) - 4;
+                n = Random.Range(0, 9) - 4;
+                Iron iron = Instantiate(ironTemplate[Random.Range(0, ironTemplate.Count)], tfLevel);
+                iron.transform.localPosition = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
+                iron.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 12) * 30));
+
+                yield return new WaitForSeconds(0.1f);
+                if (iron.nIronVaCham > 0 || iron.hole1Irons.Count != 2)
+                {
+                    Destroy(iron.gameObject);
+                    continue;
+                }
+                irons.Add(iron);
+                for (int k = 0; k < iron.hole1Irons.Count; k++)
+                {
+                    this.hole1Irons.Add(iron.hole1Irons[k]);
+                }
+                break;
+            } while (l < 100);
+        }else if (hole1Irons.Count % 3 == 2)
+        {
+            currentLayer = soLayer;
+            int m = -1, n = -1, l = 0;
+            do
+            {
+                l++;
+                m = Random.Range(0, 9) - 4;
+                n = Random.Range(0, 9) - 4;
+                Iron iron = Instantiate(ironTemplate[Random.Range(0, ironTemplate.Count)], tfLevel);
+                iron.transform.localPosition = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
+                iron.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 12) * 30));
+
+                yield return new WaitForSeconds(0.1f);
+                if (iron.nIronVaCham > 0 || iron.hole1Irons.Count != 1)
+                {
+                    Destroy(iron.gameObject);
+                    continue;
+                }
+                irons.Add(iron);
+                for (int k = 0; k < iron.hole1Irons.Count; k++)
+                {
+                    this.hole1Irons.Add(iron.hole1Irons[k]);
+                }
+                break;
+            } while (l < 100);
+        }
+
         Dictionary<int, int> randomColors = new Dictionary<int, int>();
 
-        for (int i = 0; i < colors.Count; i++)
+        for (int i = 0; i < soColor; i++)
         {
             int r = -1;
             int l = 0;
@@ -124,8 +176,24 @@ public class CreateLeveManager : MonoBehaviour
                 r = Random.Range(0, colors.Count);
             } while (randomColors.ContainsKey(r) && l < 500);
             if (l >= 500) Debug.LogError("Không tạo được colorrrrrrrr");
-            randomColors.Add(r, hole1Irons.Count / soColor + (i < (hole1Irons.Count % soColor) ? 3 : 0));
-
+            randomColors.Add(r, (hole1Irons.Count / 3 / soColor + (i < ((hole1Irons.Count/3) % soColor) ? 1 : 0)) * 3);
+        }
+        List<int> rcolor = new List<int>();
+        foreach (int aaa in randomColors.Keys)
+        {
+            for (int i = 0; i < randomColors[aaa];i++)
+            {
+                rcolor.Add(aaa);
+            }
+        }
+        int nn = rcolor.Count;
+        while (nn > 1)
+        {
+            nn--;
+            int t = Random.Range(0, nn);
+            int tmp = rcolor[nn];
+            rcolor[nn] = rcolor[t];
+            rcolor[t] = tmp;
         }
         yield return new WaitForSeconds(0.1f);
         if (hole1Irons.Count % 3 != 0)
@@ -133,8 +201,12 @@ public class CreateLeveManager : MonoBehaviour
             Debug.LogError("So dinh khong chia het cho 3!!!!!!!!!!!");
         }
 
+
+        yield return new WaitForSeconds(0.1f);
+
         for (int i = 0; i < hole1Irons.Count; i++)
         {
+            hole1Irons[i].screwType = rcolor[i];
             hole1Irons[i].OnInit();
         }
     }

@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 8725343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -408,9 +408,12 @@ MonoBehaviour:
   currentColorImage: {fileID: 0}
   ironTemplate:
   - {fileID: 4820636548822094223, guid: 4910ed5839c855d4b9c3b1354439bbdc, type: 3}
+  - {fileID: 4820636548822094223, guid: 2ac4e935bbee9364e828137274f23e0d, type: 3}
+  - {fileID: 4820636548822094223, guid: c5606e953330be746889b407bc93ac05, type: 3}
   hole1Prefab: {fileID: 4202438808743986008, guid: 29e4b8ed3dfc3cf4fb30f5b1f0c9dc1a, type: 3}
   screwPrefab: {fileID: 4200317584786449188, guid: f3cccc6d84a42ad4cbb7212c920ceeba, type: 3}
   tfLevel: {fileID: 8725344}
+  tfScrew: {fileID: 1316952958}
   sizeBroad: 0.8
   ironLayerMask:
     serializedVersion: 2
@@ -4168,6 +4171,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215752737}
   m_CullTransparentMesh: 1
+--- !u!1 &1316952957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1316952958}
+  m_Layer: 0
+  m_Name: Screw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1316952958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316952957}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1366332177
 GameObject:
   m_ObjectHideFlags: 0
@@ -6034,3 +6068,4 @@ SceneRoots:
   - {fileID: 1772048172}
   - {fileID: 8725344}
   - {fileID: 1509776972}
+  - {fileID: 1316952958}
