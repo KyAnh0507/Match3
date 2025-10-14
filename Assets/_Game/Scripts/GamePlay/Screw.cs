@@ -89,6 +89,13 @@ public class Screw : GameUnit
         spriteScrewPins.color = GamePlay.Ins.color[screwType];
         this.screwType = screwType;
     }
+
+    public void ChangeScrewType1(int screwType)
+    {
+        spriteScrew.color = CreateLeveManager.ins.colors[screwType];
+        spriteScrewPins.color = CreateLeveManager.ins.colors[screwType];
+        this.screwType = screwType;
+    }
     public void ChangeLayer(int layer)
     {
         gameObject.layer = layer + 5;

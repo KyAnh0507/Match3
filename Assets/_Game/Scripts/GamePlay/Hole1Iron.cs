@@ -9,6 +9,7 @@ public class Hole1Iron : MonoBehaviour
     public Rigidbody2D rb;
     public int screwType;
     public bool hasScrew = true;
+    public bool hasLock = false;
     public Transform tf;
     public Screw screw;
     public int layer;
@@ -30,9 +31,11 @@ public class Hole1Iron : MonoBehaviour
     {
         if (hasScrew)
         {
-            screw = SimplePool.Spawn<Screw>(PoolType.Screw, transform.position, Quaternion.identity);
-            screw.ChangeScrewType(screwType);
+            screw = Instantiate(CreateLeveManager.ins.screwPrefab, transform.position, Quaternion.identity);
+            screw.ChangeScrewType1(screwType);
             screw.OnInit(layer);
+            screw.transform.SetParent(CreateLeveManager.ins.tfScrew);
+            screw.transform.localScale *= 3;
         }
     }
     public void SetParent(Transform parent)

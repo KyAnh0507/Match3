@@ -12,27 +12,6 @@ public class CreateLeveManager : MonoBehaviour
 {
     public static CreateLeveManager ins;
 
-    [PropertyOrder(-1)]
-    [Button("Apply Bullets")]
-    public void ApplyBullets()
-    {
-        /*foreach (Snake snake in snakes)
-        {
-            foreach (SnakeBulletPreset preset in snakeBulletPresets)
-            {
-                if (snake.curCaroIndexs.Count == preset.length)
-                {
-                    snake.bullet = preset.bullet;
-                    snake.txt_bullet.text = snake.bullet.ToString();
-                    if (snake.coConThu2) snake.bulletConThu2 = preset.bullet;
-                    break;
-                }
-            }
-        }*/
-    }
-
-
-
     [Header("Property")]
     public List<Iron> irons = new List<Iron>();
     public List<Hole1Iron> hole1Irons = new List<Hole1Iron>();
@@ -46,23 +25,17 @@ public class CreateLeveManager : MonoBehaviour
 
     public Camera mainCamera;
     public int ironCount = 0;
-    public Image img_hole;
-    public Image img_snake;
-    public Image img_wall;
-    public Image img_tunnel;
     public ColorType colorType;
     public TMP_Dropdown dropdown;
 
-    public BodyPart headPrefab;
-    public BodyPart bodyPrefab;
-    public BodyPart tailPrefab;
     public Image currentColorImage;
-    public TMP_Text txt_snakeCount;
 
     public List<Iron> ironTemplate;
     public Hole1Iron hole1Prefab;
+    public Screw screwPrefab;
 
     public Transform tfLevel;
+    public Transform tfScrew;
     private void Awake()
     {
         ins = this;
@@ -85,8 +58,15 @@ public class CreateLeveManager : MonoBehaviour
         StartCoroutine(CreateLevel());
     }
 
-    public float sizeBroad = 0.6f;
+    public float sizeBroad = 20f;
     public LayerMask ironLayerMask;
+
+    [Button]
+    public void CreateLevelRandom()
+    {
+        StartCoroutine(CreateLevel());
+    }
+    public int currentLayer = 0;
     public IEnumerator CreateLevel()
     {
         int soLayer = int.Parse(inputField_soLayer.text);
@@ -98,6 +78,7 @@ public class CreateLeveManager : MonoBehaviour
 
         for (int i = 0; i < soLayer; i++)
         {
+            currentLayer = i;
             for (int j = 0; j < soIron1Layer; j++)
             {
                 int m = -1, n = -1, l = 0;
@@ -106,26 +87,86 @@ public class CreateLeveManager : MonoBehaviour
                     l++;
                     m = Random.Range(0, 9) - 4;
                     n = Random.Range(0, 9) - 4;
-                    Iron iron = Instantiate(ironPrefabs[Random.Range(0, ironPrefabs.Count)], tfLevel);
-                    iron.transform.position = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
+                    Iron iron = Instantiate(ironTemplate[Random.Range(0, ironTemplate.Count)], tfLevel);
+                    iron.transform.localPosition = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
                     iron.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 12) * 30));
-                    
+
                     yield return new WaitForSeconds(0.1f);
-                    if (iron.nIronVaCham > 0) continue;
+                    if (iron.nIronVaCham > 0)
+                    {
+                        Destroy(iron.gameObject);
+                        continue;
+                    }
+                    irons.Add(iron);
                     for (int k = 0; k < iron.hole1Irons.Count; k++)
                     {
-                        this.hole1Irons.Add(iron.hole1Irons[i]);
+                        this.hole1Irons.Add(iron.hole1Irons[k]);
                     }
-                }while (l < 70);
+                    break;
+                } while (l < 70);
                 
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(0.1f);
         }
 
+        if (hole1Irons.Count % 3 == 1)
+        {
+            currentLayer = soLayer;
+            int m = -1, n = -1, l = 0;
+            do
+            {
+                l++;
+                m = Random.Range(0, 9) - 4;
+                n = Random.Range(0, 9) - 4;
+                Iron iron = Instantiate(ironTemplate[Random.Range(0, ironTemplate.Count)], tfLevel);
+                iron.transform.localPosition = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
+                iron.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 12) * 30));
+
+                yield return new WaitForSeconds(0.1f);
+                if (iron.nIronVaCham > 0 || iron.hole1Irons.Count != 2)
+                {
+                    Destroy(iron.gameObject);
+                    continue;
+                }
+                irons.Add(iron);
+                for (int k = 0; k < iron.hole1Irons.Count; k++)
+                {
+                    this.hole1Irons.Add(iron.hole1Irons[k]);
+                }
+                break;
+            } while (l < 100);
+        }else if (hole1Irons.Count % 3 == 2)
+        {
+            currentLayer = soLayer;
+            int m = -1, n = -1, l = 0;
+            do
+            {
+                l++;
+                m = Random.Range(0, 9) - 4;
+                n = Random.Range(0, 9) - 4;
+                Iron iron = Instantiate(ironTemplate[Random.Range(0, ironTemplate.Count)], tfLevel);
+                iron.transform.localPosition = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
+                iron.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 12) * 30));
+
+                yield return new WaitForSeconds(0.1f);
+                if (iron.nIronVaCham > 0 || iron.hole1Irons.Count != 1)
+                {
+                    Destroy(iron.gameObject);
+                    continue;
+                }
+                irons.Add(iron);
+                for (int k = 0; k < iron.hole1Irons.Count; k++)
+                {
+                    this.hole1Irons.Add(iron.hole1Irons[k]);
+                }
+                break;
+            } while (l < 100);
+        }
+
         Dictionary<int, int> randomColors = new Dictionary<int, int>();
 
-        for (int i = 0; i < colors.Count; i++)
+        for (int i = 0; i < soColor; i++)
         {
             int r = -1;
             int l = 0;
@@ -135,46 +176,44 @@ public class CreateLeveManager : MonoBehaviour
                 r = Random.Range(0, colors.Count);
             } while (randomColors.ContainsKey(r) && l < 500);
             if (l >= 500) Debug.LogError("Không tạo được colorrrrrrrr");
-            randomColors.Add(r, hole1Irons.Count / soColor + (i < (hole1Irons.Count % soColor) ? 3 : 0));
-
+            randomColors.Add(r, (hole1Irons.Count / 3 / soColor + (i < ((hole1Irons.Count/3) % soColor) ? 1 : 0)) * 3);
+        }
+        List<int> rcolor = new List<int>();
+        foreach (int aaa in randomColors.Keys)
+        {
+            for (int i = 0; i < randomColors[aaa];i++)
+            {
+                rcolor.Add(aaa);
+            }
+        }
+        int nn = rcolor.Count;
+        while (nn > 1)
+        {
+            nn--;
+            int t = Random.Range(0, nn);
+            int tmp = rcolor[nn];
+            rcolor[nn] = rcolor[t];
+            rcolor[t] = tmp;
         }
         yield return new WaitForSeconds(0.1f);
         if (hole1Irons.Count % 3 != 0)
         {
             Debug.LogError("So dinh khong chia het cho 3!!!!!!!!!!!");
         }
+
+
+        yield return new WaitForSeconds(0.1f);
+
+        for (int i = 0; i < hole1Irons.Count; i++)
+        {
+            hole1Irons[i].screwType = rcolor[i];
+            hole1Irons[i].OnInit();
+        }
     }
 
     public void Btn_hole()
     {
-        img_hole.color = Color.yellow;
-        img_snake.color = Color.white;
-        img_wall.color = Color.white;
-        img_tunnel.color = Color.white;
-    }
-
-    public void Btn_snake()
-    {
-        img_hole.color = Color.white;
-        img_snake.color = Color.yellow;
-        img_wall.color = Color.white;
-        img_tunnel.color = Color.white;
-    }
-
-    public void Btn_wall()
-    {
-        img_hole.color = Color.white;
-        img_snake.color = Color.white;
-        img_wall.color = Color.yellow;
-        img_tunnel.color = Color.white;
-    }
-
-    public void Btn_tunnel()
-    {
-        img_hole.color = Color.white;
-        img_snake.color = Color.white;
-        img_wall.color = Color.white;
-        img_tunnel.color = Color.yellow;
+        
     }
 
     public void OnChangeColor()
@@ -187,70 +226,6 @@ public class CreateLeveManager : MonoBehaviour
     {
         /*colorType = (ColorType)i;
         currentColorImage.color = dic_colorMaterials[colorType]._material.color;*/
-    }
-
-    public void CreateSnake()
-    {
-        /*if (previousCaro == null)
-        {
-            currentSnake.colorType = colorType;
-            currentSnake.transform.position = caro_CreateLevel.transform.position;
-            BodyPart head = Instantiate(headPrefab, currentSnake.transform);
-            head.transform.position = caro_CreateLevel.transform.position;
-            currentSnake.bodyParts.Add(head);
-            head.renderer1.material = dic_colorMaterials[colorType]._material;
-            head.renderer2.material = dic_colorMaterials[colorType]._material;
-
-            Material[] mats = head.renderer2.materials; // tạo bản sao array material hiện tại
-            if (mats.Length > 1)
-            {
-                mats[1] = dic_colorMaterials[colorType]._material; // gán vào Element 1
-                head.renderer2.materials = mats; // gán lại mảng material
-            }
-
-            currentSnake.curCaroIndexs = new List<int>();
-        }
-        else
-        {
-            BodyPart tailPart = Instantiate(tailPrefab, currentSnake.transform);
-            tailPart.transform.position = caro_CreateLevel.transform.position;
-            currentSnake.bodyParts.Add(tailPart);
-            tailPart.transform.LookAt(previousCaro.transform.position);
-            tailPart.renderer1.material = dic_colorMaterials[colorType]._material;
-            tailPart.renderer2.material = dic_colorMaterials[colorType]._material;
-
-            Material[] mats = tailPart.renderer1.materials; // tạo bản sao array material hiện tại
-            if (mats.Length > 1)
-            {
-                mats[1] = dic_colorMaterials[colorType]._material; // gán vào Element 1
-                tailPart.renderer1.materials = mats; // gán lại mảng material
-            }
-
-            currentSnake.bodyParts[currentSnake.bodyParts.Count - 2].transform.LookAt(2 * previousCaro.transform.position - caro_CreateLevel.transform.position);
-
-            if (currentSnake.bodyParts.Count > 2)
-            {
-                BodyPart bodyPart = Instantiate(bodyPrefab, currentSnake.transform);
-                bodyPart.transform.position = currentSnake.bodyParts[currentSnake.bodyParts.Count - 2].transform.position;
-                bodyPart.transform.eulerAngles = currentSnake.bodyParts[currentSnake.bodyParts.Count - 2].transform.eulerAngles;
-                GameObject waitDes = currentSnake.bodyParts[currentSnake.bodyParts.Count - 2].gameObject;
-                currentSnake.bodyParts[currentSnake.bodyParts.Count - 2] = bodyPart;
-                Destroy(waitDes);
-
-                Material[] mats1 = bodyPart.renderer1.materials; // tạo bản sao array material hiện tại
-                Material[] mats2 = bodyPart.renderer2.materials; // tạo bản sao array material hiện tại
-                                                                 // if (mats.Length > 1)
-                                                                 // {
-                mats1[1] = dic_colorMaterials[colorType]._material; //gán vào Element 1
-                mats2[1] = dic_colorMaterials[colorType]._material; // gán vào Element 1
-                bodyPart.renderer1.materials = mats1; // gán lại mảng material
-                bodyPart.renderer2.materials = mats2;
-            }
-        }
-
-        previousCaro = caro_CreateLevel;
-
-        currentSnake.curCaroIndexs.Add(caros.IndexOf(caro_CreateLevel));*/
     }
 
     public void Btn_createSnake()
@@ -306,71 +281,57 @@ public class CreateLeveManager : MonoBehaviour
         txt_snakeCount.text = "";*/
     }
 
-    string folder = "Assets/0_Game/_level_SO";
+    string folder = "Assets/_Game/_level_SO";
     string assetName = "lv 1";
 
+    [Button]
     public void Btn_save()
     {
-        /*if (inputField_level.text == "") return;
+        if (inputField_level.text != "") assetName = "lv " + inputField_level.text;
+        else assetName = "lv " + "2000";
 
-        assetName = "lv " + inputField_level.text;
-        Level_SO level = FindOrCreateAsset<Level_SO>(folder, assetName);
+        LevelGameModel level = FindOrCreateAsset<LevelGameModel>(folder, assetName);
 
-        level.width = int.Parse(inputField_soCot.text);
-        level.height = int.Parse(inputField_soHang.text);
+        level.levelModel.soLayer = int.Parse(inputField_soLayer.text);
+        /*level.levelModel.hole2Models.Clear();
+        level.levelModel.ironModes.Clear();
+        level.levelModel.keyModels.Clear();*/
 
-        level.snakeDatas.Clear();
-        level.caroDatas.Clear();
-
-        snakes.Sort((a, b) => a.index.CompareTo(b.index)); // sắp xếp lại theo index
-
-
-        for (int i = 0; i < snakes.Count; i++)
+        for (int i = 0; i < irons.Count; i++)
         {
-            SnakeData snakeData = new SnakeData();
-            snakeData.colorType = snakes[i].colorType;
-            snakeData.curCaroIndexs = snakes[i].curCaroIndexs;
-            snakeData.index = snakes[i].index;
-            snakeData.bullet = snakes[i].bullet;
+            IronMode ironData = new IronMode();
+            ironData.id = irons[i].id;
+            ironData.layer = irons[i].layer;
+            ironData.hasIce = irons[i].hasIce;
+            ItemTransModel trans = new ItemTransModel(irons[i].transform.position, irons[i].transform.localScale, irons[i].transform.rotation.eulerAngles);
+            ironData.transModel = trans;
+            ironData.polygonColliderPoints = new List<Vector2>();
+            ironData.holeModels = new List<Hole1Model>();
 
-            snakeData.coConThu2 = snakes[i].coConThu2;
-            snakeData.colorConthu2 = snakes[i].colorConthu2;
-            snakeData.indexConThu2 = snakes[i].indexConThu2;
-            snakeData.bulletConThu2 = snakes[i].bulletConThu2;
-
-            snakeData.isLock = snakes[i].numLock > 0;
-            snakeData.numLock = snakes[i].numLock;
-            snakeData.numIce = snakes[i].numIce;
-            snakeData.numCocoon = snakes[i].numCocoon;
-
-            level.snakeDatas.Add(snakeData);
-        }
-
-        //level.snakeDatas.Sort((a, b) => a.index.CompareTo(b.index)); // sắp xếp lại theo index
-
-        for (int i = 0; i < caros.Count; i++)
-        {
-            CaroData caroData = new CaroData();
-            caroData.isWall = caros[i].isWall;
-            caroData.isHole = caros[i].isHole;
-            caroData.isTunnel = caros[i].isTunnel;
-            caroData.holeColor = caros[i].holeColor;
-            if (caroData.isTunnel)
+            for (int j = 0; j < irons[i].polygonCollider.GetPath(0).Length; j++)
             {
-                caroData.queueSnakes = caros[i].tunnel.queueSnakes;
-                caroData.indexTempSnake = snakes.IndexOf(caros[i].tunnel.tempSnake); // chỉ số rắn tạm thời nếu có
+                ironData.polygonColliderPoints.Add(irons[i].polygonCollider.GetPath(0)[j]);
             }
-            caroData.isSpecialHole = caros[i].isSpecialHole;
 
-            level.caroDatas.Add(caroData);
-        
+            for (int j = 0;j < irons[i].hole1Irons.Count; j++)
+            {
+                Hole1Model hole1Model = new Hole1Model();
+                ItemTransModel h = new ItemTransModel(irons[i].hole1Irons[j].transform.localPosition, irons[i].hole1Irons[j].transform.localScale, irons[i].hole1Irons[j].transform.localRotation.eulerAngles);
+                hole1Model.transModel = h;
+                hole1Model.screwType = irons[i].hole1Irons[j].screwType;
+                hole1Model.hasScrew = irons[i].hole1Irons[j].hasScrew;
+                hole1Model.hasLock = irons[i].hole1Irons[j].hasLock;
+
+                ironData.holeModels.Add(hole1Model);
+            }
+            level.levelModel.ironModes.Add(ironData);
         }
 
-        
+
 
         // Đánh dấu thay đổi và lưu lại
         EditorUtility.SetDirty(level);
-        AssetDatabase.SaveAssets();*/
+        AssetDatabase.SaveAssets();
     }
 
     public void Btn_save(int lv)
@@ -472,26 +433,27 @@ public class CreateLeveManager : MonoBehaviour
         return asset;
     }
 
+    [Button]
     public void btn_loadLevel()
     {
         Btn_clear();
 
-        if (inputField_level.text == "") return;
-        assetName = "lv " + inputField_level.text;
+        if (inputField_level.text == "") assetName = "lv " + "2000";
+        else assetName = "lv " + inputField_level.text;
         LevelGameModel level = FindOrCreateAsset<LevelGameModel>(folder, assetName);
 
         inputField_soLayer.text = level.levelModel.soLayer.ToString();
 
-        ironCount = level.levelModel.ironModes.Length;
+        ironCount = level.levelModel.ironModes.Count;
 
         //txt_snakeCount.text = "snake: " + level.snakeDatas.Count;
 
         // tạo caro
-        Btn_create();
+        //Btn_create();
 
 
         // spawn rắn
-        for (int i = 0; i < level.levelModel.ironModes.Length; i++)
+        for (int i = 0; i < level.levelModel.ironModes.Count; i++)
         {
             Iron iron = Instantiate(ironTemplate[level.levelModel.ironModes[i].id], tfLevel);
             irons.Add(iron);
@@ -499,13 +461,12 @@ public class CreateLeveManager : MonoBehaviour
             iron.layer = level.levelModel.ironModes[i].layer;
             iron.hasIce = level.levelModel.ironModes[i].hasIce;
             iron.polygonCollider = iron .gameObject.AddComponent<PolygonCollider2D>();
-            iron.polygonCollider.pathCount = level.levelModel.ironModes[i].polygonColliderPoints.Length;
             iron.polygonCollider.SetPath(0, level.levelModel.ironModes[i].polygonColliderPoints);
             iron.transform.position = level.levelModel.ironModes[i].transModel.position;
             iron.transform.rotation = Quaternion.Euler(level.levelModel.ironModes[i].transModel.rotation);
             iron.transform.localScale = level.levelModel.ironModes[i].transModel.localScale;
 
-            for (int j = 0; j < level.levelModel.ironModes[i].holeModels.Length; j++)
+            for (int j = 0; j < level.levelModel.ironModes[i].holeModels.Count; j++)
             {
                 Hole1Iron hole1Iron = Instantiate(hole1Prefab, iron.transform);
                 hole1Iron.trans.localPosition = level.levelModel.ironModes[i].holeModels[j].transModel.position;
