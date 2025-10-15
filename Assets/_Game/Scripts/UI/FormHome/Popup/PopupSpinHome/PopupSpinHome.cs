@@ -15,7 +15,7 @@ public class PopupSpinHome : MonoBehaviour
     public GameObject claimed;
     private void OnEnable()
     {
-        spin.rotation = Quaternion.Euler(new Vector3(0, 0, 30f));
+        spin.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         SetupSpin(DataManager.Ins.dataSaved.isClaimSpinHome);
 
         for (int i = 0; i < uiRewardSpinHomes.Count; i++)
@@ -36,12 +36,10 @@ public class PopupSpinHome : MonoBehaviour
     {
         int angle = 360*n + Random.Range(0, 360);
 
-        spin.DORotate(new Vector3(n, 0, angle), 5f, RotateMode.FastBeyond360).SetEase(Ease.OutQuad).OnComplete(() =>
+        spin.DORotate(new Vector3(n, 0, angle), 4f, RotateMode.FastBeyond360).SetEase(Ease.OutQuad).OnComplete(() =>
         {
-            ClaimReward(uiRewardSpinHomes[(angle % 360) / 60]);
+            ClaimReward(uiRewardSpinHomes[(int)((angle % 360) + 22.5f) / 45]);
         });
-
-
     }
 
     public void ClaimReward(UIRewardSpinHome reward)

@@ -296,6 +296,7 @@ public class CreateLeveManager : MonoBehaviour
         /*level.levelModel.hole2Models.Clear();
         level.levelModel.ironModes.Clear();
         level.levelModel.keyModels.Clear();*/
+        level.levelModel.ironModes = new List<IronMode>();
 
         for (int i = 0; i < irons.Count; i++)
         {

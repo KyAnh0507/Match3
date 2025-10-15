@@ -1493,8 +1493,22 @@ MonoBehaviour:
   - {fileID: 3550617384722011479, guid: 6b938cdec266ea64bba0659be4fe124a, type: 3}
   - {fileID: 3550617384722011479, guid: 085aec72b3a38164188f21cf5591e17e, type: 3}
   - {fileID: 3550617384722011479, guid: c75cf1d23331c2b42ba158d8d54b30f0, type: 3}
+  levelGameModels:
+  - {fileID: 11400000, guid: 20e6934396bd29b4b943a196cdcbd10f, type: 2}
+  - {fileID: 11400000, guid: 20e6934396bd29b4b943a196cdcbd10f, type: 2}
+  - {fileID: 11400000, guid: 20e6934396bd29b4b943a196cdcbd10f, type: 2}
+  - {fileID: 11400000, guid: 20e6934396bd29b4b943a196cdcbd10f, type: 2}
+  - {fileID: 11400000, guid: 4c67218137c8b46498513f9a4e9073f9, type: 2}
+  - {fileID: 11400000, guid: 4c67218137c8b46498513f9a4e9073f9, type: 2}
   indexLevel: 0
   currentLevel: {fileID: 0}
+  levelPrefab: {fileID: 3550617384722011479, guid: 938f6de73d54c7149a5f62c9c9ec74f2, type: 3}
+  ironPrefabs:
+  - {fileID: 4820636548822094223, guid: 1de8e0301c53b9742923899891acb253, type: 3}
+  - {fileID: 4820636548822094223, guid: 62b55eb98a6b4aa44a79e8a6c4f9e6c3, type: 3}
+  - {fileID: 4820636548822094223, guid: eff7edd2104f5f74a97b5b5856770067, type: 3}
+  hole1ironPrefab: {fileID: 4202438808743986008, guid: a81d92c9ae5df564db838829f2a38281, type: 3}
+  ironParent: {fileID: 0}
 --- !u!4 &662665189
 Transform:
   m_ObjectHideFlags: 0
@@ -3195,7 +3209,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 524279
 --- !u!114 &1509630547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4963,7 +4977,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 524279
 --- !u!224 &4331026445609099044
 RectTransform:
   m_ObjectHideFlags: 0

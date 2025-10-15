@@ -108,7 +108,7 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
 
     public void ChangeLayer()
     {
-        gameObject.layer = layer + 11;
+        gameObject.layer = layer + 12;
         spriteIron.sortingOrder = layer * 10;
         sortingGroup.sortingOrder = layer * 10;
     }

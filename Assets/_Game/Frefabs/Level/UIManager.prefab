@@ -104,7 +104,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 524279
 --- !u!114 &6406312858603275539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,8 +261,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPauseGame: 0
+  timeLevel: {fileID: 0}
+  hasTime: 0
+  background: {fileID: 0}
+  textLevel: {fileID: 0}
+  textCoin: {fileID: 0}
+  textGems: {fileID: 0}
   popupLose: {fileID: 148449735263602456}
   popupWin: {fileID: 3835441649730527460}
+  popupShop: {fileID: 0}
+  popupSetting: {fileID: 0}
+  popupPauseGame: {fileID: 0}
+  boosterAdd1: {fileID: 0}
+  boosterDelete: {fileID: 0}
+  boosterShuffle: {fileID: 0}
+  boosterUndo: {fileID: 0}
 --- !u!1 &9024103563946272131
 GameObject:
   m_ObjectHideFlags: 0

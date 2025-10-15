@@ -98,7 +98,7 @@ public class Screw : GameUnit
     }
     public void ChangeLayer(int layer)
     {
-        gameObject.layer = layer + 5;
+        gameObject.layer = layer + 6;
         spriteScrew.sortingOrder = layer * 10 + 2;
         spriteScrewPins.sortingOrder = layer * 10 + 1;
     }
