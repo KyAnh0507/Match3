@@ -140,6 +140,10 @@ public class DataManager : Singleton<DataManager>
         public int boosterAdd1;
         public int boosterUndo;
 
+        [Header("Booster")]
+        public int maxWinstreak;
+        public int currentWinstreak;
+
         [Header("Sound")]
         public bool isMusicOn;
         public bool isSoundOn;
