@@ -170,9 +170,11 @@ public class DataManager : Singleton<DataManager>
         public int boosterAdd1;
         public int boosterUndo;
 
-        [Header("Booster")]
+        [Header("Winstreak")]
         public int maxWinstreak;
         public int currentWinstreak;
+        public List<bool> statusWinstreak;
+
 
         [Header("Sound")]
         public bool isMusicOn;
@@ -275,6 +277,15 @@ public class DataManager : Singleton<DataManager>
             isMusicOn = true;
             isSoundOn = true;
             isVibrate = true;
+
+            //Winstreak
+            maxWinstreak = 0;
+            currentWinstreak = 0;
+            statusWinstreak = new List<bool>();
+            for(int i = 0; i < 50; i++)
+            {
+                statusWinstreak.Add(false);
+            }
 
             // Firebase
             cpStartLevel = -1;

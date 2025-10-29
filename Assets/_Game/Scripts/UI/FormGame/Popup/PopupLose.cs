@@ -10,7 +10,7 @@ public class PopupLose : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        DataManager.Ins.dataSaved.currentWinstreak = 0;
     }
     
     public void Home()

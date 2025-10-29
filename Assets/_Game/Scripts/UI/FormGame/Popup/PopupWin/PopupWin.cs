@@ -11,6 +11,11 @@ public class PopupWin : MonoBehaviour
 
     private void OnEnable()
     {
+        DataManager.Ins.dataSaved.currentWinstreak++;
+        if (DataManager.Ins.dataSaved.currentWinstreak > DataManager.Ins.dataSaved.maxWinstreak)
+        {
+            DataManager.Ins.dataSaved.maxWinstreak = DataManager.Ins.dataSaved.currentWinstreak;
+        }
         vfxConfetti.Play();
     }
     public void Home()

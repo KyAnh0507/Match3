@@ -12,14 +12,14 @@ public class FormLoading : MonoBehaviour
     public Text text;
     public Transform fillImage;
     public AnimationCurve loadingCurve;
-
+    public Image fill;
     private void Start()
     {
-        background.sprite = GameConfig.Ins.themeGames[DataManager.Ins.dataSaved.theme].sprites[0];
+        //background.sprite = GameConfig.Ins.themeGames[DataManager.Ins.dataSaved.theme].sprites[0];
 
         DOVirtual.Float(0f, 1f, loadDuration, value =>
         {
-            fillImage.localScale = new Vector3(value, 1, 1);
+            fill.fillAmount = value;
             text.text = (int)(value*100) + "%";
         })
         .SetEase(loadingCurve)

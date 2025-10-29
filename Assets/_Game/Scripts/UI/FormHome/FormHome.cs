@@ -22,7 +22,7 @@ public class FormHome : MonoBehaviour
     void OnEnable()
     {
         LoadTextCoin();
-        background.sprite = GameConfig.Ins.themeGames[DataManager.Ins.dataSaved.theme].sprites[1];
+        //background.sprite = GameConfig.Ins.themeGames[DataManager.Ins.dataSaved.theme].sprites[1];
         //int timeLastOpen = int.Parse(DateTime.Now.Date.ToString("yyyyMMdd"));
         TimeSpan t = DateTime.Now.Date - TimeConfig.startTime;
         int timeLastOpen = t.Days;
@@ -112,6 +112,15 @@ public class FormHome : MonoBehaviour
         popupSetting.gameObject.SetActive(true);
         popupSetting.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
         popupSetting.tf.DOScale(Vector3.one, 0.5f);
+
+        SoundManager.Ins.ChangeSound(SoundType.POPUP_CLICK);
+    }
+
+    public void OpenPopupWinstreak()
+    {
+        popupWinstreak.gameObject.SetActive(true);
+        popupWinstreak.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
+        popupWinstreak.tf.DOScale(Vector3.one * 2, 0.5f);
 
         SoundManager.Ins.ChangeSound(SoundType.POPUP_CLICK);
     }
