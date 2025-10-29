@@ -30,14 +30,14 @@ public class PopupShop : MonoBehaviour
             case RewardType.Coin:
                 if (DataManager.Ins.dataSaved.coin >= uiShopItem.price)
                 {
-                    DataManager.Ins.dataSaved.coin -= uiShopItem.price;
+                    DataManager.Ins.ChangeCoin(-uiShopItem.price);
                     canBuy = true;
                 }
                 break;
             case RewardType.Gems:
                 if (DataManager.Ins.dataSaved.gems >= uiShopItem.price)
                 {
-                    DataManager.Ins.dataSaved.gems -= uiShopItem.price;
+                    DataManager.Ins.ChangeGem(-uiShopItem.price);
                     canBuy = true;
                 }
                 break;
@@ -93,7 +93,7 @@ public class PopupShop : MonoBehaviour
             case RewardType.Coin:
                 if (DataManager.Ins.dataSaved.coin >= uiShopItemTheme.price)
                 {
-                    DataManager.Ins.dataSaved.coin -= uiShopItemTheme.price;
+                    DataManager.Ins.ChangeCoin(-uiShopItemTheme.price);
                     uiShopItemsTheme[DataManager.Ins.dataSaved.theme].Setup();
                     DataManager.Ins.dataSaved.theme = uiShopItemTheme.nTheme;
                     DataManager.Ins.dataSaved.statusTheme[uiShopItemTheme.nTheme] = true;
@@ -103,7 +103,7 @@ public class PopupShop : MonoBehaviour
             case RewardType.Gems:
                 if (DataManager.Ins.dataSaved.gems >= uiShopItemTheme.price)
                 {
-                    DataManager.Ins.dataSaved.gems -= uiShopItemTheme.price;
+                    DataManager.Ins.ChangeGem(-uiShopItemTheme.price);
                     uiShopItemsTheme[DataManager.Ins.dataSaved.theme].Setup();
                     DataManager.Ins.dataSaved.theme = uiShopItemTheme.nTheme;
                     DataManager.Ins.dataSaved.statusTheme[uiShopItemTheme.nTheme] = true;

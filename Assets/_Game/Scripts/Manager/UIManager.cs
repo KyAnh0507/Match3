@@ -13,6 +13,8 @@ public class UIManager : Singleton<UIManager>
     public CanvasGroup fadePanel;
     public float timeFadeIn;
     public float timeFadeOut;
+
+    public GameObject blockPanel;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -60,5 +62,10 @@ public class UIManager : Singleton<UIManager>
         {
             formHome.LoadTextCoin();
         }
+    }
+
+    public void SetActiveBlock(bool b)
+    {
+        blockPanel.SetActive(b);
     }
 }

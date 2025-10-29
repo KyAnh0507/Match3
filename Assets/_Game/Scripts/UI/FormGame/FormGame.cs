@@ -13,8 +13,8 @@ public class FormGame : MonoBehaviour
 
     public Image background;
     public Text textLevel;
-    public Text textCoin;
-    public Text textGems;
+    public CoinUI coinUI;
+    public GemUI gemUI;
 
     public PopupLose popupLose;
     public PopupWin popupWin;
@@ -89,8 +89,8 @@ public class FormGame : MonoBehaviour
 
     public void LoadTextCoin()
     {
-        textCoin.text = DataManager.Ins.dataSaved.coin.ToString();
-        textGems.text = DataManager.Ins.dataSaved.gems.ToString();
+        coinUI.ChangeValueImmediately(DataManager.Ins.dataSaved.coin);
+        gemUI.ChangeValueImmediately(DataManager.Ins.dataSaved.gems);
     }
 
     public void LoadBooster()

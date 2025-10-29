@@ -311,21 +311,21 @@ public class PopupDailyChallenge : MonoBehaviour
             switch (rewardChallenge.reward.rewardType)
             {
                 case RewardType.Coin:
-                    DataManager.Ins.dataSaved.coin += rewardChallenge.reward.amount1;
+                    DataManager.Ins.ChangeCoin(rewardChallenge.reward.amount1);
                     flyCoin.gameObject.SetActive(true);
                     flyCoin.rectTransform.position = rewardChallenge.transform.position;
                     flyCoin.Play();
                     break;
                 case RewardType.Gems:
-                    DataManager.Ins.dataSaved.gems += rewardChallenge.reward.amount1;
+                    DataManager.Ins.ChangeGem(rewardChallenge.reward.amount1);
                     flyGems.gameObject.SetActive(true);
                     flyGems.rectTransform.position = rewardChallenge.transform.position;
                     flyGems.Play();
                     flyGems.LayoutComplete();
                     break;
                 case RewardType.CoinAndGems:
-                    DataManager.Ins.dataSaved.coin += rewardChallenge.reward.amount1;
-                    DataManager.Ins.dataSaved.gems += rewardChallenge.reward.amount1;
+                    DataManager.Ins.ChangeCoin(rewardChallenge.reward.amount1);
+                    DataManager.Ins.ChangeGem(rewardChallenge.reward.amount1);
                     flyCoin.gameObject.SetActive(true);
                     flyCoin.rectTransform.position = rewardChallenge.transform.position;
                     flyCoin.Play();

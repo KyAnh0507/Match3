@@ -8,13 +8,15 @@ using UnityEngine.UI;
 public class FormHome : MonoBehaviour
 {
     public Image background;
-    public Text textCoin;
-    public Text textGems;
+
+    public CoinUI coinUI;
+    public GemUI gemUI;
     public PopupDailyReward popupDailyReward;
     public PopupDailyChallenge popupDailyChallenge;
     public PopupSpinHome popupSpinHome;
     public PopupShop popupShop;
     public PopupSetting popupSetting;
+    public PopupWinstreak popupWinstreak;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -55,8 +57,18 @@ public class FormHome : MonoBehaviour
 
     public void LoadTextCoin()
     {
-        textCoin.text = DataManager.Ins.dataSaved.coin.ToString();
-        textGems.text = DataManager.Ins.dataSaved.gems.ToString();
+        coinUI.ChangeValueImmediately(DataManager.Ins.dataSaved.coin);
+        gemUI.ChangeValueImmediately(DataManager.Ins.dataSaved.gems);
+    }
+
+    public void SetOverrideCoin(bool b)
+    {
+        coinUI.canvas.overrideSorting = b;
+    }
+
+    public void SetOverrideGem(bool b)
+    {
+        gemUI.canvas.overrideSorting = b;
     }
     public void OpenPopupDailyReward()
     {

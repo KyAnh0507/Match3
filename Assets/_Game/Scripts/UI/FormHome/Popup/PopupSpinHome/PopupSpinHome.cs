@@ -47,10 +47,10 @@ public class PopupSpinHome : MonoBehaviour
         switch(reward.reward.Type)
         {
             case RewardType.Coin:
-                DataManager.Ins.dataSaved.coin += reward.reward.amount;
+                DataManager.Ins.ChangeCoin(reward.reward.amount);
                 break;
             case RewardType.Gems:
-                DataManager.Ins.dataSaved.gems += reward.reward.amount;
+                DataManager.Ins.ChangeGem(reward.reward.amount);
                 break;
             case RewardType.Add1Tile:
                 DataManager.Ins.dataSaved.boosterAdd1 += reward.reward.amount;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DataManager : Singleton<DataManager>
 {
@@ -11,6 +12,9 @@ public class DataManager : Singleton<DataManager>
     public Data dataSaved;
     private const string DATA_SAVED = "DataSaved";
     private Data dataBackup;
+
+    public UnityAction<int> OnCoinChanged;
+    public UnityAction<int> OnGemChanged;
 
     public void StartData()
     {
@@ -91,6 +95,32 @@ public class DataManager : Singleton<DataManager>
         {
             Debug.LogError("Save Data Error:" + ex);
         }
+    }
+
+    public void ChangeCoin(int amount)
+    {
+        dataSaved.coin += amount;
+
+        if (dataSaved.coin < 0)
+        {
+            dataSaved.coin = 0;
+            Debug.LogError("Error: Diamond amount < 0");
+        }
+
+        OnCoinChanged?.Invoke(dataSaved.coin);
+    }
+
+    public void ChangeGem(int amount)
+    {
+        dataSaved.gems += amount;
+
+        if (dataSaved.gems < 0)
+        {
+            dataSaved.gems = 0;
+            Debug.LogError("Error: Diamond amount < 0");
+        }
+
+        OnGemChanged?.Invoke(dataSaved.gems);
     }
 
     [System.Serializable]

@@ -30,10 +30,10 @@ public class DailyRewardUI : MonoBehaviour
         switch (reward.rewardType)
         {
             case RewardType.Coin:
-                DataManager.Ins.dataSaved.coin += reward.amount;
+                DataManager.Ins.ChangeCoin(reward.amount);
                 break;
             case RewardType.Gems:
-                DataManager.Ins.dataSaved.gems += reward.amount;
+                DataManager.Ins.ChangeGem(reward.amount);
                 break;
         }
     }
