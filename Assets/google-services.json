@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "785846720319",
+    "project_id": "screwmatch-b6fdd",
+    "storage_bucket": "screwmatch-b6fdd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785846720319:android:56b1601afc5726db49a58a",
+        "android_client_info": {
+          "package_name": "com.vtd.screwmatchthree"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO4ufphamx2OjkpVJBtuBJmaVFs0tWpMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

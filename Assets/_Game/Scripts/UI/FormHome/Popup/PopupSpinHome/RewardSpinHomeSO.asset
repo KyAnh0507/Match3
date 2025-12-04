@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07918891d0f11c44a781e52dbc55092, type: 3}
+  m_Name: RewardSpinHomeSO
+  m_EditorClassIdentifier: 
+  datas:
+  - Type: 0
+    image: {fileID: 21300000, guid: 82813c074e2854877b1382f0e987511b, type: 3}
+    amount: 50
+  - Type: 5
+    image: {fileID: 21300000, guid: 759167d1cf28da64b905d6f56123694d, type: 3}
+    amount: 1
+  - Type: 0
+    image: {fileID: 21300000, guid: 928516686caa643f5b6615dc945cff34, type: 3}
+    amount: 500
+  - Type: 3
+    image: {fileID: 21300000, guid: da403e676377393408f0b870f1edae58, type: 3}
+    amount: 1
+  - Type: 0
+    image: {fileID: 21300000, guid: 2340e003a4a6745a8929491f3b365cea, type: 3}
+    amount: 100
+  - Type: 4
+    image: {fileID: 21300000, guid: 7816d351d8ab31246b3cabd5c3c2b88a, type: 3}
+    amount: 1
+  - Type: 0
+    image: {fileID: 21300000, guid: 8222ee04859dd4fe5b07c16b5439f249, type: 3}
+    amount: 1000
+  - Type: 1
+    image: {fileID: 21300000, guid: c1ada327db13247518d5a0bda29ed999, type: 3}
+    amount: 50

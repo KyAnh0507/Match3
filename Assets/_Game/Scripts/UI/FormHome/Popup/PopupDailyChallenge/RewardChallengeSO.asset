@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e13289b8c4591544b5c5e9c5bd85cba, type: 3}
+  m_Name: RewardChallengeSO
+  m_EditorClassIdentifier: 
+  rewardDatas:
+  - rewardType: 0
+    amount1: 15
+    amount2: 0
+    numberTarget: 1
+  - rewardType: 1
+    amount1: 10
+    amount2: 0
+    numberTarget: 3
+  - rewardType: 0
+    amount1: 30
+    amount2: 0
+    numberTarget: 7
+  - rewardType: 1
+    amount1: 25
+    amount2: 0
+    numberTarget: 15
+  - rewardType: 2
+    amount1: 50
+    amount2: 50
+    numberTarget: 25

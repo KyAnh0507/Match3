@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc7e97e507c2254283c7b17c23d1dc1, type: 3}
+  m_Name: WinstreakRewardDataSO
+  m_EditorClassIdentifier: 
+  rewardDatas:
+  - target: 2
+    sprite: {fileID: 21300000, guid: 9d199644d1b294b0788d014ddbfe0050, type: 3}
+    rewards:
+    - rewardType: 0
+      amount: 20
+  - target: 5
+    sprite: {fileID: 21300000, guid: 1dc86866662534453a0e2cd9004dd340, type: 3}
+    rewards:
+    - rewardType: 1
+      amount: 20
+  - target: 8
+    sprite: {fileID: 21300000, guid: da403e676377393408f0b870f1edae58, type: 3}
+    rewards:
+    - rewardType: 3
+      amount: 1
+  - target: 10
+    sprite: {fileID: 21300000, guid: 9d199644d1b294b0788d014ddbfe0050, type: 3}
+    rewards:
+    - rewardType: 0
+      amount: 50
+  - target: 12
+    sprite: {fileID: 21300000, guid: d26dfb6e166ea49938deb2366511908d, type: 3}
+    rewards:
+    - rewardType: 1
+      amount: 50
+  - target: 15
+    sprite: {fileID: 21300000, guid: 7816d351d8ab31246b3cabd5c3c2b88a, type: 3}
+    rewards:
+    - rewardType: 4
+      amount: 1
+  - target: 18
+    sprite: {fileID: 21300000, guid: 7c8893a146119407fbdebaff1123ff55, type: 3}
+    rewards:
+    - rewardType: 0
+      amount: 100
+  - target: 20
+    sprite: {fileID: 21300000, guid: 759167d1cf28da64b905d6f56123694d, type: 3}
+    rewards:
+    - rewardType: 5
+      amount: 1
+  - target: 25
+    sprite: {fileID: 21300000, guid: c1ada327db13247518d5a0bda29ed999, type: 3}
+    rewards:
+    - rewardType: 1
+      amount: 100
+  - target: 30
+    sprite: {fileID: 21300000, guid: c66a9b9739e04fd45b7fda7ffb7e2fa1, type: 3}
+    rewards:
+    - rewardType: 6
+      amount: 1
