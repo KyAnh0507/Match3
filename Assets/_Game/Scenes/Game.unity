@@ -1674,12 +1674,11 @@ MonoBehaviour:
   - {fileID: 3550617384722011479, guid: 085aec72b3a38164188f21cf5591e17e, type: 3}
   - {fileID: 3550617384722011479, guid: c75cf1d23331c2b42ba158d8d54b30f0, type: 3}
   levelGameModels:
-  - {fileID: 11400000, guid: d88a24f41cf4d0c46960cc5ab361429f, type: 2}
-  - {fileID: 11400000, guid: d88a24f41cf4d0c46960cc5ab361429f, type: 2}
-  - {fileID: 11400000, guid: d88a24f41cf4d0c46960cc5ab361429f, type: 2}
-  - {fileID: 11400000, guid: d88a24f41cf4d0c46960cc5ab361429f, type: 2}
-  - {fileID: 11400000, guid: d88a24f41cf4d0c46960cc5ab361429f, type: 2}
+  - {fileID: 11400000, guid: 5c9d019307bbc6b49a50b5e819fb8c64, type: 2}
   - {fileID: 11400000, guid: 4c67218137c8b46498513f9a4e9073f9, type: 2}
+  - {fileID: 11400000, guid: d88a24f41cf4d0c46960cc5ab361429f, type: 2}
+  - {fileID: 11400000, guid: 20e6934396bd29b4b943a196cdcbd10f, type: 2}
+  - {fileID: 11400000, guid: a1677ed1c8e146a4cb79a0b3344148f1, type: 2}
   indexLevel: 0
   currentLevel: {fileID: 0}
   levelPrefab: {fileID: 3550617384722011479, guid: 938f6de73d54c7149a5f62c9c9ec74f2, type: 3}

@@ -1,0 +1,576 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74462592c31d55b4f913b82b666b37c2, type: 3}
+  m_Name: lv 3
+  m_EditorClassIdentifier: 
+  level: 0
+  levelModel:
+    soLayer: 2
+    hole2Models: []
+    ironModes:
+    - id: 0
+      holeModels:
+      - transModel:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          localScale:
+            x: 2.5
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 7
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      transModel:
+        position:
+          x: -2.4
+          y: 3.2
+          z: 0
+        localScale:
+          x: 0.4
+          y: 0.6
+          z: 1
+        rotation:
+          x: -0
+          y: -0
+          z: 60.000004
+      layer: 0
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints:
+      - {x: 4.8599997, y: -1.12}
+      - {x: 4.8599997, y: 1.03}
+      - {x: 4.79, y: 1.18}
+      - {x: 4.58, y: 1.3299999}
+      - {x: -4.52, y: 1.3299999}
+      - {x: -4.62, y: 1.3199999}
+      - {x: -4.7799997, y: 1.23}
+      - {x: -4.89, y: 1.03}
+      - {x: -4.89, y: -1.11}
+      - {x: -4.85, y: -1.24}
+      - {x: -4.72, y: -1.39}
+      - {x: -4.56, y: -1.4699999}
+      - {x: 4.58, y: -1.4699999}
+      - {x: 4.79, y: -1.31}
+      - {x: 4.85, y: -1.17}
+      hasIce: 0
+    - id: 0
+      holeModels:
+      - transModel:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          localScale:
+            x: 2.5
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 2
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      transModel:
+        position:
+          x: 2.4
+          y: -2.4
+          z: 0
+        localScale:
+          x: 0.4
+          y: 0.6
+          z: 1
+        rotation:
+          x: -0
+          y: -0
+          z: 90
+      layer: 0
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints:
+      - {x: 4.8599997, y: -1.12}
+      - {x: 4.8599997, y: 1.03}
+      - {x: 4.79, y: 1.18}
+      - {x: 4.58, y: 1.3299999}
+      - {x: -4.52, y: 1.3299999}
+      - {x: -4.62, y: 1.3199999}
+      - {x: -4.7799997, y: 1.23}
+      - {x: -4.89, y: 1.03}
+      - {x: -4.89, y: -1.11}
+      - {x: -4.85, y: -1.24}
+      - {x: -4.72, y: -1.39}
+      - {x: -4.56, y: -1.4699999}
+      - {x: 4.58, y: -1.4699999}
+      - {x: 4.79, y: -1.31}
+      - {x: 4.85, y: -1.17}
+      hasIce: 0
+    - id: 0
+      holeModels:
+      - transModel:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          localScale:
+            x: 2.5
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 7
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      transModel:
+        position:
+          x: -1.6
+          y: -1.6
+          z: 0
+        localScale:
+          x: 0.4
+          y: 0.6
+          z: 1
+        rotation:
+          x: -0
+          y: -0
+          z: 90
+      layer: 0
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints:
+      - {x: 4.8599997, y: -1.12}
+      - {x: 4.8599997, y: 1.03}
+      - {x: 4.79, y: 1.18}
+      - {x: 4.58, y: 1.3299999}
+      - {x: -4.52, y: 1.3299999}
+      - {x: -4.62, y: 1.3199999}
+      - {x: -4.7799997, y: 1.23}
+      - {x: -4.89, y: 1.03}
+      - {x: -4.89, y: -1.11}
+      - {x: -4.85, y: -1.24}
+      - {x: -4.72, y: -1.39}
+      - {x: -4.56, y: -1.4699999}
+      - {x: 4.58, y: -1.4699999}
+      - {x: 4.79, y: -1.31}
+      - {x: 4.85, y: -1.17}
+      hasIce: 0
+    - id: 0
+      holeModels:
+      - transModel:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          localScale:
+            x: 2.5
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 2
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      transModel:
+        position:
+          x: 2.4
+          y: 2.4
+          z: 0
+        localScale:
+          x: 0.4
+          y: 0.6
+          z: 1
+        rotation:
+          x: -0
+          y: -0
+          z: 60.000004
+      layer: 0
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints:
+      - {x: 4.8599997, y: -1.12}
+      - {x: 4.8599997, y: 1.03}
+      - {x: 4.79, y: 1.18}
+      - {x: 4.58, y: 1.3299999}
+      - {x: -4.52, y: 1.3299999}
+      - {x: -4.62, y: 1.3199999}
+      - {x: -4.7799997, y: 1.23}
+      - {x: -4.89, y: 1.03}
+      - {x: -4.89, y: -1.11}
+      - {x: -4.85, y: -1.24}
+      - {x: -4.72, y: -1.39}
+      - {x: -4.56, y: -1.4699999}
+      - {x: 4.58, y: -1.4699999}
+      - {x: 4.79, y: -1.31}
+      - {x: 4.85, y: -1.17}
+      hasIce: 0
+    - id: 0
+      holeModels:
+      - transModel:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          localScale:
+            x: 1
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 7
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      - transModel:
+          position:
+            x: 3.760001
+            y: 0
+            z: 0
+          localScale:
+            x: 1
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 8
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      - transModel:
+          position:
+            x: -3.7600012
+            y: 0
+            z: 0
+          localScale:
+            x: 1
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 5
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      transModel:
+        position:
+          x: 0
+          y: -2.4
+          z: 0
+        localScale:
+          x: 1
+          y: 0.6
+          z: 1
+        rotation:
+          x: -0
+          y: -0
+          z: 90
+      layer: 1
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints:
+      - {x: 4.8599997, y: -1.12}
+      - {x: 4.8599997, y: 1.03}
+      - {x: 4.79, y: 1.18}
+      - {x: 4.58, y: 1.3299999}
+      - {x: -4.52, y: 1.3299999}
+      - {x: -4.62, y: 1.3199999}
+      - {x: -4.7799997, y: 1.23}
+      - {x: -4.89, y: 1.03}
+      - {x: -4.89, y: -1.11}
+      - {x: -4.85, y: -1.24}
+      - {x: -4.72, y: -1.39}
+      - {x: -4.56, y: -1.4699999}
+      - {x: 4.58, y: -1.4699999}
+      - {x: 4.79, y: -1.31}
+      - {x: 4.85, y: -1.17}
+      hasIce: 0
+    - id: 0
+      holeModels:
+      - transModel:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          localScale:
+            x: 2.5
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 5
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      transModel:
+        position:
+          x: 3.2
+          y: -2.4
+          z: 0
+        localScale:
+          x: 0.4
+          y: 0.6
+          z: 1
+        rotation:
+          x: -0
+          y: 0
+          z: 240
+      layer: 1
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints:
+      - {x: 4.8599997, y: -1.12}
+      - {x: 4.8599997, y: 1.03}
+      - {x: 4.79, y: 1.18}
+      - {x: 4.58, y: 1.3299999}
+      - {x: -4.52, y: 1.3299999}
+      - {x: -4.62, y: 1.3199999}
+      - {x: -4.7799997, y: 1.23}
+      - {x: -4.89, y: 1.03}
+      - {x: -4.89, y: -1.11}
+      - {x: -4.85, y: -1.24}
+      - {x: -4.72, y: -1.39}
+      - {x: -4.56, y: -1.4699999}
+      - {x: 4.58, y: -1.4699999}
+      - {x: 4.79, y: -1.31}
+      - {x: 4.85, y: -1.17}
+      hasIce: 0
+    - id: 0
+      holeModels:
+      - transModel:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          localScale:
+            x: 2.5
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 8
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      transModel:
+        position:
+          x: -2.4
+          y: -1.6
+          z: 0
+        localScale:
+          x: 0.4
+          y: 0.6
+          z: 1
+        rotation:
+          x: -0
+          y: -0
+          z: 90
+      layer: 1
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints:
+      - {x: 4.8599997, y: -1.12}
+      - {x: 4.8599997, y: 1.03}
+      - {x: 4.79, y: 1.18}
+      - {x: 4.58, y: 1.3299999}
+      - {x: -4.52, y: 1.3299999}
+      - {x: -4.62, y: 1.3199999}
+      - {x: -4.7799997, y: 1.23}
+      - {x: -4.89, y: 1.03}
+      - {x: -4.89, y: -1.11}
+      - {x: -4.85, y: -1.24}
+      - {x: -4.72, y: -1.39}
+      - {x: -4.56, y: -1.4699999}
+      - {x: 4.58, y: -1.4699999}
+      - {x: 4.79, y: -1.31}
+      - {x: 4.85, y: -1.17}
+      hasIce: 0
+    - id: 0
+      holeModels:
+      - transModel:
+          position:
+            x: 0
+            y: 0
+            z: 0
+          localScale:
+            x: 2.5
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: -0.0000034150946
+        screwType: 2
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      transModel:
+        position:
+          x: -2.4
+          y: 3.2
+          z: 0
+        localScale:
+          x: 0.4
+          y: 0.6
+          z: 1
+        rotation:
+          x: -0
+          y: -0
+          z: 30.000002
+      layer: 1
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints:
+      - {x: 4.8599997, y: -1.12}
+      - {x: 4.8599997, y: 1.03}
+      - {x: 4.79, y: 1.18}
+      - {x: 4.58, y: 1.3299999}
+      - {x: -4.52, y: 1.3299999}
+      - {x: -4.62, y: 1.3199999}
+      - {x: -4.7799997, y: 1.23}
+      - {x: -4.89, y: 1.03}
+      - {x: -4.89, y: -1.11}
+      - {x: -4.85, y: -1.24}
+      - {x: -4.72, y: -1.39}
+      - {x: -4.56, y: -1.4699999}
+      - {x: 4.58, y: -1.4699999}
+      - {x: 4.79, y: -1.31}
+      - {x: 4.85, y: -1.17}
+      hasIce: 0
+    - id: 0
+      holeModels:
+      - transModel:
+          position:
+            x: 2.9999995
+            y: 0.00000013509595
+            z: 0
+          localScale:
+            x: 1.6666666
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 8
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      - transModel:
+          position:
+            x: -2.9999998
+            y: -0.00000013509595
+            z: 0
+          localScale:
+            x: 1.6666666
+            y: 1.6666666
+            z: 1
+          rotation:
+            x: -0
+            y: 0
+            z: 0
+        screwType: 5
+        hasScrew: 1
+        hasLock: 0
+        hasIce: 0
+        iceUnlockNuber: 0
+        hasLockNumbScrew: 0
+        numbLockIron: 0
+      transModel:
+        position:
+          x: -3.2
+          y: -2.4
+          z: 0
+        localScale:
+          x: 0.6
+          y: 0.6
+          z: 1
+        rotation:
+          x: -0
+          y: 0
+          z: 180
+      layer: 2
+      orderLayer: 0
+      spriteName: 
+      polygonColliderPoints:
+      - {x: 4.8599997, y: -1.12}
+      - {x: 4.8599997, y: 1.03}
+      - {x: 4.79, y: 1.18}
+      - {x: 4.58, y: 1.3299999}
+      - {x: -4.52, y: 1.3299999}
+      - {x: -4.62, y: 1.3199999}
+      - {x: -4.7799997, y: 1.23}
+      - {x: -4.89, y: 1.03}
+      - {x: -4.89, y: -1.11}
+      - {x: -4.85, y: -1.24}
+      - {x: -4.72, y: -1.39}
+      - {x: -4.56, y: -1.4699999}
+      - {x: 4.58, y: -1.4699999}
+      - {x: 4.79, y: -1.31}
+      - {x: 4.85, y: -1.17}
+      hasIce: 0
+    keyModels: []
+    boardIncreaseSize: 0

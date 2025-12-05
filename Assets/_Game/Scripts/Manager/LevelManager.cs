@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -43,7 +44,7 @@ public class LevelManager : Singleton<LevelManager>
         for (int i = 0; i < levelGameModels[level].levelModel.ironModes.Count; i++)
         {
             Iron iron = Instantiate(ironPrefabs[levelGameModels[level].levelModel.ironModes[i].id], ironParent);
-            iron.transform.position = levelGameModels[level].levelModel.ironModes[i].transModel.position * 0.3f;
+            iron.transform.position = levelGameModels[level].levelModel.ironModes[i].transModel.position * 0.3f + (float3)Vector3.up * 1f;
             iron.transform.rotation = Quaternion.Euler(levelGameModels[level].levelModel.ironModes[i].transModel.rotation);
             iron.transform.localScale = levelGameModels[level].levelModel.ironModes[i].transModel.localScale;
 

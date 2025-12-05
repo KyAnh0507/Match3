@@ -1,9 +1,10 @@
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,6 +52,7 @@ public class CreateLeveManager : MonoBehaviour
         img_hole.color = Color.yellow;
         img_snake.color = Color.white;
         OnChangeColor();*/
+
     }
 
     public void Btn_create()
@@ -283,7 +285,7 @@ public class CreateLeveManager : MonoBehaviour
 
     string folder = "Assets/_Game/_level_SO";
     string assetName = "lv 1";
-
+#if UNITY_EDITOR
     [Button]
     public void Btn_save()
     {
@@ -327,14 +329,12 @@ public class CreateLeveManager : MonoBehaviour
             }
             level.levelModel.ironModes.Add(ironData);
         }
-
-
-
         // Đánh dấu thay đổi và lưu lại
         EditorUtility.SetDirty(level);
         AssetDatabase.SaveAssets();
     }
-
+#endif
+#if UNITY_EDITOR
     public void Btn_save(int lv)
     {
         /*assetName = "lv " + lv.ToString();
@@ -390,13 +390,13 @@ public class CreateLeveManager : MonoBehaviour
 
         }*/
 
-
-
         // Đánh dấu thay đổi và lưu lại
         //EditorUtility.SetDirty(level);
         AssetDatabase.SaveAssets();
     }
+#endif
 
+#if UNITY_EDITOR
     public T FindOrCreateAsset<T>(string folderPath, string assetName) where T : ScriptableObject
     {
         // Đảm bảo folder tồn tại
@@ -494,6 +494,7 @@ public class CreateLeveManager : MonoBehaviour
             Debug.LogError("So dinh khong chia het cho 3!!!!!!!!!!!");
         }
     }
+#endif
 }
 
 [System.Serializable]
@@ -503,4 +504,4 @@ public class SnakeBulletPreset
     public int bullet;
 }
 
-#endif
+//#endif

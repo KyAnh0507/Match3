@@ -26,7 +26,6 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
     {
         if (CreateLeveManager.ins != null) layer = CreateLeveManager.ins.currentLayer;
         ChangeLayer();
-        
     }
     /*private void Start()
     {
