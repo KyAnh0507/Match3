@@ -101,6 +101,11 @@ public class DataManager : Singleton<DataManager>
     {
         dataSaved.coin += amount;
 
+        if (amount < 0)
+        {
+            dataSaved.nUseCoin -= amount;
+        }
+
         if (dataSaved.coin < 0)
         {
             dataSaved.coin = 0;
@@ -113,6 +118,11 @@ public class DataManager : Singleton<DataManager>
     public void ChangeGem(int amount)
     {
         dataSaved.gems += amount;
+
+        if (amount < 0)
+        {
+            dataSaved.nUseGem -= amount;
+        }
 
         if (dataSaved.gems < 0)
         {
@@ -177,6 +187,22 @@ public class DataManager : Singleton<DataManager>
         public int currentWinstreak;
         public List<bool> statusWinstreak;
 
+        [Header("Master Pass")]
+        public int nPlayGame;
+        public int nWinGame;
+        public int nUseBooster;
+        public int nUseCoin;
+        public int nUseGem;
+        public int nWinChallenge;
+        public List<bool> taskMasterPassStatus;
+        public int lvMasterPass;
+        public int progress;
+        public int maxLvMasterPass;
+        public List<bool> rewardMasterPassStatus1;
+        public List<bool> rewardMasterPassStatus2;
+        public bool unlockedMasterPass;
+        public int cycleIndexMasterPass;
+        public int ticketUnlockMasterPass;
 
         [Header("Sound")]
         public bool isMusicOn;
@@ -293,6 +319,36 @@ public class DataManager : Singleton<DataManager>
                 statusWinstreak.Add(false);
             }
 
+            //Master Pass
+            nPlayGame = 0;
+            nWinGame = 0;
+            nUseBooster = 0;
+            nUseCoin = 0;
+            nUseGem = 0;
+            nWinChallenge = 0;
+
+            taskMasterPassStatus = new List<bool>();
+            for (int i = 0; i < 50; i++)
+            {
+                taskMasterPassStatus.Add(false);
+            }
+            lvMasterPass = 1;
+            progress = 0;
+            maxLvMasterPass = 30;
+
+            rewardMasterPassStatus1 = new List<bool>();
+            for (int i = 0; i < 50; i++)
+            {
+                rewardMasterPassStatus1.Add(false);
+            }
+            rewardMasterPassStatus2 = new List<bool>();
+            for (int i = 0; i < 50; i++)
+            {
+                rewardMasterPassStatus2.Add(false);
+            }
+            unlockedMasterPass = false;
+            cycleIndexMasterPass = 0;
+            ticketUnlockMasterPass = 0;
             // Firebase
             cpStartLevel = -1;
             cpEndLevel = -1;

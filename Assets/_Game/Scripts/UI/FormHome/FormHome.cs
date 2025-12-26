@@ -17,6 +17,7 @@ public class FormHome : MonoBehaviour
     public PopupShop popupShop;
     public PopupSetting popupSetting;
     public PopupWinstreak popupWinstreak;
+    public PopupMasterPass popupMasterPass;
     public Transform buttonPlay;
 
     // Start is called before the first frame update
@@ -56,6 +57,18 @@ public class FormHome : MonoBehaviour
     public void SetDataNewDay()
     {
         DataManager.Ins.dataSaved.nSpinDaily = DataManager.Ins.dataSaved.maxSpinDaily;
+
+        DataManager.Ins.dataSaved.nPlayGame = 0;
+        DataManager.Ins.dataSaved.nWinGame = 0;
+        DataManager.Ins.dataSaved.nUseBooster = 0;
+        DataManager.Ins.dataSaved.nUseCoin = 0;
+        DataManager.Ins.dataSaved.nUseGem = 0;
+        DataManager.Ins.dataSaved.nWinChallenge = 0;
+
+        for (int i = 0; i < 50; i++)
+        {
+            DataManager.Ins.dataSaved.taskMasterPassStatus[i] = false;
+        }
     }
 
     public void LoadGame()
@@ -129,6 +142,15 @@ public class FormHome : MonoBehaviour
         popupWinstreak.gameObject.SetActive(true);
         popupWinstreak.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
         popupWinstreak.tf.DOScale(Vector3.one, 0.5f);
+
+        SoundManager.Ins.ChangeSound(SoundType.POPUP_CLICK);
+    }
+
+    public void OpenPopupMasterPass()
+    {
+        popupMasterPass.gameObject.SetActive(true);
+        popupMasterPass.tf.localScale = new Vector3(0.01f, 0.01f, 1f);
+        popupMasterPass.tf.DOScale(Vector3.one, 0.5f);
 
         SoundManager.Ins.ChangeSound(SoundType.POPUP_CLICK);
     }

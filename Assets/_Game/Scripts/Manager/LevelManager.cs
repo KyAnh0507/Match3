@@ -89,6 +89,7 @@ public class LevelManager : Singleton<LevelManager>
         DataManager.Ins.dataSaved.remainboostershuffle = 0;
         DataManager.Ins.dataSaved.remainboosterdelete = 0;
         DataManager.Ins.dataSaved.remainboosterundo = 0;
+        DataManager.Ins.dataSaved.nPlayGame++;
         FirebaseManager.Ins.level_start((indexLevel + 1) + "", DataManager.Ins.dataSaved.attenpt);
     }
     public void LoadLevel()
@@ -116,6 +117,7 @@ public class LevelManager : Singleton<LevelManager>
         DataManager.Ins.dataSaved.indexLevel++;
         DataManager.Ins.dataSaved.level++;
         DataManager.Ins.dataSaved.attenpt = 0;
+        DataManager.Ins.dataSaved.nWinGame++;
         FirebaseManager.Ins.level_end((indexLevel + 1) + "", "win", DataManager.Ins.dataSaved.remainboosteradd1, DataManager.Ins.dataSaved.remainboostershuffle, DataManager.Ins.dataSaved.remainboosterdelete,
                                        DataManager.Ins.dataSaved.remainboosterundo, DataManager.Ins.dataSaved.currentWinstreak);
         UIManager.Ins.formGame.OpenPopupWin();

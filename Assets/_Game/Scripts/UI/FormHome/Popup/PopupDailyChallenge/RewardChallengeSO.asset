@@ -21,8 +21,8 @@ MonoBehaviour:
     amount1: 10
     amount2: 0
     numberTarget: 3
-  - rewardType: 0
-    amount1: 30
+  - rewardType: 7
+    amount1: 1
     amount2: 0
     numberTarget: 7
   - rewardType: 1

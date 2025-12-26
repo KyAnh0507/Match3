@@ -29,7 +29,7 @@ public class PopupDailyChallenge : MonoBehaviour
     public GameObject buttonPlay;
     public GameObject buttonFinished;
 
-
+    public Transform flyTicketMaster;
     public RewardChallengeSO rewardChallengeSO;
 
     void OnEnable()
@@ -332,6 +332,19 @@ public class PopupDailyChallenge : MonoBehaviour
                     flyGems.gameObject.SetActive(true);
                     flyGems.rectTransform.position = rewardChallenge.transform.position;
                     flyGems.Play();
+                    break;
+                case RewardType.TicketMasterPass:
+                    DataManager.Ins.dataSaved.ticketUnlockMasterPass++;
+                    flyTicketMaster.gameObject.SetActive(true);
+                    flyTicketMaster.position = rewardChallenge.tick.transform.position;
+                    flyTicketMaster.localScale = Vector3.one;
+                    flyTicketMaster.DOScale(Vector3.one*1.3f, 1.2f).OnComplete(() =>
+                    {
+                        flyTicketMaster.DOScale(Vector3.one * 0.3f, 0.3f).OnComplete(() =>
+                        {
+                            flyTicketMaster.gameObject.SetActive(false);
+                        });
+                    });
                     break;
             }
             UIManager.Ins.LoadTextCoin();

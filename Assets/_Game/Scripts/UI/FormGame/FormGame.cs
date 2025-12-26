@@ -156,6 +156,7 @@ public class FormGame : MonoBehaviour
         {
             LevelManager.Ins.currentLevel.queueTile.Add1Tile();
             DataManager.Ins.dataSaved.boosterAdd1--;
+            DataManager.Ins.dataSaved.nUseBooster++;
             boosterAdd1.ActiceBoosster(false, DataManager.Ins.dataSaved.boosterAdd1);
             LevelManager.Ins.currentLevel.queueTile.Reorder1();
             FirebaseManager.Ins.resource_spend((DataManager.Ins.dataSaved.level + 1) + "", "booster_add1", 1);
@@ -168,6 +169,7 @@ public class FormGame : MonoBehaviour
         {
             GamePlay.Ins.isDeleteIron = true;
             DataManager.Ins.dataSaved.boosterBomb--;
+            DataManager.Ins.dataSaved.nUseBooster++;
             boosterDelete.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterBomb);
             FirebaseManager.Ins.resource_spend((DataManager.Ins.dataSaved.level + 1) + "", "booster_delete", 1);
         }
@@ -179,6 +181,7 @@ public class FormGame : MonoBehaviour
         {
             LevelManager.Ins.currentLevel.ShufflerScrew();
             DataManager.Ins.dataSaved.boosterSuffer--;
+            DataManager.Ins.dataSaved.nUseBooster++;
             boosterShuffle.ActiceBoosster(true, DataManager.Ins.dataSaved.boosterSuffer);
 
             FirebaseManager.Ins.resource_spend((DataManager.Ins.dataSaved.level + 1) + "", "booster_shuffle", 1);
@@ -190,6 +193,7 @@ public class FormGame : MonoBehaviour
         if (DataManager.Ins.dataSaved.boosterUndo > 0 && LevelManager.Ins.currentLevel.Undo())
         {
             DataManager.Ins.dataSaved.boosterUndo--;
+            DataManager.Ins.dataSaved.nUseBooster++;
             boosterUndo.ActiceBoosster(LevelManager.Ins.currentLevel.queueTile.matches.Count > 0, DataManager.Ins.dataSaved.boosterUndo);
             FirebaseManager.Ins.resource_spend((DataManager.Ins.dataSaved.level + 1) + "", "booster_undo", 1);
 

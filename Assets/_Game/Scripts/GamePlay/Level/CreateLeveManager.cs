@@ -87,9 +87,10 @@ public class CreateLeveManager : MonoBehaviour
                 do
                 {
                     l++;
+                    int indexIron = Random.Range(0, ironTemplate.Count);
                     m = Random.Range(0, 9) - 4;
                     n = Random.Range(0, 9) - 4;
-                    Iron iron = Instantiate(ironTemplate[Random.Range(0, ironTemplate.Count)], tfLevel);
+                    Iron iron = Instantiate(ironTemplate[indexIron], tfLevel);
                     iron.transform.localPosition = new Vector3((float)m * sizeBroad, (float)n * sizeBroad, 0);
                     iron.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 12) * 30));
 
@@ -99,6 +100,7 @@ public class CreateLeveManager : MonoBehaviour
                         Destroy(iron.gameObject);
                         continue;
                     }
+                    iron.id = indexIron;
                     irons.Add(iron);
                     for (int k = 0; k < iron.hole1Irons.Count; k++)
                     {

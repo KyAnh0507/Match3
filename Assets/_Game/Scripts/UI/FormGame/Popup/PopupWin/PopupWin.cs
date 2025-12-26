@@ -26,9 +26,9 @@ public class PopupWin : MonoBehaviour
 
     public void NextLevel()
     {
-        if (DataManager.Ins.dataSaved.indexLevel >= LevelManager.Ins.levels.Count)
+        if (DataManager.Ins.dataSaved.indexLevel >= LevelManager.Ins.levelGameModels.Count)
         {
-            DataManager.Ins.dataSaved.indexLevel = Random.Range(0, LevelManager.Ins.levels.Count);
+            DataManager.Ins.dataSaved.indexLevel = Random.Range(0, LevelManager.Ins.levelGameModels.Count);
         }
         LevelManager.Ins.LoadLevel(DataManager.Ins.dataSaved.indexLevel);
         Close();
