@@ -50,16 +50,18 @@ public class MasterPassRewardDataUI : MonoBehaviour
             {
                 fill11.SetActive(false);
             }
-            fill2.SetActive(true);
 
             if (index <= lv)
             {
+                fill2.SetActive(true);
+
                 lock1.SetActive(false);
                 lock2.SetActive(false);
-
             }
             else
             {
+                fill2.SetActive(false);
+
                 lock1.SetActive(true);
                 lock2.SetActive(true);
             }
