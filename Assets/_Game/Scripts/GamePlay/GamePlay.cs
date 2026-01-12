@@ -10,6 +10,8 @@ public class GamePlay : Singleton<GamePlay>
     public LayerMask lockLayerMask;
 
     public float radiusHole = 0.2f;
+    public ParticleSystem vfx;
+    public ParticleSystem vfxWoodClaim;
 
     public bool blockPlay = false;
     public bool isDeleteIron = false;
@@ -79,6 +81,7 @@ public class GamePlay : Singleton<GamePlay>
                 if (maxLayerScrew.Item2 >= maxLayerIron && maxLayerScrew.Item1.canPlay)
                 {
                     SelevtedScrew(maxLayerScrew.Item1);
+                    var touchFx = SimplePool.Spawn(vfx.GetComponent<GameUnit>(), new Vector3(mousePosition.x, mousePosition.y, 0), Quaternion.identity);
                 }
             }
         }
@@ -93,5 +96,20 @@ public class GamePlay : Singleton<GamePlay>
         }
 
         LevelManager.Ins.currentLevel.queueTile.CollectScrew(screw);
+    }
+
+    public void PlayFXWoodClaim(Vector3 postion)
+    {
+        var woodClaimFX = SimplePool.Spawn(vfxWoodClaim.GetComponent<GameUnit>(), new Vector3(postion.x, postion.y, 0), Quaternion.identity);
+        // Calculate the angle in degrees
+        Vector3 direction = new Vector3(0, 2, 0) - postion;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        woodClaimFX.transform.rotation = rotation;
+        DG.Tweening.DOVirtual.DelayedCall(1, () =>
+        {
+            SimplePool.Despawn(woodClaimFX.GetComponent<GameUnit>());
+        });
+        SoundManager.Ins.ChangeSound(SoundType.METAL_1);
+
     }
 }

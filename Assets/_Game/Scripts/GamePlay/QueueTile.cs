@@ -97,8 +97,7 @@ public class QueueTile : MonoBehaviour
             }
             d += matches[i].screws.Count;
         }
-        Debug.Log("dddddd :        " + d);
-        screw.PullUp(tile_screws[d].tile.transform.localPosition);
+        screw.PullUp1(tile_screws[d].tile.transform.position);
         DOVirtual.DelayedCall(0.5f, () =>
         {
             UIManager.Ins.formGame.boosterUndo.ActiceBoosster(LevelManager.Ins.currentLevel.queueTile.matches.Count > 0, DataManager.Ins.dataSaved.boosterUndo);
@@ -309,7 +308,7 @@ public class QueueTile : MonoBehaviour
             {
                 if (screws[i] == screw) continue;
                 screws[i].DisableCollider();
-                screws[i].MoveX(new Vector3(tile_screws[i].tile.transform.position.x , 0f, 0f));
+                screws[i].MoveX2(new Vector3(tile_screws[i].tile.transform.position.x , 0f, 0f));
             }
         }
         else
@@ -318,7 +317,7 @@ public class QueueTile : MonoBehaviour
             {
                 if (screws[i] == screw) continue;
                 screws[i].DisableCollider();
-                screws[i].MoveX(new Vector3(tile_screws[i].tile.transform.position.x, 0f, 0f));
+                screws[i].MoveX2(new Vector3(tile_screws[i].tile.transform.position.x, 0f, 0f));
             }
         }
 

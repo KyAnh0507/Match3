@@ -154,6 +154,9 @@ public enum PoolType
     Screw = 2,
 
 
+    TouchFX = 50,
+    WoodDrop = 51,
+
 
     Pencil = 1000,
     BoxPencil = 1001

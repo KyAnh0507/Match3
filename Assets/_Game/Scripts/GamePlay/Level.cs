@@ -80,8 +80,12 @@ public class Level : MonoBehaviour
             hole2Irons[i].layer = maxLayer;
         }
 
-        
-        
+        float ratio = (float)Screen.width / Screen.height;
+        if (ratio < (1080f / 1920f))
+        {
+            queueTile.transform.localScale *= ratio * (1920f / 1080f);
+        }
+
         //queueTile
         isDefeatChecked = false;
         UndoManager.Ins.OnInit(this);

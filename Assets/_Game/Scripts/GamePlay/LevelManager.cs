@@ -77,6 +77,7 @@ public class LevelManager : Singleton<LevelManager>
             currentLevel.irons[i].ChangeLayer();
             currentLevel.irons[i].loaded = true;
         }
+        RangeCheckIron.Instance.level = currentLevel;
 
         currentLevel.OnInit();
         currentLevel.targetMatch = d / 3;

@@ -67,6 +67,18 @@ public class Screw : GameUnit
         });
     }
 
+    public void MoveX2(Vector3 pos)
+    {
+        if (!isMatching)
+        {
+            moveTweenX.Kill();
+        }
+        moveTweenX = imageScrew.DOMoveX(pos.x, 0.2f).OnComplete(() =>
+        {
+
+        });
+    }
+
     public void MoveX1(Vector3 pos, float duration)
     {
         moveTweenX.Kill();
@@ -98,11 +110,34 @@ public class Screw : GameUnit
         });
     }
 
+    public void PullUp1(Vector3 pos)
+    {
+        ChangeSortingLayer();
+        moveTweenY = imageScrew.DOLocalMoveY(imageScrew.transform.localPosition.y + 0.5f, 0.3f);
+        imageScrewPins.DOLocalMoveY(-0.25f, 0.3f).OnComplete(() =>
+        {
+            float distance = Vector3.Distance(transform.localPosition, pos);
+            if (Mathf.Approximately(distance, 0f))
+            {
+                return;
+            }
+            float duration = distance / speed;
+            if (duration > 10) duration = 2f;
+            if (duration < 0.13f) duration *= 1.5f;
+
+            moveTweenX = imageScrew.DOMoveX(pos.x, duration).SetEase(Ease.Linear);
+            moveTweenY = imageScrew.DOMoveY(pos.y + 0.5f, duration).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                PullDown(pos);
+            });
+        });
+    }
+
     public void PullDown(Vector3 pos)
     {
         DOVirtual.DelayedCall(0.08f, () =>
         {
-            moveTweenY = imageScrew.DOLocalMoveY(pos.y + 0.1f, 0.3f);
+            moveTweenY = imageScrew.DOMoveY(pos.y + 0.1f, 0.3f);
             imageScrewPins.DOLocalMove(new Vector3(0, 0, 0), 0.3f);
         });
     }
