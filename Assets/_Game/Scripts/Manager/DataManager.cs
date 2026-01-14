@@ -186,6 +186,7 @@ public class DataManager : Singleton<DataManager>
         public int maxWinstreak;
         public int currentWinstreak;
         public List<bool> statusWinstreak;
+        public int cycleIndexWinstreak;
 
         [Header("Master Pass")]
         public int nPlayGame;
@@ -318,6 +319,7 @@ public class DataManager : Singleton<DataManager>
             {
                 statusWinstreak.Add(false);
             }
+            cycleIndexWinstreak = 0;
 
             //Master Pass
             nPlayGame = 0;

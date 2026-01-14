@@ -16,7 +16,6 @@ public class CountdownWinstreak : MonoBehaviour
     private static readonly DateTime AnchorDate = new DateTime(2024, 12, 10, 0, 0, 0);
     private const int CycleLengthDays = 2;
 
-    private int currentCycleIndex = -1;     // để detect khi sang vòng mới
     private DateTime blockStart;
     private DateTime blockEnd;
 
@@ -91,9 +90,9 @@ public class CountdownWinstreak : MonoBehaviour
         CalculateCurrentBlock(now, out cycleIndex, out blockStart, out blockEnd);
 
         // Nếu vừa sang vòng mới
-        if (cycleIndex != currentCycleIndex)
+        if (cycleIndex > DataManager.Ins.dataSaved.cycleIndexWinstreak)
         {
-            currentCycleIndex = cycleIndex;
+            DataManager.Ins.dataSaved.cycleIndexWinstreak = cycleIndex;
             OnNewCycle(cycleIndex, blockStart, blockEnd);
         }
 
@@ -139,8 +138,11 @@ public class CountdownWinstreak : MonoBehaviour
     /// </summary>
     void OnNewCycle(int index, DateTime start, DateTime end)
     {
-        // Ví dụ:
-        // WinstreakManager.Instance.ResetForNewCycle(index);
-        // Debug.Log($"New winstreak cycle {index}: {start} -> {end}");
+        DataManager.Ins.dataSaved.maxWinstreak = 0;
+        DataManager.Ins.dataSaved.currentWinstreak = 0;
+        for (int i = 0; i < 50; i++)
+        {
+            DataManager.Ins.dataSaved.statusWinstreak[i] = false;
+        }
     }
 }

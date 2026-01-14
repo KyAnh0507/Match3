@@ -26,6 +26,7 @@ public class DailyRewardUI : MonoBehaviour
     public void Claim()
     {
         Claimed();
+        UIManager.Ins.formHome.popupDailyReward.Notify(false);
         DataManager.Ins.dataSaved.isClaimDailyReward = true;
         switch (reward.rewardType)
         {

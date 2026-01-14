@@ -17,7 +17,13 @@ public class UIGamePlay : UICanvas
             DOVirtual.Float(180f, 0, 180f, (value) =>
             {
                 textTime.text = Calculater.CalculaterTime(value);
-            }).SetUpdate(true).SetEase(Ease.Linear);
+            }).SetUpdate(true).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                if (LevelManagerColorPencil.Ins != null)
+                {
+                    LevelManagerColorPencil.Ins.Defeat();
+                }
+            });
         });
 
     }

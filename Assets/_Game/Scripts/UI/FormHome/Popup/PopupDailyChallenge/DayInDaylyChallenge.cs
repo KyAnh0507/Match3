@@ -15,6 +15,10 @@ public class DayInDaylyChallenge : MonoBehaviour
     public void SetupDay(int day)
     {
         numberDay.text = day.ToString();
+        if (day >= 1 && day <= 31)
+        {
+            indexLevelColorPencil = day - 1;
+        }
     }
 
     public void Notify(bool b)

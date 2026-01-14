@@ -12,7 +12,6 @@ public class Countdown : MonoBehaviour
     private static readonly DateTime AnchorDate = new DateTime(2024, 12, 10, 0, 0, 0);
     public int CycleLengthDays = 2; // mỗi vòng dài 2 ngày
 
-    private int currentCycleIndex = -1;     // để detect khi sang vòng mới
     private DateTime blockStart;
     private DateTime blockEnd;
 
@@ -22,13 +21,6 @@ public class Countdown : MonoBehaviour
 
         int cycleIndex;
         CalculateCurrentBlock(now, out cycleIndex, out blockStart, out blockEnd);
-
-        // Nếu vừa sang vòng mới
-        if (cycleIndex != currentCycleIndex)
-        {
-            currentCycleIndex = cycleIndex;
-            OnNewCycle(cycleIndex, blockStart, blockEnd);
-        }
 
         // Đếm ngược tới cuối block hiện tại (blockEnd)
         TimeSpan remaining = blockEnd - now;
@@ -64,16 +56,5 @@ public class Countdown : MonoBehaviour
 
         start = AnchorDate.Date.AddDays(cycleIndex * CycleLengthDays);
         end = start.AddDays(CycleLengthDays); // luôn là 2 ngày sau
-    }
-
-    /// <summary>
-    /// Hàm này được gọi mỗi lần sang vòng winstreak mới (2 ngày mới).
-    /// Bạn reset winstreak, set lại thưởng, v.v. ở đây.
-    /// </summary>
-    void OnNewCycle(int index, DateTime start, DateTime end)
-    {
-        // Ví dụ:
-        // WinstreakManager.Instance.ResetForNewCycle(index);
-        // Debug.Log($"New winstreak cycle {index}: {start} -> {end}");
     }
 }

@@ -29,7 +29,7 @@ public class LevelManagerColorPencil : Singleton<LevelManagerColorPencil>
             Destroy(currentLevel.gameObject);
         }
 
-        currentLevel = Instantiate(levels[DataManager.Ins.dataSaved.indexLevelColorPencil]);
+        currentLevel = Instantiate(levels[DataManager.Ins.dataSaved.indexLevelColorPencil % levels.Count]);
         currentLevel.OnInit();
 
         GamePlayColorPencil.Ins.canPlay = true;
@@ -38,9 +38,6 @@ public class LevelManagerColorPencil : Singleton<LevelManagerColorPencil>
     public void Victory()
     {
         GamePlayColorPencil.Ins.canPlay = false;
-
-        DataManager.Ins.dataSaved.indexLevelColorPencil = ++DataManager.Ins.dataSaved.indexLevelColorPencil % levels.Count;
-
         DOVirtual.DelayedCall(1f, () =>
         {
             UIManagerColorPencil.Ins.OpenUI<UIWinColorPencil>();
@@ -50,6 +47,13 @@ public class LevelManagerColorPencil : Singleton<LevelManagerColorPencil>
     public void Defeat()
     {
         GamePlayColorPencil.Ins.canPlay = false;
+
+        DataManager.Ins.dataSaved.completeChallenge = true;
+
+        DOVirtual.DelayedCall(1.5f, () =>
+        {
+            UIManagerColorPencil.Ins.ChangeScene(Scene.Home);
+        });
     }
 
     public int MaxNPencil()

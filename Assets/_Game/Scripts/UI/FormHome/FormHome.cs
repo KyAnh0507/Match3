@@ -47,6 +47,11 @@ public class FormHome : MonoBehaviour
             popupDailyReward.Notify(false);
             popupDailyReward.streakDay = DataManager.Ins.dataSaved.streakDays;
         }
+        else
+        {
+            popupDailyReward.Notify(true);
+            popupDailyReward.streakDay = DataManager.Ins.dataSaved.streakDays;
+        }
         DataManager.Ins.dataSaved.timeLastOpen = timeLastOpen;
         if (DataManager.Ins.dataSaved.completeChallenge)
         {
