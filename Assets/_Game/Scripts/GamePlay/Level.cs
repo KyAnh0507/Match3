@@ -88,6 +88,7 @@ public class Level : MonoBehaviour
 
         //queueTile
         isDefeatChecked = false;
+        UndoManager.Ins.unitUndos.Clear();
         UndoManager.Ins.OnInit(this);
 
         GameManager.Ins.ChangeState(GameState.GAMEPLAY);

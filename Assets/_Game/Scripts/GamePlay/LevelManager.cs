@@ -77,7 +77,7 @@ public class LevelManager : Singleton<LevelManager>
             currentLevel.irons[i].loaded = true;
         }
         RangeCheckIron.Instance.level = currentLevel;
-
+        
         currentLevel.OnInit();
         currentLevel.targetMatch = d / 3;
         UIManager.Ins.formGame.isPauseGame = false;
@@ -111,7 +111,6 @@ public class LevelManager : Singleton<LevelManager>
 
     public void Victory()
     {
-        Debug.Log("aaaaaaaa:      ");
         GameManager.Ins.ChangeState(GameState.FINISH);
         DataManager.Ins.dataSaved.timeRetry = 0;
         DataManager.Ins.dataSaved.indexLevel++;
