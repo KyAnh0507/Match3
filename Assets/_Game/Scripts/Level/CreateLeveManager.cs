@@ -307,7 +307,6 @@ public class CreateLeveManager : MonoBehaviour
             IronMode ironData = new IronMode();
             ironData.id = irons[i].id;
             ironData.layer = irons[i].layer;
-            ironData.hasIce = irons[i].hasIce;
             ItemTransModel trans = new ItemTransModel(irons[i].transform.position, irons[i].transform.localScale, irons[i].transform.rotation.eulerAngles);
             ironData.transModel = trans;
             ironData.polygonColliderPoints = new List<Vector2>();
@@ -325,7 +324,6 @@ public class CreateLeveManager : MonoBehaviour
                 hole1Model.transModel = h;
                 hole1Model.screwType = irons[i].hole1Irons[j].screwType;
                 hole1Model.hasScrew = irons[i].hole1Irons[j].hasScrew;
-                hole1Model.hasLock = irons[i].hole1Irons[j].hasLock;
 
                 ironData.holeModels.Add(hole1Model);
             }
@@ -462,7 +460,6 @@ public class CreateLeveManager : MonoBehaviour
             irons.Add(iron);
             iron.id = level.levelModel.ironModes[i].id;
             iron.layer = level.levelModel.ironModes[i].layer;
-            iron.hasIce = level.levelModel.ironModes[i].hasIce;
             iron.polygonCollider = iron .gameObject.AddComponent<PolygonCollider2D>();
             iron.polygonCollider.SetPath(0, level.levelModel.ironModes[i].polygonColliderPoints);
             iron.transform.position = level.levelModel.ironModes[i].transModel.position;
