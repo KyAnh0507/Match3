@@ -63,7 +63,6 @@ public class LevelManager : Singleton<LevelManager>
 
                 hole1Iron.screwType = levelGameModels[level].levelModel.ironModes[i].holeModels[j].screwType;
                 hole1Iron.hasScrew = levelGameModels[level].levelModel.ironModes[i].holeModels[j].hasScrew;
-                hole1Iron.hasLock = levelGameModels[level].levelModel.ironModes[i].holeModels[j].hasLock;
                 hole1Iron.layer = iron.layer;
                 iron.hole1Irons.Add(hole1Iron);
                 d++;
@@ -78,7 +77,7 @@ public class LevelManager : Singleton<LevelManager>
             currentLevel.irons[i].loaded = true;
         }
         RangeCheckIron.Instance.level = currentLevel;
-
+        
         currentLevel.OnInit();
         currentLevel.targetMatch = d / 3;
         UIManager.Ins.formGame.isPauseGame = false;
@@ -112,7 +111,6 @@ public class LevelManager : Singleton<LevelManager>
 
     public void Victory()
     {
-        Debug.Log("aaaaaaaa:      ");
         GameManager.Ins.ChangeState(GameState.FINISH);
         DataManager.Ins.dataSaved.timeRetry = 0;
         DataManager.Ins.dataSaved.indexLevel++;

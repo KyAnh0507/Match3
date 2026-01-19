@@ -30,12 +30,6 @@ public class UndoManager : Singleton<UndoManager>
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddDataUndo(Screw screw)
     {
         UndoModel undoModel = new UndoModel();

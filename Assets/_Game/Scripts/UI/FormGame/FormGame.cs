@@ -93,6 +93,11 @@ public class FormGame : MonoBehaviour
         gemUI.ChangeValueImmediately(DataManager.Ins.dataSaved.gems);
     }
 
+    public void SetOverrideCoin(bool b)
+    {
+        coinUI.canvas.overrideSorting = b;
+    }
+
     public void LoadBooster()
     {
         boosterAdd1.ActiceBoosster(boosterAdd1.button.interactable, DataManager.Ins.dataSaved.boosterAdd1);

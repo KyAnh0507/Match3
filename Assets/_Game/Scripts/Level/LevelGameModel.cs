@@ -16,10 +16,9 @@ public class LevelGameModel : ScriptableObject
 public struct LevelModel
 {
     public int soLayer;
-    public List<Hole2Model> hole2Models;
+    //public List<Hole2Model> hole2Models;
     public List<IronMode> ironModes;
-    public List<KeyModel> keyModels;
-
+    public int timeLevel;
     public float boardIncreaseSize;
 }
 
@@ -29,11 +28,6 @@ public struct Hole1Model
     public ItemTransModel transModel;
     public int screwType;
     public bool hasScrew;
-    public bool hasLock;
-    public bool hasIce;
-    public int iceUnlockNuber;
-    public bool hasLockNumbScrew;
-    public int numbLockIron;
 }
 
 [System.Serializable]
@@ -42,10 +36,6 @@ public struct Hole2Model
     public ItemTransModel transModel;
     public int screwType;
     public bool hasScrew;
-    public bool hasLock;
-    public bool hasIce;
-    public int iceUnlockNuber;
-    public bool hasLockNumbScrew;
     public int numbLockIron;
 }
 
@@ -59,7 +49,6 @@ public struct IronMode
     public int orderLayer;
     public string spriteName;
     public List<Vector2> polygonColliderPoints;
-    public bool hasIce;
 }
 [System.Serializable]
 public struct KeyModel
