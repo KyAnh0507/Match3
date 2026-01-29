@@ -191,7 +191,12 @@ public class Screw : GameUnit
     public void Undo()
     {
         TF.DOKill();
-        TF.position = posStart;
+        moveTweenX.Kill();
+        moveTweenY.Kill();
+        imageScrewPins.DOKill();
+        imageScrew.DOKill();
+        TF.SetParent(LevelManager.Ins.currentLevel.transform);
+        TF.localPosition = posStart;
         TF.rotation = Quaternion.identity;
         canPlay = true;
         EnableCollider();

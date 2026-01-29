@@ -114,12 +114,12 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
 
     public void AddDataUndo(UndoModel undoModel)
     {
-        if (!isTrigger)
-        {
+        /*if (!isTrigger)
+        {*/
             IronUndoModel model = new IronUndoModel();
             model.index = UndoManager.Ins.currentCountMove;
-            model.position = transform.position;
-            model.rotation = transform.rotation;
+            model.position = transform.localPosition;
+            model.rotation = transform.localRotation;
             for (int i = 0; i < screws_holes.Count; i++)
             {
                 model.screws_holes.Add(new Screw_Hole(screws_holes[i].screw,
@@ -132,11 +132,11 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
             model.velocity = rb.velocity;
 
             undoModel.ironUndoModels.Add(model);
-        }
+        /*}
         else
         {
             undoModel.ironUndoModels.Clear();
-        }
+        }*/
     }
 
     public void Undo(Screw screw, UndoModel undoModel, int n)
@@ -147,10 +147,11 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
             if (!screws_holes.Any(x => x.screw == screw)) return;
             if (rb.bodyType != RigidbodyType2D.Static)
             {
+                hinge.enabled = false;
                 screws_holes = model.screws_holes;
                 for (int i = 0; i < screws_holes.Count; i++)
                 {
-                    if (!screws_holes[i].screw.canPlay || !screws_holes[i].screw.gameObject.activeSelf)
+                    if ((!screws_holes[i].screw.canPlay && screws_holes[i].screw != screw) || !screws_holes[i].screw.gameObject.activeSelf)
                     {
                         screws_holes[i].hasScrew = false;
                     }
@@ -159,8 +160,8 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
                         screws_holes[i].hasScrew = true;
                     }
                 }
-                transform.position = model.position;
-                transform.rotation = model.rotation;
+                transform.localPosition = model.position;
+                transform.localRotation = model.rotation;
                 rb.bodyType = RigidbodyType2D.Static;
                 rb.gravityScale = 1;
                 rb.velocity = model.velocity;
@@ -170,7 +171,7 @@ public class Iron : MonoBehaviour, IBaseUnitUndo
                 screws_holes = model.screws_holes;
                 for (int i = 0; i < screws_holes.Count; i++)
                 {
-                    if (!screws_holes[i].screw.canPlay || !screws_holes[i].screw.gameObject.activeSelf)
+                    if ((!screws_holes[i].screw.canPlay && screws_holes[i].screw != screw) || !screws_holes[i].screw.gameObject.activeSelf)
                     {
                         screws_holes[i].hasScrew = false;
                     }

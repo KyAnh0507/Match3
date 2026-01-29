@@ -272,7 +272,7 @@ public class QueueTile : MonoBehaviour
     {
         yield return new WaitUntil(() => IsStable(screws) && LevelManager.Ins.currentLevel.canLose);
         yield return new WaitForSeconds(0.5f);
-        if (!IsFull())
+        if (!IsFull() || !LevelManager.Ins.currentLevel.canLose)
         {
             yield break;
         }

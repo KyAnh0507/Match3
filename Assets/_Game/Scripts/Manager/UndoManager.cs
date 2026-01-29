@@ -65,12 +65,12 @@ public class UndoManager : Singleton<UndoManager>
             }
             
 
-            undoModel.screwUndo.Undo();
 
             for (int i = 0; i < unitUndos.Count; i++)
             {
                 unitUndos[i].Undo(screw, undoModel, i);
             }
+            undoModel.screwUndo.Undo();
             if (undoModels2.Count > 0)
             {
                 undoModels2.Pop();
