@@ -135,11 +135,14 @@ public class Screw : GameUnit
 
     public void PullDown(Vector3 pos)
     {
-        DOVirtual.DelayedCall(0.08f, () =>
+        if (!canPlay)
         {
-            moveTweenY = imageScrew.DOMoveY(pos.y + 0.1f, 0.3f);
-            imageScrewPins.DOLocalMove(new Vector3(0, 0, 0), 0.3f);
-        });
+            DOVirtual.DelayedCall(0.08f, () =>
+            {
+                moveTweenY = imageScrew.DOMoveY(pos.y + 0.1f, 0.3f);
+                imageScrewPins.DOLocalMove(new Vector3(0, 0, 0), 0.3f);
+            });
+        }
     }
 
     public void Match3()
