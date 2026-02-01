@@ -102,5 +102,29 @@ public class CountdownMasterPass : MonoBehaviour
             DataManager.Ins.dataSaved.rewardMasterPassStatus2[i] = false;
         }
         DataManager.Ins.dataSaved.unlockedMasterPass = false;
+
+
+        //Daily Chalenge
+
+        DataManager.Ins.dataSaved.currentMonth = 0;
+        DataManager.Ins.dataSaved.statusDays = new List<bool>();
+        for (int i = 0; i < 42; i++)
+        {
+            DataManager.Ins.dataSaved.statusDays.Add(false);
+        }
+
+        DataManager.Ins.dataSaved.statusReward = new List<bool>();
+        for (int i = 0; i < 5; i++)
+        {
+            DataManager.Ins.dataSaved.statusReward.Add(false);
+        }
+
+        DataManager.Ins.dataSaved.statusUnlockReward = new List<bool>();
+        for (int i = 0; i < 5; i++)
+        {
+            DataManager.Ins.dataSaved.statusUnlockReward.Add(false);
+        }
+        DataManager.Ins.dataSaved.completeChallenge = false;
+        DataManager.Ins.dataSaved.indexLevelColorPencil = 0;
     }
 }

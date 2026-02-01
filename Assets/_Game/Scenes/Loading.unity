@@ -426,6 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 514946603}
+  - component: {fileID: 514946604}
   m_Layer: 0
   m_Name: VibrateManager
   m_TagString: Untagged
@@ -448,6 +449,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &514946604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514946602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd7d44b6ed434f4badc6d2ba6f96386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDontDesstroyOnLoad: 1
 --- !u!1 &552221251
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,12 +587,33 @@ MonoBehaviour:
     maxWinstreak: 0
     currentWinstreak: 0
     statusWinstreak: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    cycleIndexWinstreak: 0
+    nPlayGame: 0
+    nWinGame: 0
+    nUseBooster: 0
+    nUseCoin: 0
+    nUseGem: 0
+    nWinChallenge: 0
+    taskMasterPassStatus: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    lvMasterPass: 1
+    progress: 0
+    maxLvMasterPass: 30
+    rewardMasterPassStatus1: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    rewardMasterPassStatus2: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    unlockedMasterPass: 0
+    cycleIndexMasterPass: 0
+    ticketUnlockMasterPass: 0
     isMusicOn: 1
     isSoundOn: 1
     isVibrate: 1
     cpStartLevel: -1
     cpEndLevel: -1
     timeRetry: 0
+    attenpt: 0
+    remainboosteradd1: 0
+    remainboosterdelete: 0
+    remainboostershuffle: 0
+    remainboosterundo: 0
     isCheatHard: 0
     isNoAds: 0
     isNoPack: 0
@@ -592,7 +627,6 @@ MonoBehaviour:
     currentJourneyProgress: 0
     currentJourneyStage: 0
     isRate: 0
-    isFirstAOA: 0
 --- !u!4 &646165010
 Transform:
   m_ObjectHideFlags: 0
